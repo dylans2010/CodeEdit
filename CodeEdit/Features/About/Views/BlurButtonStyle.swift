@@ -25,29 +25,33 @@ struct BlurButtonStyle: ButtonStyle {
 
     @Environment(\.colorScheme) var colorScheme
 
+    @ViewBuilder
+    private func backgroundView(isPressed: Bool) -> some View {
+        switch colorScheme {
+        case .dark:
+            let base: Color = Color.gray.opacity(0.001)
+            let tint: Color = Color.gray.opacity(0.30)
+            let press: Color = Color.white.opacity(isPressed ? 0.20 : 0.00)
+            base
+                .overlay(.regularMaterial.blendMode(.plusLighter))
+                .overlay(tint)
+                .overlay(press)
+        case .light:
+            let base: Color = Color.gray.opacity(0.001)
+            let tint: Color = Color.gray.opacity(0.15)
+            base
+                .overlay(.regularMaterial.blendMode(.darken))
+                .overlay(AnyView(tint).blendMode(.plusDarker))
+        @unknown default:
+            Color.black
+        }
+    }
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(height: height)
             .buttonStyle(.bordered)
-            .background {
-                switch colorScheme {
-                case .dark:
-                    Color
-                        .gray
-                        .opacity(0.001)
-                        .overlay(.regularMaterial.blendMode(.plusLighter))
-                        .overlay(Color.gray.opacity(0.30))
-                        .overlay(Color.white.opacity(configuration.isPressed ? 0.20 : 0.00))
-                case .light:
-                    Color
-                        .gray
-                        .opacity(0.001)
-                        .overlay(.regularMaterial.blendMode(.darken))
-                        .overlay(Color.gray.opacity(0.15).blendMode(.plusDarker))
-                @unknown default:
-                    Color.black
-                }
-            }
+            .background(backgroundView(isPressed: configuration.isPressed))
             .cornerRadius(6)
     }
 }

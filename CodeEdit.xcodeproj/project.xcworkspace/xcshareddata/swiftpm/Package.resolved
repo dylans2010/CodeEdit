@@ -1,4 +1,5 @@
 {
+  "originHash" : "d7dbf192f3e0c0a555fc2cf5f99d9851a9b43816424e03a7eb512163076f9ca1",
   "pins" : [
     {
       "identity" : "codeeditkit",
@@ -19,6 +20,15 @@
       }
     },
     {
+      "identity" : "codeeditsourceeditor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CodeEditApp/CodeEditSourceEditor.git",
+      "state" : {
+        "revision" : "7a0a4159490c915b5dbaf075eb85185fb84b3923",
+        "version" : "0.3.5"
+      }
+    },
+    {
       "identity" : "codeeditsymbols",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CodeEditApp/CodeEditSymbols",
@@ -28,21 +38,12 @@
       }
     },
     {
-      "identity" : "codeedittextview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CodeEditApp/CodeEditTextView.git",
-      "state" : {
-        "revision" : "7a0a4159490c915b5dbaf075eb85185fb84b3923",
-        "version" : "0.3.5"
-      }
-    },
-    {
       "identity" : "grdb.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/groue/GRDB.swift.git",
       "state" : {
-        "revision" : "15c06e037430c8a2dc570f9199dd7bf8caa21195",
-        "version" : "5.22.2"
+        "revision" : "2cf6c756e1e5ef6901ebae16576a7e4e4b834622",
+        "version" : "6.29.3"
       }
     },
     {
@@ -118,5 +119,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
