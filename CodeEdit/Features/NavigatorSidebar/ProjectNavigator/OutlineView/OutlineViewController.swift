@@ -55,14 +55,22 @@ final class OutlineViewController: NSViewController {
         self.outlineView.menu = OutlineMenu(sender: self.outlineView)
         self.outlineView.menu?.delegate = self
         self.outlineView.doubleAction = #selector(onItemDoubleClicked)
+        self.outlineView.style = .sourceList
+        self.outlineView.selectionHighlightStyle = .regular
+        self.outlineView.floatsGroupRows = false
+        self.outlineView.rowSizeStyle = .custom
+        self.outlineView.indentationPerLevel = 14
 
         let column = NSTableColumn(identifier: .init(rawValue: "Cell"))
         column.title = "Cell"
         outlineView.addTableColumn(column)
 
         self.scrollView.documentView = outlineView
-        self.scrollView.contentView.automaticallyAdjustsContentInsets = false
-        self.scrollView.contentView.contentInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
+        self.scrollView.drawsBackground = false
+        self.scrollView.hasVerticalScroller = true
+        self.scrollView.autohidesScrollers = true
+        self.scrollView.automaticallyAdjustsContentInsets = false
+        self.scrollView.contentInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
 
         WorkspaceClient.onRefresh = self.outlineView.reloadData
         outlineView.expandItem(outlineView.item(atRow: 0))

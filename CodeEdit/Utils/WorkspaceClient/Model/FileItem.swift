@@ -226,6 +226,32 @@ extension WorkspaceClient {
             )
         }
 
+        /// Imports existing files from URLs into the target directory
+        func importFiles(from urls: [URL]) {
+            let targetDir = self.isFolder ? self.url : self.url.deletingLastPathComponent()
+            for sourceURL in urls {
+                var destinationURL = targetDir.appendingPathComponent(sourceURL.lastPathComponent)
+                var counter = 0
+                while FileItem.fileManger.fileExists(atPath: destinationURL.path) {
+                    counter += 1
+                    let baseName = sourceURL.deletingPathExtension().lastPathComponent
+                    let ext = sourceURL.pathExtension
+                    let newName = ext.isEmpty ? "\(baseName) \(counter)" : "\(baseName) \(counter).\(ext)"
+                    destinationURL = targetDir.appendingPathComponent(newName)
+                }
+                do {
+                    try FileItem.fileManger.copyItem(at: sourceURL, to: destinationURL)
+                } catch {
+                    print("Failed to copy \(sourceURL) to \(destinationURL): \(error)")
+                }
+            }
+        }
+
+        /// Imports an existing folder from a URL into the target directory
+        func importFolder(from url: URL) {
+            importFiles(from: [url])
+        }
+
         /// This function deletes the item or folder from the current project
         func delete() {
             // this function also has to account for how the

@@ -51,6 +51,8 @@ final class OutlineMenu: NSMenu {
 
         let newFile = menuItem("New File...", action: #selector(newFile))
         let newFolder = menuItem("New Folder", action: #selector(newFolder))
+        let addFiles = menuItem("Add Files...", action: #selector(addFilesAction))
+        let addFolder = menuItem("Add Folder...", action: #selector(addFolderAction))
 
         let rename = menuItem("Rename", action: #selector(renameFile))
         let delete = menuItem("Delete", action:
@@ -79,6 +81,8 @@ final class OutlineMenu: NSMenu {
             NSMenuItem.separator(),
             newFile,
             newFolder,
+            addFiles,
+            addFolder,
             NSMenuItem.separator(),
             rename,
             delete,
@@ -200,6 +204,38 @@ final class OutlineMenu: NSMenu {
         item?.addFolder(folderName: "untitled")
         outlineView.expandItem(item)
         outlineView.expandItem((item?.isFolder ?? true) ? item : item?.parent)
+    }
+
+    /// Action that prompts for files to add to the target folder
+    @objc
+    private func addFilesAction() {
+        guard let item = item else { return }
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = true
+        panel.canChooseDirectories = false
+        panel.canChooseFiles = true
+        panel.prompt = "Add"
+        if panel.runModal() == .OK {
+            item.importFiles(from: panel.urls)
+            outlineView.expandItem((item.isFolder ? item : item.parent))
+            outlineView.reloadData()
+        }
+    }
+
+    /// Action that prompts for a folder to add to the target directory
+    @objc
+    private func addFolderAction() {
+        guard let item = item else { return }
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.prompt = "Add"
+        if panel.runModal() == .OK, let folder = panel.url {
+            item.importFolder(from: folder)
+            outlineView.expandItem((item.isFolder ? item : item.parent))
+            outlineView.reloadData()
+        }
     }
 
     /// Opens the rename file dialogue on the cell this was presented from.

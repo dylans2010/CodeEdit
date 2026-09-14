@@ -21,17 +21,59 @@ struct NavigatorSidebarToolbarBottom: View {
         }
     }
 
+    private var targetDirectoryItem: WorkspaceClient.FileItem? {
+        if case let .codeEditor(id) = workspace.selectionState.selectedId,
+           let currentItem = try? workspace.workspaceClient?.getFileItem(id) {
+            return currentItem.isFolder ? currentItem : currentItem.parent
+        }
+        guard let folderURL = workspace.workspaceClient?.folderURL() else { return nil }
+        return try? workspace.workspaceClient?.getFileItem(folderURL.path)
+    }
+
     private var addNewFileButton: some View {
         Menu {
-            Button("Add File") {
-                guard let folderURL = workspace.workspaceClient?.folderURL() else { return }
-                guard let root = try? workspace.workspaceClient?.getFileItem(folderURL.path) else { return }
-                root.addFile(fileName: "untitled") // TODO: use currently selected file instead of root
+            Button {
+                guard let target = targetDirectoryItem else { return }
+                target.addFile(fileName: "untitled")
+            } label: {
+                Label("New File", systemImage: "doc.badge.plus")
             }
-            Button("Add Folder") {
-                guard let folderURL = workspace.workspaceClient?.folderURL() else { return }
-                guard let root = try? workspace.workspaceClient?.getFileItem(folderURL.path) else { return }
-                root.addFolder(folderName: "untitled") // TODO: use currently selected file instead of root
+
+            Button {
+                guard let target = targetDirectoryItem else { return }
+                target.addFolder(folderName: "untitled")
+            } label: {
+                Label("New Folder", systemImage: "folder.badge.plus")
+            }
+
+            Divider()
+
+            Button {
+                guard let target = targetDirectoryItem else { return }
+                let panel = NSOpenPanel()
+                panel.allowsMultipleSelection = true
+                panel.canChooseDirectories = false
+                panel.canChooseFiles = true
+                panel.prompt = "Add"
+                if panel.runModal() == .OK {
+                    target.importFiles(from: panel.urls)
+                }
+            } label: {
+                Label("Add File...", systemImage: "square.and.arrow.down")
+            }
+
+            Button {
+                guard let target = targetDirectoryItem else { return }
+                let panel = NSOpenPanel()
+                panel.allowsMultipleSelection = false
+                panel.canChooseDirectories = true
+                panel.canChooseFiles = false
+                panel.prompt = "Add"
+                if panel.runModal() == .OK, let folder = panel.url {
+                    target.importFolder(from: folder)
+                }
+            } label: {
+                Label("Add Folder...", systemImage: "folder")
             }
         } label: {
             Image(systemName: "plus")

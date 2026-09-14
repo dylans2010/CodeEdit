@@ -22,10 +22,20 @@ struct NavigatorSidebarView: View {
                 SourceControlNavigatorView()
             case 2:
                 FindNavigatorView()
+            case 3:
+                DependenciesNavigatorView()
+            case 4:
+                TestsNavigatorView()
+            case 5:
+                IssuesNavigatorView()
+            case 6:
+                SymbolsNavigatorView()
             case 7:
                 ExtensionNavigatorView()
+            case 8:
+                UtilitiesNavigatorView()
             default:
-                Spacer()
+                ProjectNavigatorView()
             }
         }
         .safeAreaInset(edge: .top) {

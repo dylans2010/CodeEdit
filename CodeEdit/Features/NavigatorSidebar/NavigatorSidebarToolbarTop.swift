@@ -9,15 +9,15 @@ struct NavigatorSidebarToolbarTop: View {
     private var selection: Int
 
     @State private var icons = [
-        SidebarDockIcon(imageName: "folder", title: "Project", id: 0),
-        SidebarDockIcon(imageName: "vault", title: "Version Control", id: 1),
-        SidebarDockIcon(imageName: "magnifyingglass", title: "Search", id: 2),
-        SidebarDockIcon(imageName: "shippingbox", title: "...", id: 3, disabled: true),
-        SidebarDockIcon(imageName: "play", title: "...", id: 4, disabled: true),
-        SidebarDockIcon(imageName: "exclamationmark.triangle", title: "...", id: 5, disabled: true),
-        SidebarDockIcon(imageName: "curlybraces.square", title: "...", id: 6, disabled: true),
-        SidebarDockIcon(imageName: "puzzlepiece.extension", title: "...", id: 7, disabled: true),
-        SidebarDockIcon(imageName: "square.grid.2x2", title: "...", id: 8, disabled: true)
+        SidebarDockIcon(imageName: "folder", title: "Project", id: 0, disabled: false),
+        SidebarDockIcon(imageName: "vault", title: "Version Control", id: 1, disabled: false),
+        SidebarDockIcon(imageName: "magnifyingglass", title: "Search", id: 2, disabled: false),
+        SidebarDockIcon(imageName: "shippingbox", title: "Dependencies", id: 3, disabled: false),
+        SidebarDockIcon(imageName: "play.circle", title: "Tests", id: 4, disabled: false),
+        SidebarDockIcon(imageName: "exclamationmark.triangle", title: "Issues", id: 5, disabled: false),
+        SidebarDockIcon(imageName: "curlybraces.square", title: "Symbols", id: 6, disabled: false),
+        SidebarDockIcon(imageName: "puzzlepiece.extension", title: "Extensions", id: 7, disabled: false),
+        SidebarDockIcon(imageName: "square.grid.2x2", title: "Utilities", id: 8, disabled: false)
     ]
     @State private var hasChangedLocation: Bool = false
     @State private var draggingItem: SidebarDockIcon?

@@ -30,6 +30,8 @@
 		CE7E00020000000000000005 /* TemplateCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000005 /* TemplateCatalogView.swift */; };
 		CE7E00020000000000000006 /* templates_manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000006 /* templates_manifest.json */; };
 		CE7E00020000000000000007 /* AppleProjectSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000007 /* AppleProjectSetupView.swift */; };
+		CE8A00020000000000000001 /* NavigatorViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A00010000000000000001 /* NavigatorViews.swift */; };
+		CE8B00020000000000000001 /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B00010000000000000001 /* MarkdownEditorView.swift */; };
 		043BCF03281DA18A000AC47C /* WorkspaceDocument+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */; };
 		043BCF05281DA19A000AC47C /* WorkspaceDocument+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */; };
 		043C321427E31FF6006AE443 /* CodeEditDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */; };
@@ -444,6 +446,8 @@
 		CE7E00010000000000000005 /* TemplateCatalogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCatalogView.swift; sourceTree = "<group>"; };
 		CE7E00010000000000000006 /* templates_manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = templates_manifest.json; sourceTree = "<group>"; };
 		CE7E00010000000000000007 /* AppleProjectSetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleProjectSetupView.swift; sourceTree = "<group>"; };
+		CE8A00010000000000000001 /* NavigatorViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorViews.swift; sourceTree = "<group>"; };
+		CE8B00010000000000000001 /* MarkdownEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownEditorView.swift; sourceTree = "<group>"; };
 		043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Search.swift"; sourceTree = "<group>"; };
 		043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Selection.swift"; sourceTree = "<group>"; };
 		043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditDocumentController.swift; sourceTree = "<group>"; };
@@ -1136,6 +1140,7 @@
 				287776E627E3413200D46668 /* NavigatorSidebarView.swift */,
 				28B0A19727E385C300B73177 /* NavigatorSidebarToolbarTop.swift */,
 				28FFE1BE27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift */,
+				CE8A00010000000000000001 /* NavigatorViews.swift */,
 			);
 			path = NavigatorSidebar;
 			sourceTree = "<group>";
@@ -1246,8 +1251,17 @@
 				287776EB27E350BA00D46668 /* TabBar */,
 				5879827E292ED0FB0085B254 /* TerminalEmulator */,
 				581BFB4B2926431000D251EC /* Welcome */,
+				CE8B00000000000000000001 /* Markdown */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		CE8B00000000000000000001 /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B00010000000000000001 /* MarkdownEditorView.swift */,
+			);
+			path = Markdown;
 			sourceTree = "<group>";
 		};
 		5831E3C62933E7E600D5A6D2 /* Color */ = {
@@ -2763,6 +2777,8 @@
 				58F2EAFE292FB2B0004A9BDE /* GitHubEnterpriseLoginView.swift in Sources */,
 				DE513F52281B672D002260B9 /* TabBarAccessory.swift in Sources */,
 				2813F93927ECC4C300E305E4 /* NavigatorSidebarView.swift in Sources */,
+				CE8A00020000000000000001 /* NavigatorViews.swift in Sources */,
+				CE8B00020000000000000001 /* MarkdownEditorView.swift in Sources */,
 				58F2EAF7292FB2B0004A9BDE /* SourceControlProvider.swift in Sources */,
 				587B9E8A29301D8F00AC7927 /* GitHubIssue.swift in Sources */,
 				DE513F54281DE5D0002260B9 /* TabBarXcode.swift in Sources */,

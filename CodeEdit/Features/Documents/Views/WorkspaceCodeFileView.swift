@@ -22,6 +22,8 @@ struct WorkspaceCodeFileView: View {
                         xcodeProjectView(for: item)
                     } else if isPropertyList(item.url) {
                         propertyListView(fileItem, for: item)
+                    } else if isMarkdown(item.url) {
+                        markdownView(fileItem, for: item)
                     } else if fileItem.typeOfFile == .text || fileItem.typeOfFile == .data {
                         codeFileView(fileItem, for: item)
                     } else {
@@ -47,6 +49,11 @@ struct WorkspaceCodeFileView: View {
         url.pathExtension == "plist" || url.pathExtension == "entitlements"
     }
 
+    private func isMarkdown(_ url: URL) -> Bool {
+        let ext = url.pathExtension.lowercased()
+        return ext == "md" || ext == "markdown" || ext == "mdown" || ext == "mkd"
+    }
+
     @ViewBuilder
     private func xcodeProjectView(for item: WorkspaceClient.FileItem) -> some View {
         VStack(spacing: 0) {
@@ -66,6 +73,14 @@ struct WorkspaceCodeFileView: View {
             Divider()
             PropertyListEditorView(codeFile: codeFile, fileURL: item.url)
         }
+    }
+
+    @ViewBuilder
+    private func markdownView(
+        _ codeFile: CodeFileDocument,
+        for item: WorkspaceClient.FileItem
+    ) -> some View {
+        MarkdownEditorView(codeFile: codeFile, fileItem: item)
     }
 
     @ViewBuilder
