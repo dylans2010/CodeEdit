@@ -1,0 +1,17 @@
+{
+  "id": "cpp-makefile-starter",
+  "name": "C++ Project (Makefile)",
+  "category": "Systems & C/C++",
+  "icon": "wrench.and.screwdriver",
+  "language": "C++",
+  "badge": "C++20",
+  "description": "Modular C++ project with separate include/src structure and automated Makefile.",
+  "defaultProjectName": "MyCppMakefileApp",
+  "files": [
+    "Makefile",
+    "include/utils.hpp",
+    "src/utils.cpp",
+    "src/main.cpp",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "macos-command-line",
+  "name": "Swift Command Line Tool",
+  "category": "Apple Platforms",
+  "icon": "terminal",
+  "language": "Swift",
+  "badge": "CLI",
+  "description": "High-performance Swift CLI executable using Swift Argument Parser.",
+  "defaultProjectName": "MySwiftCLI",
+  "files": [
+    "Package.swift",
+    "Sources/main.swift",
+    "README.md"
+  ]
+}

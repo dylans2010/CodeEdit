@@ -1,0 +1,15 @@
+{
+  "id": "web-svelte-vite-ts",
+  "name": "Svelte 5 + Vite + TypeScript",
+  "category": "Web Development",
+  "icon": "s.square",
+  "language": "TypeScript",
+  "badge": "Svelte",
+  "description": "High performance, reactive Svelte 5 application with Runes and Vite.",
+  "defaultProjectName": "MySvelteApp",
+  "files": [
+    "package.json",
+    "src/App.svelte",
+    "README.md"
+  ]
+}

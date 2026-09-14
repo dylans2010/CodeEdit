@@ -1,0 +1,14 @@
+{
+  "id": "docker-compose-fullstack",
+  "name": "Fullstack Docker Compose",
+  "category": "DevOps & Scripting",
+  "icon": "shippingbox.fill",
+  "language": "Docker",
+  "badge": "Docker",
+  "description": "Multi-container setup with frontend web, backend API, and PostgreSQL database.",
+  "defaultProjectName": "MyDockerStack",
+  "files": [
+    "docker-compose.yml",
+    "README.md"
+  ]
+}

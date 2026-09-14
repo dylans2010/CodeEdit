@@ -1,0 +1,16 @@
+{
+  "id": "macos-appkit-app",
+  "name": "macOS AppKit Cocoa App",
+  "category": "Apple Platforms",
+  "icon": "macwindow.on.rectangle",
+  "language": "Swift",
+  "badge": "macOS",
+  "description": "Traditional AppKit desktop application with NSApplicationDelegate and NSWindowController.",
+  "defaultProjectName": "MyAppKitApp",
+  "files": [
+    "Sources/main.swift",
+    "Sources/AppDelegate.swift",
+    "Package.swift",
+    "README.md"
+  ]
+}

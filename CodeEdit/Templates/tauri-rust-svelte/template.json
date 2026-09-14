@@ -1,0 +1,15 @@
+{
+  "id": "tauri-rust-svelte",
+  "name": "Tauri + Rust + Svelte",
+  "category": "Desktop Apps",
+  "icon": "desktopcomputer",
+  "language": "Rust",
+  "badge": "Tauri",
+  "description": "Ultra-lightweight native desktop app powered by Rust backend and Svelte frontend.",
+  "defaultProjectName": "MyTauriApp",
+  "files": [
+    "Cargo.toml",
+    "src-tauri/src/main.rs",
+    "README.md"
+  ]
+}

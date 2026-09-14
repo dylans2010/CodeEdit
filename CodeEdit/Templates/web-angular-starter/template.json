@@ -1,0 +1,15 @@
+{
+  "id": "web-angular-starter",
+  "name": "Angular Standalone App",
+  "category": "Web Development",
+  "icon": "a.square",
+  "language": "TypeScript",
+  "badge": "Angular",
+  "description": "Modern Angular application with standalone components and signals.",
+  "defaultProjectName": "MyAngularApp",
+  "files": [
+    "package.json",
+    "src/app/app.component.ts",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "backend-nodejs-express",
+  "name": "Node.js Express API (TypeScript)",
+  "category": "Backend & APIs",
+  "icon": "server.rack",
+  "language": "TypeScript",
+  "badge": "Express",
+  "description": "RESTful API server with Express, TypeScript, routing, and JSON validation.",
+  "defaultProjectName": "MyExpressAPI",
+  "files": [
+    "package.json",
+    "src/index.ts",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "watchos-swiftui-app",
+  "name": "watchOS App (SwiftUI)",
+  "category": "Apple Platforms",
+  "icon": "applewatch",
+  "language": "Swift",
+  "badge": "watchOS",
+  "description": "Standalone Apple Watch application optimized for watchOS complications and gestures.",
+  "defaultProjectName": "MyWatchApp",
+  "files": [
+    "WatchApp/{{PROJECT_NAME}}App.swift",
+    "WatchApp/ContentView.swift",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "backend-rust-actix",
+  "name": "Rust Actix-web Service",
+  "category": "Backend & APIs",
+  "icon": "gearshape.2",
+  "language": "Rust",
+  "badge": "Actix",
+  "description": "High-performance, safe, concurrent web server with Rust and Actix-web.",
+  "defaultProjectName": "MyActixService",
+  "files": [
+    "Cargo.toml",
+    "src/main.rs",
+    "README.md"
+  ]
+}

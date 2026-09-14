@@ -1,0 +1,18 @@
+{
+  "id": "web-react-vite-js",
+  "name": "React + Vite (JavaScript)",
+  "category": "Web Development",
+  "icon": "atom",
+  "language": "JavaScript",
+  "badge": "React",
+  "description": "Standard React 18 single page application with modern JavaScript and Vite.",
+  "defaultProjectName": "MyReactJSApp",
+  "files": [
+    "package.json",
+    "vite.config.js",
+    "index.html",
+    "src/main.jsx",
+    "src/App.jsx",
+    "README.md"
+  ]
+}

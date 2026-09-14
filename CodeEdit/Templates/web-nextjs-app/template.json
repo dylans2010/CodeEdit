@@ -1,0 +1,16 @@
+{
+  "id": "web-nextjs-app",
+  "name": "Next.js App Router (TypeScript)",
+  "category": "Web Development",
+  "icon": "n.square",
+  "language": "TypeScript",
+  "badge": "Next.js",
+  "description": "Full-stack React framework with App Router, Server Components, and SSR.",
+  "defaultProjectName": "MyNextApp",
+  "files": [
+    "package.json",
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "README.md"
+  ]
+}

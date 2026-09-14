@@ -1,0 +1,15 @@
+{
+  "id": "ios-swiftui-app",
+  "name": "iOS App (SwiftUI)",
+  "category": "Apple Platforms",
+  "icon": "iphone",
+  "language": "Swift",
+  "badge": "iOS",
+  "description": "Modern iOS SwiftUI app with TabView, NavigationStack, and dynamic themes.",
+  "defaultProjectName": "MyIOSApp",
+  "files": [
+    "App/{{PROJECT_NAME}}App.swift",
+    "App/ContentView.swift",
+    "README.md"
+  ]
+}

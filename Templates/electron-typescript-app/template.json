@@ -1,0 +1,16 @@
+{
+  "id": "electron-typescript-app",
+  "name": "Electron Desktop App",
+  "category": "Desktop Apps",
+  "icon": "macwindow.badge.plus",
+  "language": "TypeScript",
+  "badge": "Electron",
+  "description": "Cross-platform desktop application using Electron, TypeScript, and secure IPC.",
+  "defaultProjectName": "MyElectronApp",
+  "files": [
+    "package.json",
+    "src/main.ts",
+    "index.html",
+    "README.md"
+  ]
+}

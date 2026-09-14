@@ -1,0 +1,16 @@
+{
+  "id": "rust-cargo-library",
+  "name": "Rust Library (Cargo)",
+  "category": "Systems & C/C++",
+  "icon": "cube",
+  "language": "Rust",
+  "badge": "Rust",
+  "description": "Idiomatic Rust library crate with comprehensive unit and integration tests.",
+  "defaultProjectName": "MyRustLib",
+  "files": [
+    "Cargo.toml",
+    "src/lib.rs",
+    "tests/integration_test.rs",
+    "README.md"
+  ]
+}

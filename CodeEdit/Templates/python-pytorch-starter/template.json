@@ -1,0 +1,16 @@
+{
+  "id": "python-pytorch-starter",
+  "name": "PyTorch Deep Learning Model",
+  "category": "Python & Data Science",
+  "icon": "brain",
+  "language": "Python",
+  "badge": "PyTorch",
+  "description": "PyTorch neural network architecture with training loop and tensor evaluation.",
+  "defaultProjectName": "MyPyTorchModel",
+  "files": [
+    "requirements.txt",
+    "model.py",
+    "train.py",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "visionos-spatial-app",
+  "name": "visionOS Spatial App",
+  "category": "Apple Platforms",
+  "icon": "visionpro",
+  "language": "Swift",
+  "badge": "visionOS",
+  "description": "Immersive spatial computing application with SwiftUI and RealityKit volumes.",
+  "defaultProjectName": "MyVisionApp",
+  "files": [
+    "App/{{PROJECT_NAME}}App.swift",
+    "App/ContentView.swift",
+    "README.md"
+  ]
+}

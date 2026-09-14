@@ -1,0 +1,16 @@
+{
+  "id": "macos-menubar-app",
+  "name": "macOS Menu Bar App",
+  "category": "Apple Platforms",
+  "icon": "menubar.rectangle",
+  "language": "Swift",
+  "badge": "macOS",
+  "description": "Lightweight macOS status bar item application using MenuBarExtra.",
+  "defaultProjectName": "MyMenuBarApp",
+  "files": [
+    "Package.swift",
+    "Sources/App.swift",
+    "Sources/MenuBarView.swift",
+    "README.md"
+  ]
+}

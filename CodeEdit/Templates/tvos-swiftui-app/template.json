@@ -1,0 +1,15 @@
+{
+  "id": "tvos-swiftui-app",
+  "name": "tvOS App (SwiftUI)",
+  "category": "Apple Platforms",
+  "icon": "tv",
+  "language": "Swift",
+  "badge": "tvOS",
+  "description": "Apple TV SwiftUI app with focus engine integration and 10-foot UI experience.",
+  "defaultProjectName": "MyTVApp",
+  "files": [
+    "App/{{PROJECT_NAME}}App.swift",
+    "App/ContentView.swift",
+    "README.md"
+  ]
+}

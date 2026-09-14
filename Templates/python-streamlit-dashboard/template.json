@@ -1,0 +1,15 @@
+{
+  "id": "python-streamlit-dashboard",
+  "name": "Streamlit Interactive Dashboard",
+  "category": "Python & Data Science",
+  "icon": "chart.bar.fill",
+  "language": "Python",
+  "badge": "Streamlit",
+  "description": "Fast data app with reactive UI widgets, tables, charts, and file uploaders.",
+  "defaultProjectName": "MyStreamlitApp",
+  "files": [
+    "requirements.txt",
+    "app.py",
+    "README.md"
+  ]
+}

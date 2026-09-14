@@ -1,0 +1,15 @@
+{
+  "id": "lua-game-love2d",
+  "name": "L\u00d6VE 2D Game (Lua)",
+  "category": "Desktop Apps",
+  "icon": "gamecontroller",
+  "language": "Lua",
+  "badge": "Love2D",
+  "description": "2D game starter with state manager, sprite rendering, and physics for L\u00d6VE engine.",
+  "defaultProjectName": "MyLove2DGame",
+  "files": [
+    "conf.lua",
+    "main.lua",
+    "README.md"
+  ]
+}

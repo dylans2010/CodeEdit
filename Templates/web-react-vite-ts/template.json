@@ -1,0 +1,20 @@
+{
+  "id": "web-react-vite-ts",
+  "name": "React + Vite + TypeScript",
+  "category": "Web Development",
+  "icon": "atom",
+  "language": "TypeScript",
+  "badge": "React",
+  "description": "Lightning-fast React 18 single page application bundled with Vite and TypeScript.",
+  "defaultProjectName": "MyReactViteApp",
+  "files": [
+    "package.json",
+    "vite.config.ts",
+    "tsconfig.json",
+    "index.html",
+    "src/main.tsx",
+    "src/App.tsx",
+    "src/index.css",
+    "README.md"
+  ]
+}

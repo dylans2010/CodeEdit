@@ -1,0 +1,15 @@
+{
+  "id": "python-scikit-learn",
+  "name": "Scikit-Learn ML Pipeline",
+  "category": "Python & Data Science",
+  "icon": "waveform.path.ecg",
+  "language": "Python",
+  "badge": "Scikit-Learn",
+  "description": "Supervised learning pipeline with data scaling, cross-validation, and metrics.",
+  "defaultProjectName": "MyMLPipeline",
+  "files": [
+    "requirements.txt",
+    "pipeline.py",
+    "README.md"
+  ]
+}

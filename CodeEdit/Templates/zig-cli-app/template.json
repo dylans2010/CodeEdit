@@ -1,0 +1,15 @@
+{
+  "id": "zig-cli-app",
+  "name": "Zig Systems CLI App",
+  "category": "Systems & C/C++",
+  "icon": "z.square",
+  "language": "Zig",
+  "badge": "Zig",
+  "description": "High performance low-level systems CLI app built with Zig 0.12.",
+  "defaultProjectName": "MyZigApp",
+  "files": [
+    "build.zig",
+    "src/main.zig",
+    "README.md"
+  ]
+}

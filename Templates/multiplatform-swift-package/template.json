@@ -1,0 +1,16 @@
+{
+  "id": "multiplatform-swift-package",
+  "name": "Multiplatform Swift Package",
+  "category": "Apple Platforms",
+  "icon": "shippingbox",
+  "language": "Swift",
+  "badge": "Package",
+  "description": "Cross-platform Swift package supporting macOS, iOS, watchOS, tvOS, and Linux.",
+  "defaultProjectName": "MySwiftPackage",
+  "files": [
+    "Package.swift",
+    "Sources/{{PROJECT_NAME}}/{{PROJECT_NAME}}.swift",
+    "Tests/{{PROJECT_NAME}}Tests/{{PROJECT_NAME}}Tests.swift",
+    "README.md"
+  ]
+}

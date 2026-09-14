@@ -1,0 +1,15 @@
+{
+  "id": "ios-uikit-app",
+  "name": "iOS App (UIKit)",
+  "category": "Apple Platforms",
+  "icon": "iphone.badge.play",
+  "language": "Swift",
+  "badge": "iOS",
+  "description": "Programmatic UIKit iOS application without storyboards.",
+  "defaultProjectName": "MyUIKitApp",
+  "files": [
+    "Sources/AppDelegate.swift",
+    "Sources/MainViewController.swift",
+    "README.md"
+  ]
+}

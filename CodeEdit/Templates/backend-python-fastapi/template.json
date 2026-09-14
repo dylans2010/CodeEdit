@@ -1,0 +1,15 @@
+{
+  "id": "backend-python-fastapi",
+  "name": "Python FastAPI Async Service",
+  "category": "Backend & APIs",
+  "icon": "bolt.circle",
+  "language": "Python",
+  "badge": "FastAPI",
+  "description": "Modern Python asynchronous REST API with Pydantic v2 and OpenAPI auto-docs.",
+  "defaultProjectName": "MyFastAPIService",
+  "files": [
+    "requirements.txt",
+    "main.py",
+    "README.md"
+  ]
+}

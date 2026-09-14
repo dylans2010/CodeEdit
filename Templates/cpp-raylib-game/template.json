@@ -1,0 +1,15 @@
+{
+  "id": "cpp-raylib-game",
+  "name": "C++ Raylib 2D Game",
+  "category": "Systems & C/C++",
+  "icon": "gamecontroller",
+  "language": "C++",
+  "badge": "Raylib",
+  "description": "Lightweight 2D game starter using modern C++ and Raylib graphics library.",
+  "defaultProjectName": "MyRaylibGame",
+  "files": [
+    "CMakeLists.txt",
+    "src/main.cpp",
+    "README.md"
+  ]
+}

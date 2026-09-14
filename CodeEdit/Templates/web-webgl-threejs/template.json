@@ -1,0 +1,16 @@
+{
+  "id": "web-webgl-threejs",
+  "name": "Three.js 3D WebGL Scene",
+  "category": "Web Development",
+  "icon": "cube.transparent",
+  "language": "JavaScript",
+  "badge": "WebGL",
+  "description": "Interactive 3D animated canvas project using Three.js and Vite.",
+  "defaultProjectName": "MyThreeJSScene",
+  "files": [
+    "package.json",
+    "index.html",
+    "src/main.js",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "graphql-apollo-server",
+  "name": "GraphQL Apollo Server",
+  "category": "Backend & APIs",
+  "icon": "point.3.filled.connected.triangle.path",
+  "language": "TypeScript",
+  "badge": "GraphQL",
+  "description": "Schema-first Apollo Server 4 GraphQL endpoint with TypeScript and type-safe resolvers.",
+  "defaultProjectName": "MyGraphQLServer",
+  "files": [
+    "package.json",
+    "src/index.ts",
+    "README.md"
+  ]
+}

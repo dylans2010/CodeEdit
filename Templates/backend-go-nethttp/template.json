@@ -1,0 +1,15 @@
+{
+  "id": "backend-go-nethttp",
+  "name": "Go Standard HTTP Server",
+  "category": "Backend & APIs",
+  "icon": "chevron.left.forwardslash.chevron.right",
+  "language": "Go",
+  "badge": "Go",
+  "description": "Idiomatic Go standard library HTTP server with modern routing.",
+  "defaultProjectName": "MyGoServer",
+  "files": [
+    "go.mod",
+    "main.go",
+    "README.md"
+  ]
+}

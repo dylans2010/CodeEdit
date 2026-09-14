@@ -1,0 +1,15 @@
+{
+  "id": "backend-python-flask",
+  "name": "Python Flask Web App",
+  "category": "Backend & APIs",
+  "icon": "flame",
+  "language": "Python",
+  "badge": "Flask",
+  "description": "Flask 3 microframework web app with Jinja2 templates and blueprint routing.",
+  "defaultProjectName": "MyFlaskSite",
+  "files": [
+    "requirements.txt",
+    "app.py",
+    "README.md"
+  ]
+}

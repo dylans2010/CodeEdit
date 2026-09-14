@@ -1,0 +1,15 @@
+{
+  "id": "python-web-scraper",
+  "name": "Python Web Scraper",
+  "category": "Python & Data Science",
+  "icon": "magnifyingglass",
+  "language": "Python",
+  "badge": "Scraper",
+  "description": "Web data extraction script using BeautifulSoup4, HTTP connection pooling, and CSV export.",
+  "defaultProjectName": "MyWebScraper",
+  "files": [
+    "requirements.txt",
+    "scraper.py",
+    "README.md"
+  ]
+}

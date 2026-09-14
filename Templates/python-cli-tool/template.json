@@ -1,0 +1,15 @@
+{
+  "id": "python-cli-tool",
+  "name": "Python CLI Application",
+  "category": "Python & Data Science",
+  "icon": "terminal.fill",
+  "language": "Python",
+  "badge": "Python",
+  "description": "Robust Python 3 command-line interface application using Click and rich formatting.",
+  "defaultProjectName": "MyPythonCLI",
+  "files": [
+    "requirements.txt",
+    "cli.py",
+    "README.md"
+  ]
+}

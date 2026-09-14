@@ -1,0 +1,15 @@
+{
+  "id": "python-jupyter-data-science",
+  "name": "Jupyter Data Science Notebook",
+  "category": "Python & Data Science",
+  "icon": "chart.xyaxis.line",
+  "language": "Python",
+  "badge": "Jupyter",
+  "description": "Exploratory data analysis setup with Pandas, NumPy, and interactive Jupyter notebook.",
+  "defaultProjectName": "MyDataAnalysis",
+  "files": [
+    "requirements.txt",
+    "notebook.ipynb",
+    "README.md"
+  ]
+}

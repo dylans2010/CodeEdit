@@ -1,0 +1,15 @@
+{
+  "id": "python-pygame-starter",
+  "name": "Pygame 2D Game Starter",
+  "category": "Python & Data Science",
+  "icon": "gamecontroller.fill",
+  "language": "Python",
+  "badge": "Pygame",
+  "description": "2D interactive arcade game loop with sprite rendering, delta time, and input handling.",
+  "defaultProjectName": "MyPygameApp",
+  "files": [
+    "requirements.txt",
+    "game.py",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "rust-cargo-binary",
+  "name": "Rust CLI Binary (Cargo)",
+  "category": "Systems & C/C++",
+  "icon": "gearshape",
+  "language": "Rust",
+  "badge": "Rust",
+  "description": "Rust CLI application with clap argument parsing and error handling.",
+  "defaultProjectName": "MyRustCLI",
+  "files": [
+    "Cargo.toml",
+    "src/main.rs",
+    "README.md"
+  ]
+}

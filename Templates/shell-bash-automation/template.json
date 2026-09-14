@@ -1,0 +1,14 @@
+{
+  "id": "shell-bash-automation",
+  "name": "Bash Automation Suite",
+  "category": "DevOps & Scripting",
+  "icon": "terminal",
+  "language": "Shell",
+  "badge": "Bash",
+  "description": "Structured shell automation suite with colorized logging, CLI flags, and error trapping.",
+  "defaultProjectName": "MyBashSuite",
+  "files": [
+    "run.sh",
+    "README.md"
+  ]
+}

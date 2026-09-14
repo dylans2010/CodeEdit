@@ -1,0 +1,18 @@
+{
+  "id": "web-vue-vite-ts",
+  "name": "Vue 3 + Vite + TypeScript",
+  "category": "Web Development",
+  "icon": "v.square",
+  "language": "TypeScript",
+  "badge": "Vue",
+  "description": "Vue 3 application with Composition API, script setup syntax, and Vite.",
+  "defaultProjectName": "MyVueApp",
+  "files": [
+    "package.json",
+    "vite.config.ts",
+    "src/main.ts",
+    "src/App.vue",
+    "index.html",
+    "README.md"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "web-vanilla-html-css-js",
+  "name": "Vanilla HTML5 / CSS3 / JS",
+  "category": "Web Development",
+  "icon": "globe",
+  "language": "JavaScript",
+  "badge": "Web",
+  "description": "Zero-dependency, modern HTML5, responsive CSS grid/flexbox, and ES modules.",
+  "defaultProjectName": "MyVanillaWeb",
+  "files": [
+    "index.html",
+    "style.css",
+    "main.js",
+    "README.md"
+  ]
+}

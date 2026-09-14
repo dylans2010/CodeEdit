@@ -1,0 +1,17 @@
+{
+  "id": "cpp-cmake-starter",
+  "name": "C++20 Project (CMake)",
+  "category": "Systems & C/C++",
+  "icon": "plusplus",
+  "language": "C++",
+  "badge": "C++20",
+  "description": "Modern C++20 project with CMake, concepts, ranges, and structured headers.",
+  "defaultProjectName": "MyCppApp",
+  "files": [
+    "CMakeLists.txt",
+    "include/greeter.hpp",
+    "src/greeter.cpp",
+    "src/main.cpp",
+    "README.md"
+  ]
+}

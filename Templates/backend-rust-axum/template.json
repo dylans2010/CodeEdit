@@ -1,0 +1,15 @@
+{
+  "id": "backend-rust-axum",
+  "name": "Rust Axum Async Service",
+  "category": "Backend & APIs",
+  "icon": "shield.checkered",
+  "language": "Rust",
+  "badge": "Axum",
+  "description": "Ergonomic and modular web framework built with Tokio and Tower.",
+  "defaultProjectName": "MyAxumService",
+  "files": [
+    "Cargo.toml",
+    "src/main.rs",
+    "README.md"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "backend-python-django",
+  "name": "Python Django Starter",
+  "category": "Backend & APIs",
+  "icon": "d.square",
+  "language": "Python",
+  "badge": "Django",
+  "description": "Batteries-included Django web framework project structure.",
+  "defaultProjectName": "MyDjangoApp",
+  "files": [
+    "requirements.txt",
+    "manage.py",
+    "config/settings.py",
+    "config/urls.py",
+    "README.md"
+  ]
+}

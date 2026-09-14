@@ -1,0 +1,15 @@
+{
+  "id": "web-solidjs-vite",
+  "name": "SolidJS + Vite + TypeScript",
+  "category": "Web Development",
+  "icon": "circle.hexagongrid",
+  "language": "TypeScript",
+  "badge": "Solid",
+  "description": "Fine-grained reactive web UI library with simple primitives and Vite.",
+  "defaultProjectName": "MySolidApp",
+  "files": [
+    "package.json",
+    "src/App.tsx",
+    "README.md"
+  ]
+}

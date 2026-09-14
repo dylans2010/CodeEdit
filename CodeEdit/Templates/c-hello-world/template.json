@@ -1,0 +1,15 @@
+{
+  "id": "c-hello-world",
+  "name": "C Standard (Makefile)",
+  "category": "Systems & C/C++",
+  "icon": "c.square",
+  "language": "C",
+  "badge": "C17",
+  "description": "Standard C17 project with clean modular compilation and Makefile.",
+  "defaultProjectName": "MyCApp",
+  "files": [
+    "Makefile",
+    "src/main.c",
+    "README.md"
+  ]
+}

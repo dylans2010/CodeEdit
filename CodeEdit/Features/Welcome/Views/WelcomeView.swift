@@ -26,6 +26,9 @@ struct WelcomeView: View {
     var showCheckoutBranch = false
 
     @State
+    var showTemplateCatalog = false
+
+    @State
     var isHovering: Bool = false
 
     @State
@@ -141,6 +144,13 @@ struct WelcomeView: View {
                 shellClient: shellClient
             )
         }
+        .sheet(isPresented: $showTemplateCatalog) {
+            TemplateCatalogView(
+                isPresented: $showTemplateCatalog,
+                openDocument: openDocument,
+                dismissWindow: dismissWindow
+            )
+        }
     }
 
     private var mainContent: some View {
@@ -184,6 +194,17 @@ struct WelcomeView: View {
                     .onTapGesture {
                         newDocument()
                         dismissWindow()
+                    }
+                    WelcomeActionView(
+                        iconName: "square.grid.2x2",
+                        title: NSLocalizedString("Choose Template", comment: ""),
+                        subtitle: NSLocalizedString(
+                            "Create a new project from a preset template",
+                            comment: ""
+                        )
+                    )
+                    .onTapGesture {
+                        showTemplateCatalog = true
                     }
                     WelcomeActionView(
                         iconName: "folder",

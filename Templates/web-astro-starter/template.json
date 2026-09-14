@@ -1,0 +1,15 @@
+{
+  "id": "web-astro-starter",
+  "name": "Astro Static Site",
+  "category": "Web Development",
+  "icon": "sparkle",
+  "language": "Astro",
+  "badge": "Astro",
+  "description": "Content-focused static website with zero-JS by default and Content Collections.",
+  "defaultProjectName": "MyAstroSite",
+  "files": [
+    "package.json",
+    "src/pages/index.astro",
+    "README.md"
+  ]
+}

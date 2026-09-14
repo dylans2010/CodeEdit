@@ -1,0 +1,15 @@
+{
+  "id": "backend-nodejs-fastify",
+  "name": "Node.js Fastify API",
+  "category": "Backend & APIs",
+  "icon": "bolt.horizontal",
+  "language": "TypeScript",
+  "badge": "Fastify",
+  "description": "High throughput microservice framework with built-in schema validation.",
+  "defaultProjectName": "MyFastifyService",
+  "files": [
+    "package.json",
+    "src/server.ts",
+    "README.md"
+  ]
+}

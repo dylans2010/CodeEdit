@@ -1,0 +1,15 @@
+{
+  "id": "backend-deno-oak",
+  "name": "Deno Oak REST API",
+  "category": "Backend & APIs",
+  "icon": "curlybraces",
+  "language": "TypeScript",
+  "badge": "Deno",
+  "description": "Secure TypeScript REST API running on Deno with Oak middleware.",
+  "defaultProjectName": "MyDenoAPI",
+  "files": [
+    "deno.json",
+    "main.ts",
+    "README.md"
+  ]
+}

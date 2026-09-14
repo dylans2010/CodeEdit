@@ -1,0 +1,16 @@
+{
+  "id": "macos-swiftui-app",
+  "name": "macOS App (SwiftUI)",
+  "category": "Apple Platforms",
+  "icon": "macwindow",
+  "language": "Swift",
+  "badge": "macOS",
+  "description": "Native macOS application built with SwiftUI, NavigationSplitView, and window management.",
+  "defaultProjectName": "MyMacApp",
+  "files": [
+    "Package.swift",
+    "Sources/App.swift",
+    "Sources/ContentView.swift",
+    "README.md"
+  ]
+}

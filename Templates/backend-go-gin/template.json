@@ -1,0 +1,15 @@
+{
+  "id": "backend-go-gin",
+  "name": "Go Gin REST Service",
+  "category": "Backend & APIs",
+  "icon": "network",
+  "language": "Go",
+  "badge": "Gin",
+  "description": "Blazing fast HTTP web microservice written in Go using the Gin framework.",
+  "defaultProjectName": "MyGinService",
+  "files": [
+    "go.mod",
+    "main.go",
+    "README.md"
+  ]
+}

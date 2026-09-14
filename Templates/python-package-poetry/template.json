@@ -1,0 +1,16 @@
+{
+  "id": "python-package-poetry",
+  "name": "Python Modern Package",
+  "category": "Python & Data Science",
+  "icon": "folder.badge.gearshape",
+  "language": "Python",
+  "badge": "Poetry",
+  "description": "Modern Python library package adhering to PEP 621 with pyproject.toml and pytest.",
+  "defaultProjectName": "MyPythonPackage",
+  "files": [
+    "pyproject.toml",
+    "src/__init__.py",
+    "tests/test_core.py",
+    "README.md"
+  ]
+}

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE7E00020000000000000001 /* ProjectTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000001 /* ProjectTemplate.swift */; };
+		CE7E00020000000000000002 /* TemplateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000002 /* TemplateManager.swift */; };
+		CE7E00020000000000000003 /* TemplateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000003 /* TemplateCardView.swift */; };
+		CE7E00020000000000000004 /* TemplateDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000004 /* TemplateDetailView.swift */; };
+		CE7E00020000000000000005 /* TemplateCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000005 /* TemplateCatalogView.swift */; };
+		CE7E00020000000000000006 /* templates_manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000006 /* templates_manifest.json */; };
 		043BCF03281DA18A000AC47C /* WorkspaceDocument+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */; };
 		043BCF05281DA19A000AC47C /* WorkspaceDocument+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */; };
 		043C321427E31FF6006AE443 /* CodeEditDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */; };
@@ -398,6 +404,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE7E00010000000000000001 /* ProjectTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTemplate.swift; sourceTree = "<group>"; };
+		CE7E00010000000000000002 /* TemplateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateManager.swift; sourceTree = "<group>"; };
+		CE7E00010000000000000003 /* TemplateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCardView.swift; sourceTree = "<group>"; };
+		CE7E00010000000000000004 /* TemplateDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateDetailView.swift; sourceTree = "<group>"; };
+		CE7E00010000000000000005 /* TemplateCatalogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCatalogView.swift; sourceTree = "<group>"; };
+		CE7E00010000000000000006 /* templates_manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = templates_manifest.json; sourceTree = "<group>"; };
 		043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Search.swift"; sourceTree = "<group>"; };
 		043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Selection.swift"; sourceTree = "<group>"; };
 		043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditDocumentController.swift; sourceTree = "<group>"; };
@@ -784,6 +796,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE7E00030000000000000001 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E00030000000000000002 /* Models */,
+				CE7E00030000000000000003 /* Views */,
+				CE7E00030000000000000004 /* Resources */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		CE7E00030000000000000002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E00010000000000000001 /* ProjectTemplate.swift */,
+				CE7E00010000000000000002 /* TemplateManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE7E00030000000000000003 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E00010000000000000003 /* TemplateCardView.swift */,
+				CE7E00010000000000000004 /* TemplateDetailView.swift */,
+				CE7E00010000000000000005 /* TemplateCatalogView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE7E00030000000000000004 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E00010000000000000006 /* templates_manifest.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		043C321227E31FE8006AE443 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,6 +1115,7 @@
 		5831E3C52933E6CB00D5A6D2 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E00030000000000000001 /* Templates */,
 				582213EE2918345500EFE361 /* About */,
 				5878DA7D291862BC00DD95A3 /* Acknowledgements */,
 				284DC84B2978B5EB00BF2770 /* Contributors */,
@@ -2496,6 +2546,7 @@
 				D7211D4727E06BFE008F2ED7 /* Localizable.strings in Resources */,
 				28F43DE2297388C5008BBA45 /* codeedit-solarized-light.json in Resources */,
 				28A51001281673530087B0CC /* codeedit-xcode-dark.json in Resources */,
+				CE7E00020000000000000006 /* templates_manifest.json in Resources */,
 				284DC8512978BA2600BF2770 /* .all-contributorsrc in Resources */,
 				B658FB3427DA9E1000EA4DBD /* Assets.xcassets in Resources */,
 				474397C52893AC4B00518C8C /* codeedit-midnight.json in Resources */,
@@ -2764,6 +2815,11 @@
 				58822524292C280D00E83CDE /* StatusBarView.swift in Sources */,
 				587B9E7E29301D8F00AC7927 /* GitHubGistRouter.swift in Sources */,
 				581BFB682926431000D251EC /* WelcomeView.swift in Sources */,
+				CE7E00020000000000000001 /* ProjectTemplate.swift in Sources */,
+				CE7E00020000000000000002 /* TemplateManager.swift in Sources */,
+				CE7E00020000000000000003 /* TemplateCardView.swift in Sources */,
+				CE7E00020000000000000004 /* TemplateDetailView.swift in Sources */,
+				CE7E00020000000000000005 /* TemplateCatalogView.swift in Sources */,
 				587B9E7129301D8F00AC7927 /* GitURLSession.swift in Sources */,
 				5882252C292C280D00E83CDE /* StatusBarDrawer.swift in Sources */,
 				2847019E27FDDF7600F87B6B /* OutlineView.swift in Sources */,

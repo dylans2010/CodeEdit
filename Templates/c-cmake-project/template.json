@@ -1,0 +1,17 @@
+{
+  "id": "c-cmake-project",
+  "name": "C Project (CMake)",
+  "category": "Systems & C/C++",
+  "icon": "hammer",
+  "language": "C",
+  "badge": "C17",
+  "description": "Cross-platform C17 application with CMake build system and modular headers.",
+  "defaultProjectName": "MyCMakeCApp",
+  "files": [
+    "CMakeLists.txt",
+    "include/app.h",
+    "src/app.c",
+    "src/main.c",
+    "README.md"
+  ]
+}
