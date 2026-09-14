@@ -25,7 +25,11 @@ struct WorkspaceCodeFileView: View {
                 return file.tabID == workspace.selectionState.selectedId
             }) {
                 if let fileItem = workspace.selectionState.openedCodeFiles[item] {
-                    if fileItem.typeOfFile == .text || fileItem.typeOfFile == .data {
+                    if isXcodeProject(item.url) {
+                        xcodeProjectView(for: item)
+                    } else if isPropertyList(item.url) {
+                        propertyListView(fileItem, for: item)
+                    } else if fileItem.typeOfFile == .text || fileItem.typeOfFile == .data {
                         codeFileView(fileItem, for: item)
                     } else {
                         otherFileView(fileItem, for: item)
@@ -40,6 +44,35 @@ struct WorkspaceCodeFileView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private func isXcodeProject(_ url: URL) -> Bool {
+        url.pathExtension == "xcodeproj" || url.lastPathComponent == "project.pbxproj"
+    }
+
+    private func isPropertyList(_ url: URL) -> Bool {
+        url.pathExtension == "plist" || url.pathExtension == "entitlements"
+    }
+
+    @ViewBuilder
+    private func xcodeProjectView(for item: WorkspaceClient.FileItem) -> some View {
+        VStack(spacing: 0) {
+            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+            Divider()
+            XcodeProjectEditorView(projectURL: item.url)
+        }
+    }
+
+    @ViewBuilder
+    private func propertyListView(
+        _ codeFile: CodeFileDocument,
+        for item: WorkspaceClient.FileItem
+    ) -> some View {
+        VStack(spacing: 0) {
+            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+            Divider()
+            PropertyListEditorView(codeFile: codeFile, fileURL: item.url)
+        }
     }
 
     @ViewBuilder

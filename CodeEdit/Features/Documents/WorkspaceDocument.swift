@@ -88,11 +88,22 @@ import CodeEditKit
         }
         selectionState.openFileItems.append(item)
 
-        let contentType = try item.url.resourceValues(forKeys: [.contentTypeKey]).contentType
+        let targetURL: URL
+        let typeIdentifier: String
+        if item.url.pathExtension == "xcodeproj" {
+            let pbxURL = item.url.appendingPathComponent("project.pbxproj")
+            targetURL = FileManager.default.fileExists(atPath: pbxURL.path) ? pbxURL : item.url
+            typeIdentifier = "com.apple.xcode.project-data"
+        } else {
+            let contentType = try item.url.resourceValues(forKeys: [.contentTypeKey]).contentType
+            targetURL = item.url
+            typeIdentifier = contentType?.identifier ?? ""
+        }
+
         let codeFile = try CodeFileDocument(
             for: item.url,
-            withContentsOf: item.url,
-            ofType: contentType?.identifier ?? ""
+            withContentsOf: targetURL,
+            ofType: typeIdentifier
         )
         selectionState.openedCodeFiles[item] = codeFile
         CodeEditDocumentController.shared.addDocument(codeFile)

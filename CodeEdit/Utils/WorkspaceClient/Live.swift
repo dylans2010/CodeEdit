@@ -37,7 +37,7 @@ extension WorkspaceClient {
                 if fileManager.fileExists(atPath: itemURL.path, isDirectory: &isDir) {
                     var subItems: [FileItem]?
 
-                    if isDir.boolValue {
+                    if isDir.boolValue && itemURL.pathExtension != "xcodeproj" {
                         // Recursively fetch subdirectories and files if the path points to a directory
                         subItems = try loadFiles(fromURL: itemURL)
                     }
@@ -105,7 +105,9 @@ extension WorkspaceClient {
                 if fileManager.fileExists(atPath: newContent.path, isDirectory: &isDir) {
                     var subItems: [FileItem]?
 
-                    if isDir.boolValue { subItems = try loadFiles(fromURL: newContent) }
+                    if isDir.boolValue && newContent.pathExtension != "xcodeproj" {
+                        subItems = try loadFiles(fromURL: newContent)
+                    }
 
                     let newFileItem = FileItem(url: newContent, children: subItems?.sortItems(foldersOnTop: true))
                     subItems?.forEach { $0.parent = newFileItem }

@@ -44,6 +44,8 @@ enum FileIcon {
         case mod
         case Makefile
         case ts
+        case xcodeproj
+        case pbxproj
     }
 
     /// Returns a string describing a SFSymbol for files
@@ -70,6 +72,8 @@ enum FileIcon {
             return "checkmark.seal"
         case .plist:
             return "tablecells"
+        case .xcodeproj, .pbxproj:
+            return "hammer.fill"
         case .md, .txt, .rtf:
             return "doc.plaintext"
         case .html, .py, .sh:
@@ -107,7 +111,7 @@ enum FileIcon {
             return .red
         case .js, .entitlements, .json, .LICENSE:
             return Color("SidebarYellow")
-        case .css, .ts, .jsx, .md, .py:
+        case .css, .ts, .jsx, .md, .py, .xcodeproj, .pbxproj:
             return .blue
         case .sh:
             return .green

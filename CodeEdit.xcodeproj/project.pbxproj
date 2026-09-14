@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE7F00020000000000000001 /* PBXModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000001 /* PBXModels.swift */; };
+		CE7F00020000000000000002 /* PBXProjParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000002 /* PBXProjParser.swift */; };
+		CE7F00020000000000000003 /* XcodeProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000003 /* XcodeProjectManager.swift */; };
+		CE7F00020000000000000004 /* XcodeProjectEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000004 /* XcodeProjectEditorView.swift */; };
+		CE7F00020000000000000005 /* GeneralTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000005 /* GeneralTabView.swift */; };
+		CE7F00020000000000000006 /* SigningTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000006 /* SigningTabView.swift */; };
+		CE7F00020000000000000007 /* CapabilitiesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000007 /* CapabilitiesTabView.swift */; };
+		CE7F00020000000000000008 /* ResourceTagsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000008 /* ResourceTagsTabView.swift */; };
+		CE7F00020000000000000009 /* InfoTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000009 /* InfoTabView.swift */; };
+		CE7F0002000000000000000A /* BuildSettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F0001000000000000000A /* BuildSettingsTabView.swift */; };
+		CE7F0002000000000000000B /* BuildPhasesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F0001000000000000000B /* BuildPhasesTabView.swift */; };
+		CE7F0002000000000000000C /* BuildRulesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F0001000000000000000C /* BuildRulesTabView.swift */; };
+		CE7F0002000000000000000D /* PropertyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F0001000000000000000D /* PropertyListModel.swift */; };
+		CE7F0002000000000000000E /* PropertyListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F0001000000000000000E /* PropertyListManager.swift */; };
+		CE7F0002000000000000000F /* PropertyListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F0001000000000000000F /* PropertyListRowView.swift */; };
+		CE7F00020000000000000010 /* PropertyListEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F00010000000000000010 /* PropertyListEditorView.swift */; };
 		CE7E00020000000000000001 /* ProjectTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000001 /* ProjectTemplate.swift */; };
 		CE7E00020000000000000002 /* TemplateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000002 /* TemplateManager.swift */; };
 		CE7E00020000000000000003 /* TemplateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000003 /* TemplateCardView.swift */; };
@@ -405,6 +421,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE7F00010000000000000001 /* PBXModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBXModels.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000002 /* PBXProjParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBXProjParser.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000003 /* XcodeProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectManager.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000004 /* XcodeProjectEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeProjectEditorView.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000005 /* GeneralTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTabView.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000006 /* SigningTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigningTabView.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000007 /* CapabilitiesTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapabilitiesTabView.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000008 /* ResourceTagsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTagsTabView.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000009 /* InfoTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTabView.swift; sourceTree = "<group>"; };
+		CE7F0001000000000000000A /* BuildSettingsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSettingsTabView.swift; sourceTree = "<group>"; };
+		CE7F0001000000000000000B /* BuildPhasesTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildPhasesTabView.swift; sourceTree = "<group>"; };
+		CE7F0001000000000000000C /* BuildRulesTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildRulesTabView.swift; sourceTree = "<group>"; };
+		CE7F0001000000000000000D /* PropertyListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListModel.swift; sourceTree = "<group>"; };
+		CE7F0001000000000000000E /* PropertyListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListManager.swift; sourceTree = "<group>"; };
+		CE7F0001000000000000000F /* PropertyListRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListRowView.swift; sourceTree = "<group>"; };
+		CE7F00010000000000000010 /* PropertyListEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListEditorView.swift; sourceTree = "<group>"; };
 		CE7E00010000000000000001 /* ProjectTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTemplate.swift; sourceTree = "<group>"; };
 		CE7E00010000000000000002 /* TemplateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateManager.swift; sourceTree = "<group>"; };
 		CE7E00010000000000000003 /* TemplateCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCardView.swift; sourceTree = "<group>"; };
@@ -798,6 +830,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE7F00030000000000000001 /* XcodeProject */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F00030000000000000002 /* Models */,
+				CE7F00030000000000000003 /* Views */,
+			);
+			path = XcodeProject;
+			sourceTree = "<group>";
+		};
+		CE7F00030000000000000002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F00010000000000000001 /* PBXModels.swift */,
+				CE7F00010000000000000002 /* PBXProjParser.swift */,
+				CE7F00010000000000000003 /* XcodeProjectManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE7F00030000000000000003 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F00010000000000000004 /* XcodeProjectEditorView.swift */,
+				CE7F00030000000000000004 /* Tabs */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE7F00030000000000000004 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F00010000000000000005 /* GeneralTabView.swift */,
+				CE7F00010000000000000006 /* SigningTabView.swift */,
+				CE7F00010000000000000007 /* CapabilitiesTabView.swift */,
+				CE7F00010000000000000008 /* ResourceTagsTabView.swift */,
+				CE7F00010000000000000009 /* InfoTabView.swift */,
+				CE7F0001000000000000000A /* BuildSettingsTabView.swift */,
+				CE7F0001000000000000000B /* BuildPhasesTabView.swift */,
+				CE7F0001000000000000000C /* BuildRulesTabView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		CE7F00030000000000000005 /* PropertyListEditor */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F00030000000000000006 /* Models */,
+				CE7F00030000000000000007 /* Views */,
+			);
+			path = PropertyListEditor;
+			sourceTree = "<group>";
+		};
+		CE7F00030000000000000006 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F0001000000000000000D /* PropertyListModel.swift */,
+				CE7F0001000000000000000E /* PropertyListManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE7F00030000000000000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE7F0001000000000000000F /* PropertyListRowView.swift */,
+				CE7F00010000000000000010 /* PropertyListEditorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CE7E00030000000000000001 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -1119,6 +1221,8 @@
 			isa = PBXGroup;
 			children = (
 				CE7E00030000000000000001 /* Templates */,
+				CE7F00030000000000000001 /* XcodeProject */,
+				CE7F00030000000000000005 /* PropertyListEditor */,
 				582213EE2918345500EFE361 /* About */,
 				5878DA7D291862BC00DD95A3 /* Acknowledgements */,
 				284DC84B2978B5EB00BF2770 /* Contributors */,
@@ -2824,6 +2928,22 @@
 				CE7E00020000000000000004 /* TemplateDetailView.swift in Sources */,
 				CE7E00020000000000000005 /* TemplateCatalogView.swift in Sources */,
 				CE7E00020000000000000007 /* AppleProjectSetupView.swift in Sources */,
+				CE7F00020000000000000001 /* PBXModels.swift in Sources */,
+				CE7F00020000000000000002 /* PBXProjParser.swift in Sources */,
+				CE7F00020000000000000003 /* XcodeProjectManager.swift in Sources */,
+				CE7F00020000000000000004 /* XcodeProjectEditorView.swift in Sources */,
+				CE7F00020000000000000005 /* GeneralTabView.swift in Sources */,
+				CE7F00020000000000000006 /* SigningTabView.swift in Sources */,
+				CE7F00020000000000000007 /* CapabilitiesTabView.swift in Sources */,
+				CE7F00020000000000000008 /* ResourceTagsTabView.swift in Sources */,
+				CE7F00020000000000000009 /* InfoTabView.swift in Sources */,
+				CE7F0002000000000000000A /* BuildSettingsTabView.swift in Sources */,
+				CE7F0002000000000000000B /* BuildPhasesTabView.swift in Sources */,
+				CE7F0002000000000000000C /* BuildRulesTabView.swift in Sources */,
+				CE7F0002000000000000000D /* PropertyListModel.swift in Sources */,
+				CE7F0002000000000000000E /* PropertyListManager.swift in Sources */,
+				CE7F0002000000000000000F /* PropertyListRowView.swift in Sources */,
+				CE7F00020000000000000010 /* PropertyListEditorView.swift in Sources */,
 				587B9E7129301D8F00AC7927 /* GitURLSession.swift in Sources */,
 				5882252C292C280D00E83CDE /* StatusBarDrawer.swift in Sources */,
 				2847019E27FDDF7600F87B6B /* OutlineView.swift in Sources */,
