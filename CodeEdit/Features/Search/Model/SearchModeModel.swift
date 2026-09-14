@@ -1,10 +1,3 @@
-//
-//  SearchModeModel.swift
-//  CodeEditModules/Search
-//
-//  Created by Ziyuan Zhao on 2022/3/22.
-//
-
 import Foundation
 
 // TODO: DOCS (Ziyuan Zhao)

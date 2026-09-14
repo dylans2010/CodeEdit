@@ -1,10 +1,3 @@
-//
-//  AcknowledgementsRowView.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 1/19/23.
-//
-
 import SwiftUI
 
 struct AcknowledgementRowView: View {

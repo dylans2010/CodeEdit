@@ -1,10 +1,3 @@
-//
-//  ImageFileView.swift
-//  CodeEditModules/CodeFile
-//
-//  Created by Nanashi Li on 2022/04/16.
-//
-
 import SwiftUI
 
 struct ImageFileView: View {

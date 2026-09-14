@@ -1,10 +1,3 @@
-//
-//  OutlineViewController.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 07.04.22.
-//
-
 import SwiftUI
 
 /// A `NSViewController` that handles the **ProjectNavigatorView** in the **NavigatorSideabr**.

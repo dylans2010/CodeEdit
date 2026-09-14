@@ -1,10 +1,3 @@
-//
-//  GitClient.swift
-//  CodeEdit
-//
-//  Created by Matthijs Eikelenboom on 26/11/2022.
-//
-
 import Combine
 import Foundation
 

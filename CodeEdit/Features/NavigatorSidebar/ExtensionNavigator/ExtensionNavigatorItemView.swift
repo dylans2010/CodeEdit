@@ -1,10 +1,3 @@
-//
-//  ExtensionNavigatorItem.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 7.04.22.
-//
-
 import SwiftUI
 
 struct ExtensionNavigatorItemView: View {

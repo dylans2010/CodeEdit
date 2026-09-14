@@ -1,10 +1,3 @@
-//
-//  StatusBarView.swift
-//  CodeEditModules/StatusBar
-//
-//  Created by Lukas Pistrol on 19.03.22.
-//
-
 import SwiftUI
 
 /// # StatusBarView

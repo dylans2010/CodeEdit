@@ -1,10 +1,3 @@
-//
-//  TabBarItemCloseButton.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 1/17/23.
-//
-
 import SwiftUI
 
 struct TabBarItemCloseButton: View {

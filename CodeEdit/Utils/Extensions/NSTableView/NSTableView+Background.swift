@@ -1,10 +1,3 @@
-//
-//  NSTableView+Background.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 20.04.22.
-//
-
 import SwiftUI
 
 extension NSTableView {

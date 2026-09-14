@@ -1,10 +1,3 @@
-//
-//  SoftwareUpdater.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 9/19/22.
-//
-
 import Foundation
 import Sparkle
 

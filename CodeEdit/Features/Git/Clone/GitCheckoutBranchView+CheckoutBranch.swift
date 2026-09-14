@@ -1,10 +1,3 @@
-//
-//  GitCheckoutBranchView+CheckoutBranch.swift
-//  CodeEditModules/Git
-//
-//  Created by Aleksi Puttonen on 18.4.2022.
-//
-
 import Foundation
 import SwiftUI
 

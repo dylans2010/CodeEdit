@@ -1,9 +1,3 @@
-//
-//  UnitTests.swift
-//  CodeEditModules/WorkspaceClient
-//
-//  Created by Marco Carnevali on 16/03/22.
-//
 import Combine
 import Foundation
 import XCTest

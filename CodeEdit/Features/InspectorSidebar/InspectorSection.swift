@@ -1,10 +1,3 @@
-//
-//  InspectorSection.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 1/12/23.
-//
-
 import SwiftUI
 
 struct InspectorSection<Content: View>: View {

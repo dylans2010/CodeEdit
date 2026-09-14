@@ -1,10 +1,3 @@
-//
-//  StatusBarSplitTerminalButton.swift
-//  CodeEditModules/StatusBar
-//
-//  Created by Stef Kors on 14/04/2022.
-//
-
 import SwiftUI
 
 struct StatusBarSplitTerminalButton: View {

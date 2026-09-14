@@ -1,10 +1,3 @@
-//
-//  FileItem.swift
-//  CodeEditModules/WorkspaceClient
-//
-//  Created by Marco Carnevali on 16/03/22.
-//
-
 import Foundation
 import SwiftUI
 import UniformTypeIdentifiers

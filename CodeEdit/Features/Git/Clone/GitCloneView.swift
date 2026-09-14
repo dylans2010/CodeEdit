@@ -1,10 +1,3 @@
-//
-//  GitCloneView.swift
-//  CodeEditModules/Git
-//
-//  Created by Aleksi Puttonen on 23.3.2022.
-//
-
 import SwiftUI
 import Foundation
 import Combine

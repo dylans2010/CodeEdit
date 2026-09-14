@@ -1,10 +1,3 @@
-//
-//  APIPage.swift
-//  CodeEditModules/ExtensionStore
-//
-//  Created by Pavel Kasila on 5.04.22.
-//
-
 import Foundation
 
 struct APIPage<T: Codable>: Codable {

@@ -1,10 +1,3 @@
-//
-//  GitCommit.swift
-//  CodeEditModules/Git
-//
-//  Created by Marco Carnevali on 27/03/22.
-//
-
 import Foundation.NSDate
 
 /// Model class to help map commit history log data

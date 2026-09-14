@@ -1,10 +1,3 @@
-//
-//  TemplateCatalogView.swift
-//  CodeEdit
-//
-//  Created by CodeEdit on 2024/09/14.
-//
-
 import SwiftUI
 import AppKit
 

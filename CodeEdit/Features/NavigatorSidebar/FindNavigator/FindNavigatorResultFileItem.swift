@@ -1,10 +1,3 @@
-//
-//  SearchResultFileItem.swift
-//  CodeEdit
-//
-//  Created by Ziyuan Zhao on 2022/3/22.
-//
-
 import SwiftUI
 import WorkspaceClient
 import Search

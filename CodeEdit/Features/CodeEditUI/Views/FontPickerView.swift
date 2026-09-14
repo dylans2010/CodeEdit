@@ -1,10 +1,3 @@
-//
-//  FontPickerView.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Lukas Pistrol on 23.03.22.
-//
-
 import SwiftUI
 
 final class FontPickerDelegate {

@@ -1,10 +1,3 @@
-//
-//  TabBarDivider.swift
-//  CodeEdit
-//
-//  Created by Lingxi Li on 4/22/22.
-//
-
 import SwiftUI
 
 /// The vertical divider between tab bar items.

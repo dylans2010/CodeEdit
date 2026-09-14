@@ -1,12 +1,3 @@
-//
-//  GitJSONPostRouter.swift
-//  CodeEditModules/GitAccounts
-//
-//  Created by Nanashi Li on 2022/03/31.
-//
-// This file should be strictly just be used for Accounts since it's not
-// built for any other networking except those of git accounts
-
 import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking

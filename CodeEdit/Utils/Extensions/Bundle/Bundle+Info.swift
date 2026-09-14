@@ -1,10 +1,3 @@
-//
-//  Bundle+Info.swift
-//  CodeEditModules/CodeEditUtils
-//
-//  Created by Lukas Pistrol on 01.05.22.
-//
-
 import Foundation
 
 extension Bundle {

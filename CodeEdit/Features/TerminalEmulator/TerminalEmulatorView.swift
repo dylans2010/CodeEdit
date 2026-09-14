@@ -1,10 +1,3 @@
-//
-//  TerminalEmulatorView.swift
-//  CodeEditModules/TerminalEmulator
-//
-//  Created by Lukas Pistrol on 22.03.22.
-//
-
 import SwiftUI
 import SwiftTerm
 

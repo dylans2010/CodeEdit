@@ -1,10 +1,3 @@
-//
-//  CodeEditCli.swift
-//  
-//
-//  Created by Ben Koska on 14.06.22.
-//
-
 import Foundation
 
 func convertToAbsolutePath(_ path: String) -> String {

@@ -1,10 +1,3 @@
-//
-//  StatusBarClearButton.swift
-//  CodeEditModules/StatusBar
-//
-//  Created by Stef Kors on 12/04/2022.
-//
-
 import SwiftUI
 
 struct StatusBarClearButton: View {

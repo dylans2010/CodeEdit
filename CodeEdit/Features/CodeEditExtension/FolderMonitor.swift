@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Matthijs Eikelenboom on 09/10/2022.
-//
-
 import Foundation
 
 final class FolderMonitor {

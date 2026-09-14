@@ -1,10 +1,3 @@
-//
-//  WorkspaceView.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 3/10/22.
-//
-
 import SwiftUI
 import AppKit
 

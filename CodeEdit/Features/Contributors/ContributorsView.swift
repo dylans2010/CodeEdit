@@ -1,10 +1,3 @@
-//
-//  ContributorsView.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 19.01.23.
-//
-
 import SwiftUI
 
 struct ContributorsView: View {

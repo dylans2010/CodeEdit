@@ -1,10 +1,3 @@
-//
-//  BreadcrumbsComponent.swift
-//  CodeEditModules/Breadcrumbs
-//
-//  Created by Lukas Pistrol on 18.03.22.
-//
-
 import SwiftUI
 
 struct BreadcrumbsComponent: View {

@@ -1,10 +1,3 @@
-//
-//  SearchResultModel.swift
-//  CodeEditModules/Search
-//
-//  Created by Ziyuan Zhao on 2022/3/22.
-//
-
 import Foundation
 
 /// A struct for holding information about a file and any matches it may have for a search query.

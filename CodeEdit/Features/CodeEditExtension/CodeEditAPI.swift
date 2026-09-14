@@ -1,10 +1,3 @@
-//
-//  CodeEditAPI.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 5.04.22.
-//
-
 import Foundation
 import CodeEditKit
 

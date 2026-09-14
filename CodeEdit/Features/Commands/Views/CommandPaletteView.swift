@@ -1,10 +1,3 @@
-//
-//  CommandPaletteView.swift
-//  CodeEdit
-//
-//  Created by Alex Sinelnikov on 24.05.2022.
-//
-
 import SwiftUI
 
 /// Command palette view

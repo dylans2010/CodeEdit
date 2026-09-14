@@ -1,10 +1,3 @@
-//
-//  KeybindingsPreferences.swift
-//  CodeEditModules/AppPreferences
-//  
-//  Created by Alex on 18.05.2022.
-//
-
 import Foundation
 
 extension AppPreferences {

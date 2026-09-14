@@ -1,10 +1,3 @@
-//
-//  ExtensionInstallationView.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 8.04.22.
-//
-
 import SwiftUI
 
 struct ExtensionInstallationView: View {

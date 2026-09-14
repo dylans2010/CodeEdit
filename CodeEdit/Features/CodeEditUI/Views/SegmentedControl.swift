@@ -1,10 +1,3 @@
-//
-//  SegmentedControl.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Lukas Pistrol on 31.03.22.
-//
-
 import SwiftUI
 
 /// A view that creates a segmented control from an array of text labels.

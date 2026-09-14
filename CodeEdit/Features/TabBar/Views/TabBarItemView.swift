@@ -1,10 +1,3 @@
-//
-//  TabBarItemView.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 17.03.22.
-//
-
 import SwiftUI
 
 struct TabBarItemView: View {

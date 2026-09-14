@@ -1,10 +1,3 @@
-//
-//  PBXProjParser.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 14/09/26.
-//
-
 import Foundation
 
 enum PBXProjParserError: Error {

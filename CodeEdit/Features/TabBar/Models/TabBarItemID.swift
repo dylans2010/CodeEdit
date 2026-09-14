@@ -1,10 +1,3 @@
-//
-//  TabBarItemID.swift
-//  
-//
-//  Created by Pavel Kasila on 30.04.22.
-//
-
 import Foundation
 
 /// Enum to represent item's ID to tab bar

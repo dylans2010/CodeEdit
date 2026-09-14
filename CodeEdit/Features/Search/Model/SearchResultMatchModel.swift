@@ -1,10 +1,3 @@
-//
-//  SearchResultLineMatchModel.swift
-//  CodeEditModules/Search
-//
-//  Created by Khan Winter on 7/6/22.
-//
-
 import Foundation
 import Cocoa
 

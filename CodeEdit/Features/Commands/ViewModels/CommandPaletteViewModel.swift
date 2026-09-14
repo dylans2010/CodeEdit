@@ -1,10 +1,3 @@
-//
-//  CommandPaletteState.swift
-//  CodeEdit
-//
-//  Created by Alex on 25.05.2022.
-//
-
 import Foundation
 
 /// Simple state class for command palette view. Contains currently selected command,

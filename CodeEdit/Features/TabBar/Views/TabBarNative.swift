@@ -1,12 +1,3 @@
-//
-//  TabBarNative.swift
-//  CodeEdit
-//
-//  This file contains some support views to make native tab bar style come true.
-//
-//  Created by Lingxi Li on 4/25/22.
-//
-
 import SwiftUI
 
 /// Native style background view (including color and shadow divider) for tab bar.

@@ -1,10 +1,3 @@
-//
-//  FileItem+Array.swift
-//  CodeEditModules/WorkspaceClient
-//
-//  Created by Lukas Pistrol on 17.03.22.
-//
-
 import Foundation
 
 extension Array where Element == WorkspaceClient.FileItem {

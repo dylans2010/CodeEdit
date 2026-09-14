@@ -1,10 +1,3 @@
-//
-//  OffsettableScrollView.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 19.01.23.
-//
-
 import SwiftUI
 
 private struct ScrollViewOffsetPreferenceKey: PreferenceKey {

@@ -1,10 +1,3 @@
-//
-//  TabBarContextMenu.swift
-//  CodeEdit
-//
-//  Created by Khan Winter on 6/4/22.
-//
-
 import Foundation
 import SwiftUI
 

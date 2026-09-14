@@ -1,10 +1,3 @@
-//
-//  OtherFileView.swift
-//  
-//
-//  Created by Shibo Tong on 10/7/2022.
-//
-
 import SwiftUI
 import QuickLookUI
 

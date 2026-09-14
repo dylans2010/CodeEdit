@@ -1,10 +1,3 @@
-//
-//  AcknowledgementsModel.swift
-//  CodeEditModules/Acknowledgements
-//
-//  Created by Lukas Pistrol on 01.05.22.
-//
-
 import SwiftUI
 
 final class AcknowledgementsViewModel: ObservableObject {

@@ -1,10 +1,3 @@
-//
-//  AboutDefaultView.swift
-//  CodeEdit
-//
-//  Created by Wouter Hennen on 21/01/2023.
-//
-
 import SwiftUI
 
 struct AboutDefaultView: View {

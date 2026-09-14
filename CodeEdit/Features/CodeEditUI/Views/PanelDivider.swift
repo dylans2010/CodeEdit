@@ -1,10 +1,3 @@
-//
-//  PanelDivider.swift
-//  
-//
-//  Created by Austin Condiff on 5/10/22.
-//
-
 import SwiftUI
 
 struct PanelDivider: View {

@@ -1,10 +1,3 @@
-//
-//  AcknowledgementsView.swift
-//  CodeEditModules/Acknowledgements
-//
-//  Created by Shivesh M M on 4/4/22.
-//
-
 import SwiftUI
 
 struct AcknowledgementsView: View {

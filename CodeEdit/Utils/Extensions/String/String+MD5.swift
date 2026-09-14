@@ -1,10 +1,3 @@
-//
-//  String+MD5.swift
-//  CodeEditModules/CodeEditUtils
-//
-//  Created by Nanashi Li on 2022/04/19.
-//
-
 import Foundation
 import CryptoKit
 

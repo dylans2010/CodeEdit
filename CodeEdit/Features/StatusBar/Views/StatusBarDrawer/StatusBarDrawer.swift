@@ -1,10 +1,3 @@
-//
-//  StatusBarDrawer.swift
-//  CodeEditModules/StatusBar
-//
-//  Created by Lukas Pistrol on 22.03.22.
-//
-
 import SwiftUI
 
 struct StatusBarDrawer: View {

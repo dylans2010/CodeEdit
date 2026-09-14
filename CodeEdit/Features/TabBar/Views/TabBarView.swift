@@ -1,10 +1,3 @@
-//
-//  TabBarView.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol and Lingxi Li on 17.03.22.
-//
-
 import SwiftUI
 
 // Disable the rule because the tab bar view is fairly complicated.

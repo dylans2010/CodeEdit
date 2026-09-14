@@ -1,10 +1,3 @@
-//
-//  OverlayPanel.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Pavel Kasila on 20.03.22.
-//
-
 import Cocoa
 
 final class OverlayPanel: NSPanel, NSWindowDelegate {

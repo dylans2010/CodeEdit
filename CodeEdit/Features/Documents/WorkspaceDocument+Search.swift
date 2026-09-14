@@ -1,10 +1,3 @@
-//
-//  WorkspaceDocument+Search.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 30.04.22.
-//
-
 import Foundation
 
 extension WorkspaceDocument {

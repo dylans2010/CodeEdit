@@ -1,10 +1,3 @@
-//
-//  AcknowledgementsWindowController.swift
-//  CodeEdit
-//
-//  Created by Wouter Hennen on 18/01/2023.
-//
-
 import SwiftUI
 
 final class AcknowledgementsViewWindowController: NSWindowController {

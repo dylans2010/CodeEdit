@@ -1,10 +1,3 @@
-//
-//  ParsePackagesResolved.swift
-//  CodeEditModules/Acknowledgements
-//
-//  Created by Shivesh M M on 4/4/22.
-//
-
 import Foundation
 
 struct AcknowledgementDependency: Decodable {

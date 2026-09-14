@@ -1,10 +1,3 @@
-//
-//  UnitTests.swift
-//  CodeEditModules/CodeEditUITests
-//
-//  Created by Lukas Pistrol on 19.04.22.
-//
-
 @testable import CodeEdit
 import Foundation
 import SnapshotTesting

@@ -1,10 +1,3 @@
-//
-//  HelpButton.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Lukas Pistrol on 30.03.22.
-//
-
 import SwiftUI
 
 /// A Button representing a system Help button displaying a question mark symbol.

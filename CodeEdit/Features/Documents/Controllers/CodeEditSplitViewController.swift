@@ -1,10 +1,3 @@
-//
-//  CodeEditSplitViewController.swift
-//  CodeEdit
-//
-//  Created by YAPRYNTSEV Aleksey on 31.12.2022.
-//
-
 import Cocoa
 
 private extension CGFloat {

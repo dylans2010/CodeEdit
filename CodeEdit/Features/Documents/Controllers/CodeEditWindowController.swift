@@ -1,10 +1,3 @@
-//
-//  CodeEditWindowController.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 18.03.22.
-//
-
 import Cocoa
 import SwiftUI
 

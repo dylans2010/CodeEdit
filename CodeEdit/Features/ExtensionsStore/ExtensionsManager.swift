@@ -1,10 +1,3 @@
-//
-//  ExtensionsManager.swift
-//  CodeEditModules/ExtensionStore
-//
-//  Created by Pavel Kasila on 7.04.22.
-//
-
 import Foundation
 import Light_Swift_Untar
 import CodeEditKit

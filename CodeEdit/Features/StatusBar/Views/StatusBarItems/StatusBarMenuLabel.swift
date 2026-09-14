@@ -1,10 +1,3 @@
-//
-//  StatusBarMenuLabel.swift
-//  CodeEditModules/StatusBar
-//
-//  Created by Axel Zuziak on 24.04.2022
-//
-
 import SwiftUI
 import CodeEditSymbols
 

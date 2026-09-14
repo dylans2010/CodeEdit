@@ -1,10 +1,3 @@
-//
-//  UnitTests.swift
-//  CodeEditModules/CodeFileTests
-//
-//  Created by Marco Carnevali on 18/03/22.
-//
-
 import Foundation
 import SwiftUI
 import XCTest

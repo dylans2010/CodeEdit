@@ -1,10 +1,3 @@
-//
-//  String+Ranges.swift
-//  CodeEdit
-//
-//  Created by Ziyuan Zhao on 2022/3/21.
-//
-
 import Foundation
 
 extension StringProtocol where Index == String.Index {

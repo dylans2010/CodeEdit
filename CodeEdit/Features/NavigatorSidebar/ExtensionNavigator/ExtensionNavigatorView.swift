@@ -1,10 +1,3 @@
-//
-//  ExtensionNavigatorView.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 6.04.22.
-//
-
 import SwiftUI
 import Combine
 

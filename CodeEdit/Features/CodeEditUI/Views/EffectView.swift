@@ -1,10 +1,3 @@
-//
-//  BlurView.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Rehatbir Singh on 15/03/2022.
-//
-
 import SwiftUI
 
 /// A SwiftUI Wrapper for `NSVisualEffectView`

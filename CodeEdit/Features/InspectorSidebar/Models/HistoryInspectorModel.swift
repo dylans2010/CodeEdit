@@ -1,10 +1,3 @@
-//
-//  HistoryInspectorModel.swift
-//  CodeEdit
-//
-//  Created by Nanashi Li on 2022/04/18.
-//
-
 import Foundation
 
 final class HistoryInspectorModel: ObservableObject {

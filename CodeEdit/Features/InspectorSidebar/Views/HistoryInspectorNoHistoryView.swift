@@ -1,10 +1,3 @@
-//
-//  HistoryInspectorNoHistoryView.swift
-//  CodeEdit
-//
-//  Created by Nanashi Li on 2022/04/19.
-//
-
 import SwiftUI
 
 struct HistoryInspectorNoHistoryView: View {

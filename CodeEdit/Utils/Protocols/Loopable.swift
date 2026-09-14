@@ -1,10 +1,3 @@
-//
-//  Loopable.swift
-//  CodeEditModules/AppPreferences
-//
-//  Created by Lukas Pistrol on 03.04.22.
-//
-
 import Foundation
 
 /// Loopable protocol implements a method that will return all child

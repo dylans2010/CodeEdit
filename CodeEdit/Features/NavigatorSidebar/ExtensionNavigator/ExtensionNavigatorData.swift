@@ -1,10 +1,3 @@
-//
-//  ExtensionNavigatorData.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 7.04.22.
-//
-
 import Foundation
 import Combine
 

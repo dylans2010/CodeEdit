@@ -1,10 +1,3 @@
-//
-//  String+SHA256.swift
-//  CodeEditModules/CodeEditUtils
-//
-//  Created by Debdut Karmakar on 6/9/22.
-//
-
 import Foundation
 import CryptoKit
 

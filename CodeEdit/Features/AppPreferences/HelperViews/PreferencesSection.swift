@@ -1,10 +1,3 @@
-//
-//  PreferencesSection.swift
-//  CodeEditModules/AppPreferences
-//
-//  Created by Lukas Pistrol on 03.04.22.
-//
-
 import SwiftUI
 
 /// A view that wraps multiple ``PreferencesSection`` views and aligns them correctly.

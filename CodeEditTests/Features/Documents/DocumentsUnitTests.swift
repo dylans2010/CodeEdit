@@ -1,10 +1,3 @@
-//
-//  DocumentsUnitTests.swift
-//  CodeEditTests
-//
-//  Created by YAPRYNTSEV Aleksey on 31.12.2022.
-//
-
 import XCTest
 @testable import CodeEdit
 

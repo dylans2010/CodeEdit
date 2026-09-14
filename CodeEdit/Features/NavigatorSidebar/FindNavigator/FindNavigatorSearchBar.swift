@@ -1,10 +1,3 @@
-//
-//  SearchBar.swift
-//  CodeEdit
-//
-//  Created by Ziyuan Zhao on 2022/3/21.
-//
-
 import SwiftUI
 
 struct FindNavigatorSearchBar: View {

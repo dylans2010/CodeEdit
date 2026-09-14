@@ -1,10 +1,3 @@
-//
-//  ExtensionInstallationViewModel.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 8.04.22.
-//
-
 import Foundation
 import Combine
 

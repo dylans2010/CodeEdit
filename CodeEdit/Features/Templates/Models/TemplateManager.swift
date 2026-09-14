@@ -1,10 +1,3 @@
-//
-//  TemplateManager.swift
-//  CodeEdit
-//
-//  Created by CodeEdit on 2024/09/14.
-//
-
 import Foundation
 import Combine
 

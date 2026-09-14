@@ -1,10 +1,3 @@
-//
-//  NSHapticFeedbackPerformerMock.swift
-//  CodeEditTests
-//
-//  Created by YAPRYNTSEV Aleksey on 31.12.2022.
-//
-
 import Cocoa
 
 final class NSHapticFeedbackPerformerMock: NSObject, NSHapticFeedbackPerformer {

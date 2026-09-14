@@ -1,9 +1,3 @@
-//
-//  CommandManager.swift
-//
-//  Created by Alex on 23.05.2022.
-//
-
 import Foundation
 
 /**

@@ -1,10 +1,3 @@
-//
-//  WorkspaceDocument.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 17.03.22.
-//
-
 import Foundation
 import AppKit
 import SwiftUI

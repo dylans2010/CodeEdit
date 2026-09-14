@@ -1,10 +1,3 @@
-//
-//  DownloadedPlugin.swift
-//  CodeEditModules/ExtensionStore
-//
-//  Created by Pavel Kasila on 6.04.22.
-//
-
 import Foundation
 import GRDB
 

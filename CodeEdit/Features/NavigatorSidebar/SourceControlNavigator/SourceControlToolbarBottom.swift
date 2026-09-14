@@ -1,10 +1,3 @@
-//
-//  SourceControlToolbarBottom.swift
-//  CodeEdit
-//
-//  Created by Nanashi Li on 2022/05/20.
-//
-
 import SwiftUI
 
 struct SourceControlToolbarBottom: View {

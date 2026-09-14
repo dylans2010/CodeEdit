@@ -1,10 +1,3 @@
-//
-//  FindNavigatorListCell.swift
-//  CodeEdit
-//
-//  Created by Khan Winter on 7/7/22.
-//
-
 import SwiftUI
 
 /// A `NSTableCellView` showing an icon and label

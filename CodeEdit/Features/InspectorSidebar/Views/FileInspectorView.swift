@@ -1,9 +1,3 @@
-//
-//  FileInspectorView.swift
-//  CodeEdit
-//
-//  Created by Nanashi Li on 2022/03/24.
-//
 import SwiftUI
 
 struct FileInspectorView: View {

@@ -1,10 +1,3 @@
-//
-//  SourceControlModel.swift
-//  CodeEdit
-//
-//  Created by Nanashi Li on 2022/05/20.
-//
-
 import Foundation
 
 /// This model handle the fetching and adding of changes etc... for the

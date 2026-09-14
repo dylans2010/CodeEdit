@@ -1,10 +1,3 @@
-//
-//  BreadcrumbsMenu.swift
-//  CodeEditModules/Breadcrumbs
-//
-//  Created by Ziyuan Zhao on 2022/3/29.
-//
-
 import AppKit
 
 final class BreadcrumsMenu: NSMenu, NSMenuDelegate {

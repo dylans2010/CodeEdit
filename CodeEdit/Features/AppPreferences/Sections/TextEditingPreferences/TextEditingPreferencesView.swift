@@ -1,10 +1,3 @@
-//
-//  TextEditingPreferencesView.swift
-//  CodeEditModules/AppPreferences
-//
-//  Created by Lukas Pistrol on 30.03.22.
-//
-
 import SwiftUI
 
 /// A view that implements the `Text Editing` preference section

@@ -1,10 +1,3 @@
-//
-//  String+SafeOffset.swift
-//  CodeEdit
-//
-//  Created by Khan Winter on 7/15/22.
-//
-
 import Foundation
 
 /// Some safer alternative methods to ``String.

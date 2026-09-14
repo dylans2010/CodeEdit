@@ -1,10 +1,3 @@
-//
-//  TabBarItemRepresentable.swift
-//  
-//
-//  Created by Pavel Kasila on 30.04.22.
-//
-
 import SwiftUI
 
 /// Protocol for data passed to TabBarItemView to conform to

@@ -1,10 +1,3 @@
-//
-//  TabBarAccessory.swift
-//  CodeEdit
-//
-//  Created by Lingxi Li on 4/28/22.
-//
-
 import SwiftUI
 
 /// Accessory icon's view for tab bar.

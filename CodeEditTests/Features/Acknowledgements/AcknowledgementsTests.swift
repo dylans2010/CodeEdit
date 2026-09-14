@@ -1,10 +1,3 @@
-//
-//  AcknowledgementsTests.swift
-//  CodeEditTests
-//
-//  Created by Lukas Pistrol on 14.01.23.
-//
-
 import XCTest
 @testable import CodeEdit
 

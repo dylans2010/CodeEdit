@@ -1,10 +1,3 @@
-//
-//  BlurButtonStyle.swift
-//  CodeEdit
-//
-//  Created by Wouter Hennen on 21/01/2023.
-//
-
 import SwiftUI
 
 extension ButtonStyle where Self == BlurButtonStyle {

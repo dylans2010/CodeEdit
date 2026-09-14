@@ -1,10 +1,3 @@
-//
-//  PressActionsModifier.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Gabriel Theodoropoulos on 1/11/20.
-//
-
 import SwiftUI
 
 struct PressActions: ViewModifier {

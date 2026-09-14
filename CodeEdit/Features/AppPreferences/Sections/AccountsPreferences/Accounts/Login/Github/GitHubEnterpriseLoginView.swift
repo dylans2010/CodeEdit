@@ -1,10 +1,3 @@
-//
-//  GitHubEnterpriseLoginView.swift
-//  CodeEditModules/AppPreferences
-//
-//  Created by Nanashi Li on 2022/04/12.
-//
-
 import SwiftUI
 
 struct GitHubEnterpriseLoginView: View {

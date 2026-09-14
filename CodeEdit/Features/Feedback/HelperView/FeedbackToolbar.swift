@@ -1,10 +1,3 @@
-//
-//  FeedbackToolbar.swift
-//  CodeEditModules/Feedback
-//
-//  Created by Nanashi Li on 2022/04/14.
-//
-
 import SwiftUI
 
 struct FeedbackToolbar<T: View>: View {

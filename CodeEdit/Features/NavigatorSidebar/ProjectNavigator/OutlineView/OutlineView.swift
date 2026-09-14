@@ -1,10 +1,3 @@
-//
-//  OutlineView.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 05.04.22.
-//
-
 import SwiftUI
 import Combine
 

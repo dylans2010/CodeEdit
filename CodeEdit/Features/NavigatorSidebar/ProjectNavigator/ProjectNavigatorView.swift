@@ -1,10 +1,3 @@
-//
-//  ProjectNavigatorView.swift
-//  CodeEdit
-//
-//  Created by Lukas Pistrol on 25.03.22.
-//
-
 import SwiftUI
 
 /// # Project Navigator - Sidebar

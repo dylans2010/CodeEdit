@@ -1,10 +1,3 @@
-//
-//  CodeEditDocumentController.swift
-//  CodeEdit
-//
-//  Created by Pavel Kasila on 17.03.22.
-//
-
 import Cocoa
 
 final class CodeEditDocumentController: NSDocumentController {

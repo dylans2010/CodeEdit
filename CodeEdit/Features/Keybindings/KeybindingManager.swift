@@ -1,10 +1,3 @@
-//
-//  KeybindingManager.swift
-//  
-//
-//  Created by Alex on 09.05.2022.
-//
-
 import Foundation
 import SwiftUI
 

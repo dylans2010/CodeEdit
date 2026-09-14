@@ -1,10 +1,3 @@
-//
-//  ToolbarBranchPicker.swift
-//  CodeEditModules/CodeEditUI
-//
-//  Created by Lukas Pistrol on 21.04.22.
-//
-
 import SwiftUI
 import CodeEditSymbols
 

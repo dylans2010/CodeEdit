@@ -1,10 +1,3 @@
-//
-//  InspectorSidebarToolbarTop.swift
-//  CodeEdit
-//
-//  Created by Austin Condiff on 3/21/22.
-//
-
 import SwiftUI
 
 struct InspectorSidebarToolbarTop: View {

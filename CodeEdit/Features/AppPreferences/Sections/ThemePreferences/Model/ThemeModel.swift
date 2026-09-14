@@ -1,10 +1,3 @@
-//
-//  ThemeModel.swift
-//  CodeEditModules/AppPreferences
-//
-//  Created by Lukas Pistrol on 31.03.22.
-//
-
 import SwiftUI
 
 /// The Theme View Model. Accessible via the singleton "``ThemeModel/shared``".

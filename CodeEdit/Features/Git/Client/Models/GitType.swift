@@ -1,10 +1,3 @@
-//
-//  GitType.swift
-//  
-//
-//  Created by Nanashi Li on 2022/05/20.
-//
-
 import Foundation
 
 enum GitType: String, Codable {

@@ -1,10 +1,3 @@
-//
-//  IsFullscreen.swift
-//  CodeEdit
-//
-//  Created by Wouter Hennen on 14/01/2023.
-//
-
 import SwiftUI
 
 private struct WorkspaceFullscreenStateEnvironmentKey: EnvironmentKey {
