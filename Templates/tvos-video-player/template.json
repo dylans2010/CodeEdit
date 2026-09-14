@@ -1,0 +1,14 @@
+{
+  "id": "tvos-video-player",
+  "name": "tvOS Streaming Video Player",
+  "category": "Apple Platforms",
+  "icon": "play.tv",
+  "language": "Swift",
+  "badge": "tvOS",
+  "description": "Apple TV HLS streaming video player with AVPlayerViewController and playback controls.",
+  "defaultProjectName": "MyTVPlayer",
+  "files": [
+    "App/PlayerApp.swift",
+    "README.md"
+  ]
+}

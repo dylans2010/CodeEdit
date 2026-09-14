@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "{{PROJECT_NAME}}",
+  "version": "{{APP_VERSION}}",
+  "description": "{{APP_DESCRIPTION}}",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-rag-llamaindex",
+  "name": "LlamaIndex Document RAG",
+  "category": "Python & Data Science",
+  "icon": "doc.text.magnifyingglass",
+  "language": "Python",
+  "badge": "LlamaIndex",
+  "description": "Retrieval Augmented Generation (RAG) vector index pipeline over PDFs and markdown documents.",
+  "defaultProjectName": "MyRAGPipeline",
+  "files": [
+    "requirements.txt",
+    "rag.py",
+    "README.md"
+  ]
+}

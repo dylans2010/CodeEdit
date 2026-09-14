@@ -1,0 +1,14 @@
+{
+  "id": "ios-coreml-vision",
+  "name": "iOS Vision CoreML App",
+  "category": "Apple Platforms",
+  "icon": "viewfinder",
+  "language": "Swift",
+  "badge": "CoreML",
+  "description": "Real-time camera classification and computer vision pipeline with Apple CoreML & Vision.",
+  "defaultProjectName": "MyVisionClassifier",
+  "files": [
+    "App/ClassifierApp.swift",
+    "README.md"
+  ]
+}

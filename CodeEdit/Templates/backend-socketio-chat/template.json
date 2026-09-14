@@ -1,0 +1,15 @@
+{
+  "id": "backend-socketio-chat",
+  "name": "Socket.io Real-Time Server",
+  "category": "Backend & APIs",
+  "icon": "bubble.left.and.bubble.right",
+  "language": "TypeScript",
+  "badge": "Socket.io",
+  "description": "Low-latency bidirectional WebSocket communication server for chat and live data.",
+  "defaultProjectName": "MyChatServer",
+  "files": [
+    "package.json",
+    "server.js",
+    "README.md"
+  ]
+}

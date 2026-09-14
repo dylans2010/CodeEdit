@@ -1,0 +1,15 @@
+{
+  "id": "web-remix-run-app",
+  "name": "Remix Fullstack App",
+  "category": "Web Development",
+  "icon": "arrow.triangle.2.circlepath",
+  "language": "TypeScript",
+  "badge": "Remix",
+  "description": "Modern full-stack web application with Remix loaders, actions, and nested routing.",
+  "defaultProjectName": "MyRemixApp",
+  "files": [
+    "package.json",
+    "app/root.tsx",
+    "README.md"
+  ]
+}

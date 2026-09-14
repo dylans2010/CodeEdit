@@ -1,0 +1,15 @@
+{
+  "id": "python-langchain-agent",
+  "name": "LangChain AI ReAct Agent",
+  "category": "Python & Data Science",
+  "icon": "brain.head.profile",
+  "language": "Python",
+  "badge": "LangChain",
+  "description": "Multi-step reasoning AI agent with tool usage, memory buffers, and LLM integrations.",
+  "defaultProjectName": "MyLangChainAgent",
+  "files": [
+    "requirements.txt",
+    "agent.py",
+    "README.md"
+  ]
+}

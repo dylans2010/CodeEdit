@@ -1,0 +1,15 @@
+{
+  "id": "backend-hono-api",
+  "name": "Hono Fast Web Framework",
+  "category": "Backend & APIs",
+  "icon": "bolt.ring.closed",
+  "language": "TypeScript",
+  "badge": "Hono",
+  "description": "Ultrafast, lightweight standards-compliant web API framework for any JavaScript runtime.",
+  "defaultProjectName": "MyHonoService",
+  "files": [
+    "package.json",
+    "src/index.ts",
+    "README.md"
+  ]
+}

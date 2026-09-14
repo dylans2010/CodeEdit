@@ -1,0 +1,15 @@
+{
+  "id": "python-transformers-pipeline",
+  "name": "HuggingFace Transformers",
+  "category": "Python & Data Science",
+  "icon": "waveform.path",
+  "language": "Python",
+  "badge": "Transformers",
+  "description": "Natural language processing pipeline with pretrained PyTorch/HuggingFace transformer models.",
+  "defaultProjectName": "MyTransformersNLP",
+  "files": [
+    "requirements.txt",
+    "pipeline.py",
+    "README.md"
+  ]
+}

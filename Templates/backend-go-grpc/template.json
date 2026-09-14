@@ -1,0 +1,15 @@
+{
+  "id": "backend-go-grpc",
+  "name": "Go gRPC Microservice",
+  "category": "Backend & APIs",
+  "icon": "point.3.filled.connected.triangle.path",
+  "language": "Go",
+  "badge": "gRPC",
+  "description": "High performance binary RPC microservice with Go and Protocol Buffers.",
+  "defaultProjectName": "MyGrpcService",
+  "files": [
+    "go.mod",
+    "main.go",
+    "README.md"
+  ]
+}

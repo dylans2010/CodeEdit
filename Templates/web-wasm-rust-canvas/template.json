@@ -1,0 +1,15 @@
+{
+  "id": "web-wasm-rust-canvas",
+  "name": "WebAssembly Rust Canvas",
+  "category": "Web Development",
+  "icon": "wand.and.stars",
+  "language": "Rust",
+  "badge": "Wasm",
+  "description": "High performance Rust compiled to WebAssembly driving an HTML5 60FPS canvas.",
+  "defaultProjectName": "MyWasmCanvas",
+  "files": [
+    "Cargo.toml",
+    "src/lib.rs",
+    "README.md"
+  ]
+}

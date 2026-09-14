@@ -1,0 +1,15 @@
+{
+  "id": "backend-java-springboot",
+  "name": "Java 21 Spring Boot REST API",
+  "category": "Backend & APIs",
+  "icon": "leaf",
+  "language": "Java",
+  "badge": "Spring",
+  "description": "Industry-standard Java 21 REST API server with Spring Boot and Spring Web.",
+  "defaultProjectName": "MySpringService",
+  "files": [
+    "pom.xml",
+    "src/main/java/Application.java",
+    "README.md"
+  ]
+}

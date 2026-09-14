@@ -1,0 +1,15 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "dev": "remix dev",
+    "build": "remix build"
+  },
+  "dependencies": {
+    "@remix-run/node": "^2.6.0",
+    "@remix-run/react": "^2.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "python-pyside6-gui",
+  "name": "PySide6 / PyQt Desktop App",
+  "category": "Python & Data Science",
+  "icon": "macwindow.badge.plus",
+  "language": "Python",
+  "badge": "PySide6",
+  "description": "Native cross-platform Qt desktop GUI application using modern Python and PySide6.",
+  "defaultProjectName": "MyQtApp",
+  "files": [
+    "requirements.txt",
+    "main.py",
+    "README.md"
+  ]
+}

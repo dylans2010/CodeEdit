@@ -1,0 +1,15 @@
+{
+  "id": "rust-wasm-pack",
+  "name": "Rust WebAssembly (wasm-pack)",
+  "category": "Systems & C/C++",
+  "icon": "puzzlepiece.extension",
+  "language": "Rust",
+  "badge": "Wasm",
+  "description": "Compile Rust libraries to NPM packages with wasm-pack and wasm-bindgen.",
+  "defaultProjectName": "MyWasmLib",
+  "files": [
+    "Cargo.toml",
+    "src/lib.rs",
+    "README.md"
+  ]
+}

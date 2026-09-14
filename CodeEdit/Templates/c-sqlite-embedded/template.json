@@ -1,0 +1,15 @@
+{
+  "id": "c-sqlite-embedded",
+  "name": "C Embedded SQLite Database",
+  "category": "Systems & C/C++",
+  "icon": "cylinder",
+  "language": "C",
+  "badge": "SQLite",
+  "description": "Embedded SQLite3 C relational database query engine with transactions and prepared statements.",
+  "defaultProjectName": "MySQLiteApp",
+  "files": [
+    "Makefile",
+    "main.c",
+    "README.md"
+  ]
+}

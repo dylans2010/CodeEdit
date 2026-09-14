@@ -1,0 +1,14 @@
+{
+  "id": "web-tailwind-landing",
+  "name": "Tailwind CSS Landing Page",
+  "category": "Web Development",
+  "icon": "wind",
+  "language": "HTML/CSS",
+  "badge": "Tailwind",
+  "description": "Responsive landing page with Tailwind CSS utility styling and dark mode.",
+  "defaultProjectName": "MyLandingPage",
+  "files": [
+    "index.html",
+    "README.md"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "web-alpine-tailwind",
+  "name": "Alpine.js + Tailwind App",
+  "category": "Web Development",
+  "icon": "mountain.2",
+  "language": "JavaScript",
+  "badge": "Alpine",
+  "description": "Declarative reactive UI without build steps using Alpine.js and Tailwind CSS.",
+  "defaultProjectName": "MyAlpineApp",
+  "files": [
+    "index.html",
+    "README.md"
+  ]
+}

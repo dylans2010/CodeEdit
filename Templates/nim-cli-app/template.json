@@ -1,0 +1,14 @@
+{
+  "id": "nim-cli-app",
+  "name": "Nim Systems CLI Tool",
+  "category": "Systems & C/C++",
+  "icon": "chevron.left.forwardslash.chevron.right",
+  "language": "Nim",
+  "badge": "Nim",
+  "description": "Expressive, efficient systems programming language that compiles to C and C++.",
+  "defaultProjectName": "MyNimTool",
+  "files": [
+    "src/main.nim",
+    "README.md"
+  ]
+}

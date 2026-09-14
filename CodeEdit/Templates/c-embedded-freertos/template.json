@@ -1,0 +1,14 @@
+{
+  "id": "c-embedded-freertos",
+  "name": "C Embedded Microcontroller",
+  "category": "Systems & C/C++",
+  "icon": "memorychip",
+  "language": "C",
+  "badge": "Embedded",
+  "description": "Bare-metal / RTOS microcontroller firmware structure with hardware abstraction.",
+  "defaultProjectName": "MyFirmware",
+  "files": [
+    "main.c",
+    "README.md"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ios-widgetkit-extension",
+  "name": "iOS WidgetKit Extension",
+  "category": "Apple Platforms",
+  "icon": "rectangle.split.2x1",
+  "language": "Swift",
+  "badge": "WidgetKit",
+  "description": "Lock Screen and Home Screen dynamic widgets built with WidgetKit and SwiftUI.",
+  "defaultProjectName": "MyWidgetApp",
+  "files": [
+    "Widget/{{PROJECT_NAME}}Widget.swift",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "backend-dotnet-webapi",
+  "name": "C# .NET 8 Minimal API",
+  "category": "Backend & APIs",
+  "icon": "number.square",
+  "language": "C#",
+  "badge": ".NET 8",
+  "description": "High-throughput, lightweight C# .NET 8 minimal API endpoint service.",
+  "defaultProjectName": "MyDotnetAPI",
+  "files": [
+    "Program.cs",
+    "Project.csproj",
+    "README.md"
+  ]
+}

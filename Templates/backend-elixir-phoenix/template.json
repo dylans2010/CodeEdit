@@ -1,0 +1,14 @@
+{
+  "id": "backend-elixir-phoenix",
+  "name": "Elixir Phoenix REST Service",
+  "category": "Backend & APIs",
+  "icon": "drop",
+  "language": "Elixir",
+  "badge": "Phoenix",
+  "description": "Fault-tolerant, concurrent microservice running on the Erlang BEAM VM with Phoenix.",
+  "defaultProjectName": "MyPhoenixApp",
+  "files": [
+    "mix.exs",
+    "README.md"
+  ]
+}

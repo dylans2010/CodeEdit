@@ -1,0 +1,15 @@
+{
+  "id": "backend-ruby-sinatra",
+  "name": "Ruby Sinatra Minimal API",
+  "category": "Backend & APIs",
+  "icon": "suit.heart",
+  "language": "Ruby",
+  "badge": "Sinatra",
+  "description": "Lightweight and clean Ruby microservice using Sinatra and Puma web server.",
+  "defaultProjectName": "MySinatraApp",
+  "files": [
+    "Gemfile",
+    "app.rb",
+    "README.md"
+  ]
+}

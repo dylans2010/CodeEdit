@@ -1,0 +1,14 @@
+{
+  "id": "ios-document-app",
+  "name": "iOS Document Browser App",
+  "category": "Apple Platforms",
+  "icon": "doc.on.doc",
+  "language": "Swift",
+  "badge": "iOS",
+  "description": "Document-based iOS application integrating UIDocumentBrowserViewController and Files app.",
+  "defaultProjectName": "MyDocumentApp",
+  "files": [
+    "App/DocumentApp.swift",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "cross-kmp-mobile",
+  "name": "Kotlin Multiplatform (KMP)",
+  "category": "Desktop & Tooling",
+  "icon": "k.circle",
+  "language": "Kotlin",
+  "badge": "KMP",
+  "description": "Shared business logic, networking, and data storage for iOS and Android in Kotlin.",
+  "defaultProjectName": "MyKMPShared",
+  "files": [
+    "build.gradle.kts",
+    "src/commonMain/kotlin/Greeting.kt",
+    "README.md"
+  ]
+}

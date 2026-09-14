@@ -1,0 +1,15 @@
+{
+  "id": "apple-metal-shader-app",
+  "name": "Apple Metal 3D Shader App",
+  "category": "Apple Platforms",
+  "icon": "cpu",
+  "language": "Swift",
+  "badge": "Metal",
+  "description": "Hardware-accelerated graphics with Metal Shading Language, MTKView, and pipeline state.",
+  "defaultProjectName": "MyMetalApp",
+  "files": [
+    "Sources/Shaders.metal",
+    "Sources/Renderer.swift",
+    "README.md"
+  ]
+}

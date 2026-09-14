@@ -1,0 +1,15 @@
+{
+  "id": "python-celery-worker",
+  "name": "FastAPI + Celery Worker",
+  "category": "Python & Data Science",
+  "icon": "arrow.triangle.pull",
+  "language": "Python",
+  "badge": "Celery",
+  "description": "Asynchronous background task processing pipeline with Redis broker and Celery workers.",
+  "defaultProjectName": "MyTaskWorker",
+  "files": [
+    "requirements.txt",
+    "worker.py",
+    "README.md"
+  ]
+}

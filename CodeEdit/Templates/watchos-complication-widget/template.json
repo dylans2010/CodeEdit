@@ -1,0 +1,14 @@
+{
+  "id": "watchos-complication-widget",
+  "name": "watchOS Complication Widget",
+  "category": "Apple Platforms",
+  "icon": "sparkle",
+  "language": "Swift",
+  "badge": "watchOS",
+  "description": "Modular watch face circular, corner, and rectangular complications with WidgetKit.",
+  "defaultProjectName": "MyWatchComplication",
+  "files": [
+    "Watch/Complication.swift",
+    "README.md"
+  ]
+}

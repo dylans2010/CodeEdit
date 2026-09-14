@@ -1,0 +1,6 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "scripts": { "dev": "vite", "build": "tsc" },
+  "dependencies": { "lit": "^3.1.1" },
+  "devDependencies": { "typescript": "^5.3.3", "vite": "^5.1.0" }
+}

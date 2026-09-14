@@ -1,0 +1,14 @@
+{
+  "id": "multiplatform-swiftdata-app",
+  "name": "Multiplatform SwiftData App",
+  "category": "Apple Platforms",
+  "icon": "cylinder.split.1x2",
+  "language": "Swift",
+  "badge": "SwiftData",
+  "description": "Multiplatform app powered by modern SwiftData declarative model container and queries.",
+  "defaultProjectName": "MySwiftDataApp",
+  "files": [
+    "App/SwiftDataApp.swift",
+    "README.md"
+  ]
+}

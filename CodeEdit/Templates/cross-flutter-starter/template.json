@@ -1,0 +1,15 @@
+{
+  "id": "cross-flutter-starter",
+  "name": "Flutter Multiplatform App",
+  "category": "Desktop & Tooling",
+  "icon": "f.cursive",
+  "language": "Dart",
+  "badge": "Flutter",
+  "description": "Cross-platform mobile and desktop application written in Dart with Google Flutter.",
+  "defaultProjectName": "MyFlutterApp",
+  "files": [
+    "pubspec.yaml",
+    "lib/main.dart",
+    "README.md"
+  ]
+}

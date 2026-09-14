@@ -1,0 +1,5 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "scripts": { "dev": "bun --watch src/index.ts" },
+  "dependencies": { "elysia": "latest" }
+}

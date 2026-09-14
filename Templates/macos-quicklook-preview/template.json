@@ -1,0 +1,14 @@
+{
+  "id": "macos-quicklook-preview",
+  "name": "Quick Look Preview Extension",
+  "category": "Apple Platforms",
+  "icon": "eye",
+  "language": "Swift",
+  "badge": "QuickLook",
+  "description": "QuickLook preview provider extension for rendering custom file formats on macOS.",
+  "defaultProjectName": "MyQuickLookPreview",
+  "files": [
+    "Sources/PreviewViewController.swift",
+    "README.md"
+  ]
+}

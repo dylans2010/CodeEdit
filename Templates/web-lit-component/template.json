@@ -1,0 +1,15 @@
+{
+  "id": "web-lit-component",
+  "name": "Lit Web Components",
+  "category": "Web Development",
+  "icon": "puzzlepiece",
+  "language": "TypeScript",
+  "badge": "Lit",
+  "description": "Standard W3C Custom Elements and Web Components built with Lit and reactive state.",
+  "defaultProjectName": "MyLitLibrary",
+  "files": [
+    "package.json",
+    "src/my-element.ts",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "cross-react-native-expo",
+  "name": "React Native (Expo)",
+  "category": "Desktop & Tooling",
+  "icon": "iphone.and.arrow.forward",
+  "language": "TypeScript",
+  "badge": "Expo",
+  "description": "Universal mobile app running on iOS and Android built with React Native and Expo.",
+  "defaultProjectName": "MyExpoApp",
+  "files": [
+    "package.json",
+    "App.tsx",
+    "README.md"
+  ]
+}

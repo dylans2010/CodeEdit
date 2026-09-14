@@ -1,0 +1,15 @@
+{
+  "id": "backend-kotlin-ktor",
+  "name": "Kotlin Ktor Microservice",
+  "category": "Backend & APIs",
+  "icon": "k.square",
+  "language": "Kotlin",
+  "badge": "Ktor",
+  "description": "Asynchronous Kotlin microservice framework built with coroutines and Netty engine.",
+  "defaultProjectName": "MyKtorService",
+  "files": [
+    "build.gradle.kts",
+    "src/main/kotlin/Application.kt",
+    "README.md"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "macos-safari-extension",
+  "name": "Safari Web Extension",
+  "category": "Apple Platforms",
+  "icon": "safari",
+  "language": "Swift",
+  "badge": "Safari",
+  "description": "macOS Safari Web Extension with native app container, content script, and popup.",
+  "defaultProjectName": "MySafariExtension",
+  "files": [
+    "Package.swift",
+    "Sources/App.swift",
+    "Resources/manifest.json",
+    "Resources/popup.html",
+    "README.md"
+  ]
+}

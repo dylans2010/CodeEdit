@@ -1,0 +1,15 @@
+{
+  "id": "web-preact-vite",
+  "name": "Preact + Vite (3KB React)",
+  "category": "Web Development",
+  "icon": "speedometer",
+  "language": "TypeScript",
+  "badge": "Preact",
+  "description": "Ultra-lightweight 3KB alternative to React with identical modern component model.",
+  "defaultProjectName": "MyPreactApp",
+  "files": [
+    "package.json",
+    "src/index.tsx",
+    "README.md"
+  ]
+}

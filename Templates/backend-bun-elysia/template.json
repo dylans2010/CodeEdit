@@ -1,0 +1,15 @@
+{
+  "id": "backend-bun-elysia",
+  "name": "Bun + Elysia Ultra-Fast API",
+  "category": "Backend & APIs",
+  "icon": "flame.fill",
+  "language": "TypeScript",
+  "badge": "Elysia",
+  "description": "Type-safe, ergonomic HTTP framework running on Bun with maximum I/O performance.",
+  "defaultProjectName": "MyElysiaAPI",
+  "files": [
+    "package.json",
+    "src/index.ts",
+    "README.md"
+  ]
+}

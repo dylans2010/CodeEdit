@@ -1,0 +1,15 @@
+{
+  "id": "web-nextjs-ecommerce",
+  "name": "Next.js E-Commerce Starter",
+  "category": "Web Development",
+  "icon": "cart",
+  "language": "TypeScript",
+  "badge": "Next.js",
+  "description": "Fullstack online store with product catalog, cart state, and checkout structure.",
+  "defaultProjectName": "MyStore",
+  "files": [
+    "package.json",
+    "src/app/page.tsx",
+    "README.md"
+  ]
+}

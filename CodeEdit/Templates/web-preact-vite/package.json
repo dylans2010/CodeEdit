@@ -1,0 +1,6 @@
+{
+  "name": "{{PROJECT_NAME}}",
+  "scripts": { "dev": "vite", "build": "vite build" },
+  "dependencies": { "preact": "^10.19.3" },
+  "devDependencies": { "@preact/preset-vite": "^2.8.1", "vite": "^5.1.0" }
+}

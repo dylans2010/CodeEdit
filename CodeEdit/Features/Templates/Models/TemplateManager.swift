@@ -135,7 +135,11 @@ final class TemplateManager: ObservableObject {
     func instantiate(
         template: ProjectTemplate,
         at destinationURL: URL,
-        projectName: String
+        projectName: String,
+        bundleID: String = "com.example.app",
+        appVersion: String = "1.0.0",
+        buildNumber: String = "1",
+        appDescription: String = "A project generated with CodeEdit."
     ) throws {
         let fileManager = FileManager.default
 
@@ -159,6 +163,10 @@ final class TemplateManager: ObservableObject {
 
             let processedContent = rawContent
                 .replacingOccurrences(of: "{{PROJECT_NAME}}", with: projectName)
+                .replacingOccurrences(of: "{{BUNDLE_ID}}", with: bundleID)
+                .replacingOccurrences(of: "{{APP_VERSION}}", with: appVersion)
+                .replacingOccurrences(of: "{{BUILD_NUMBER}}", with: buildNumber)
+                .replacingOccurrences(of: "{{APP_DESCRIPTION}}", with: appDescription)
                 .replacingOccurrences(of: "{{YEAR}}", with: year)
                 .replacingOccurrences(of: "{{AUTHOR}}", with: author)
 

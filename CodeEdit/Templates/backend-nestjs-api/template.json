@@ -1,0 +1,16 @@
+{
+  "id": "backend-nestjs-api",
+  "name": "NestJS Enterprise API",
+  "category": "Backend & APIs",
+  "icon": "building.columns",
+  "language": "TypeScript",
+  "badge": "NestJS",
+  "description": "Enterprise-grade scalable Node.js server architecture with dependency injection.",
+  "defaultProjectName": "MyNestApp",
+  "files": [
+    "package.json",
+    "src/main.ts",
+    "src/app.module.ts",
+    "README.md"
+  ]
+}

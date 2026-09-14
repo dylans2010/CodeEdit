@@ -18,32 +18,55 @@ struct TemplateCatalogView: View {
     @State private var searchText = ""
     @State private var selectedTemplate: ProjectTemplate?
     @State private var projectName = ""
+    @State private var showingAppleSetup = false
     @State private var errorMessage: String?
     @State private var showErrorAlert = false
 
     private let columns = [
-        GridItem(.adaptive(minimum: 260, maximum: 340), spacing: 12)
+        GridItem(.adaptive(minimum: 280, maximum: 380), spacing: 14)
     ]
 
     var body: some View {
+        Group {
+            if showingAppleSetup, let template = selectedTemplate {
+                AppleProjectSetupView(
+                    template: template,
+                    isPresented: $isPresented,
+                    onBack: { showingAppleSetup = false },
+                    openDocument: openDocument,
+                    dismissWindow: dismissWindow
+                )
+            } else {
+                mainCatalogLayout
+            }
+        }
+        .onAppear {
+            if selectedTemplate == nil {
+                selectedTemplate = templateManager.templates.first
+                projectName = selectedTemplate?.defaultProjectName ?? "MyProject"
+            }
+        }
+    }
+
+    private var mainCatalogLayout: some View {
         VStack(spacing: 0) {
             headerBar
             Divider()
             HStack(spacing: 0) {
                 categorySidebar
-                    .frame(width: 200)
+                    .frame(width: 220)
                 Divider()
                 templateGridArea
                 if let template = selectedTemplate {
                     Divider()
                     TemplateDetailView(template: template, projectName: $projectName)
-                        .frame(width: 260)
+                        .frame(width: 280)
                 }
             }
             Divider()
             footerBar
         }
-        .frame(width: 900, height: 600)
+        .frame(width: 960, height: 640)
         .background(Color(NSColor.windowBackgroundColor))
         .alert(isPresented: $showErrorAlert) {
             Alert(
@@ -51,12 +74,6 @@ struct TemplateCatalogView: View {
                 message: Text(errorMessage ?? "An unknown error occurred."),
                 dismissButton: .default(Text("OK"))
             )
-        }
-        .onAppear {
-            if selectedTemplate == nil {
-                selectedTemplate = templateManager.templates.first
-                projectName = selectedTemplate?.defaultProjectName ?? "MyProject"
-            }
         }
     }
 
@@ -67,7 +84,7 @@ struct TemplateCatalogView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Choose a Template")
                     .font(.system(size: 18, weight: .bold))
-                Text("Select from 50+ preset templates to start a new project")
+                Text("Select from \(templateManager.templates.count) preset templates to start a new project")
                     .font(.system(size: 11))
                     .foregroundColor(.secondary)
             }
@@ -105,7 +122,7 @@ struct TemplateCatalogView: View {
             RoundedRectangle(cornerRadius: 8)
                 .stroke(Color(NSColor.separatorColor), lineWidth: 1)
         )
-        .frame(width: 240)
+        .frame(width: 260)
     }
 
     // MARK: - Category Sidebar
@@ -172,7 +189,7 @@ struct TemplateCatalogView: View {
             if filteredList.isEmpty {
                 emptyStateView
             } else {
-                LazyVGrid(columns: columns, spacing: 12) {
+                LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(filteredList) { template in
                         TemplateCardView(
                             template: template,
@@ -182,14 +199,12 @@ struct TemplateCatalogView: View {
                                 projectName = template.defaultProjectName
                             },
                             onChoose: {
-                                selectedTemplate = template
-                                projectName = template.defaultProjectName
-                                startCreationFlow(template: template)
+                                handleSelect(template: template)
                             }
                         )
                     }
                 }
-                .padding(16)
+                .padding(18)
             }
         }
     }
@@ -225,9 +240,9 @@ struct TemplateCatalogView: View {
             }
             .keyboardShortcut(.cancelAction)
 
-            Button("Create Project") {
+            Button(selectedTemplate?.category == .apple ? "Configure Apple Project..." : "Create Project...") {
                 if let template = selectedTemplate {
-                    startCreationFlow(template: template)
+                    handleSelect(template: template)
                 }
             }
             .keyboardShortcut(.defaultAction)
@@ -238,7 +253,17 @@ struct TemplateCatalogView: View {
         .padding(.vertical, 12)
     }
 
-    // MARK: - Creation Flow
+    // MARK: - Selection & Creation Handling
+
+    private func handleSelect(template: ProjectTemplate) {
+        selectedTemplate = template
+        projectName = template.defaultProjectName
+        if template.category == .apple {
+            showingAppleSetup = true
+        } else {
+            startCreationFlow(template: template)
+        }
+    }
 
     private func startCreationFlow(template: ProjectTemplate) {
         let name = projectName.trimmingCharacters(in: .whitespaces).isEmpty ? template.defaultProjectName : projectName

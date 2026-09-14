@@ -1,5 +1,35 @@
 [
   {
+    "id": "apple-metal-shader-app",
+    "name": "Apple Metal 3D Shader App",
+    "category": "Apple Platforms",
+    "icon": "cpu",
+    "language": "Swift",
+    "badge": "Metal",
+    "description": "Hardware-accelerated graphics with Metal Shading Language, MTKView, and pipeline state.",
+    "defaultProjectName": "MyMetalApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nApple Metal graphics shader application.\n",
+      "Sources/Shaders.metal": "#include <metal_stdlib>\nusing namespace metal;\n\nvertex float4 vertexShader(uint vertexID [[vertex_id]]) {\n    float2 positions[3] = { float2(0.0, 0.5), float2(-0.5, -0.5), float2(0.5, -0.5) };\n    return float4(positions[vertexID], 0.0, 1.0);\n}\n\nfragment float4 fragmentShader() {\n    return float4(0.2, 0.6, 1.0, 1.0);\n}\n",
+      "Sources/Renderer.swift": "import MetalKit\n\nclass Renderer: NSObject, MTKViewDelegate {\n    let device: MTLDevice\n\n    init?(view: MTKView) {\n        guard let dev = MTLCreateSystemDefaultDevice() else { return nil }\n        self.device = dev\n        super.init()\n        view.device = dev\n        view.delegate = self\n    }\n\n    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}\n\n    func draw(in view: MTKView) {\n        guard let drawable = view.currentDrawable,\n              let rpd = view.currentRenderPassDescriptor else { return }\n        rpd.colorAttachments[0].clearColor = MTLClearColor(red: 0.1, green: 0.1, blue: 0.15, alpha: 1.0)\n    }\n}\n"
+    }
+  },
+  {
+    "id": "backend-bun-elysia",
+    "name": "Bun + Elysia Ultra-Fast API",
+    "category": "Backend & APIs",
+    "icon": "flame.fill",
+    "language": "TypeScript",
+    "badge": "Elysia",
+    "description": "Type-safe, ergonomic HTTP framework running on Bun with maximum I/O performance.",
+    "defaultProjectName": "MyElysiaAPI",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nBun + Elysia service.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"dev\": \"bun --watch src/index.ts\" },\n  \"dependencies\": { \"elysia\": \"latest\" }\n}\n",
+      "src/index.ts": "import { Elysia } from 'elysia';\n\nconst app = new Elysia()\n  .get('/', () => ({ project: '{{PROJECT_NAME}}', status: 'blazing fast' }))\n  .listen(3000);\n\nconsole.log(`\ud83e\udd8a Elysia is running at ${app.server?.hostname}:${app.server?.port}`);\n"
+    }
+  },
+  {
     "id": "backend-deno-oak",
     "name": "Deno Oak REST API",
     "category": "Backend & APIs",
@@ -12,6 +42,35 @@
       "main.ts": "import { Application, Router } from \"https://deno.land/x/oak@v12.6.1/mod.ts\";\n\nconst app = new Application();\nconst router = new Router();\n\nrouter.get(\"/\", (ctx) => {\n  ctx.response.body = {\n    project: \"{{PROJECT_NAME}}\",\n    runtime: \"Deno\",\n    status: \"healthy\",\n  };\n});\n\napp.use(router.routes());\napp.use(router.allowedMethods());\n\nconsole.log(\"Listening on http://localhost:8000\");\nawait app.listen({ port: 8000 });\n",
       "deno.json": "{\n  \"tasks\": {\n    \"start\": \"deno run --allow-net main.ts\"\n  }\n}\n",
       "README.md": "# {{PROJECT_NAME}}\n\nDeno Oak REST API.\n\n```bash\ndeno task start\n```\n"
+    }
+  },
+  {
+    "id": "backend-dotnet-webapi",
+    "name": "C# .NET 8 Minimal API",
+    "category": "Backend & APIs",
+    "icon": "number.square",
+    "language": "C#",
+    "badge": ".NET 8",
+    "description": "High-throughput, lightweight C# .NET 8 minimal API endpoint service.",
+    "defaultProjectName": "MyDotnetAPI",
+    "files": {
+      "Project.csproj": "<Project Sdk=\"Microsoft.NET.Sdk.Web\">\n  <PropertyGroup>\n    <TargetFramework>net8.0</TargetFramework>\n    <Nullable>enable</Nullable>\n  </PropertyGroup>\n</Project>\n",
+      "README.md": "# {{PROJECT_NAME}}\n\n.NET 8 minimal Web API.\n",
+      "Program.cs": "var builder = WebApplication.CreateBuilder(args);\nvar app = builder.Build();\n\napp.MapGet(\"/\", () => new { Service = \"{{PROJECT_NAME}}\", Status = \"Running\" });\n\napp.Run();\n"
+    }
+  },
+  {
+    "id": "backend-elixir-phoenix",
+    "name": "Elixir Phoenix REST Service",
+    "category": "Backend & APIs",
+    "icon": "drop",
+    "language": "Elixir",
+    "badge": "Phoenix",
+    "description": "Fault-tolerant, concurrent microservice running on the Erlang BEAM VM with Phoenix.",
+    "defaultProjectName": "MyPhoenixApp",
+    "files": {
+      "mix.exs": "defmodule {{PROJECT_NAME}}.MixProject do\n  use Mix.Project\n  def project do\n    [app: :{{PROJECT_NAME}}, version: \"0.1.0\", elixir: \"~> 1.15\"]\n  end\nend\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nElixir Phoenix service.\n"
     }
   },
   {
@@ -30,6 +89,21 @@
     }
   },
   {
+    "id": "backend-go-grpc",
+    "name": "Go gRPC Microservice",
+    "category": "Backend & APIs",
+    "icon": "point.3.filled.connected.triangle.path",
+    "language": "Go",
+    "badge": "gRPC",
+    "description": "High performance binary RPC microservice with Go and Protocol Buffers.",
+    "defaultProjectName": "MyGrpcService",
+    "files": {
+      "go.mod": "module {{PROJECT_NAME}}\n\ngo 1.22\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nGo gRPC microservice.\n",
+      "main.go": "package main\n\nimport (\n\t\"log\"\n\t\"net\"\n)\n\nfunc main() {\n\tlis, err := net.Listen(\"tcp\", \":50051\")\n\tif err != nil {\n\t\tlog.Fatalf(\"failed to listen: %v\", err)\n\t}\n\tlog.Printf(\"{{PROJECT_NAME}} gRPC server listening on %v\", lis.Addr())\n}\n"
+    }
+  },
+  {
     "id": "backend-go-nethttp",
     "name": "Go Standard HTTP Server",
     "category": "Backend & APIs",
@@ -42,6 +116,67 @@
       "go.mod": "module {{PROJECT_NAME}}\n\ngo 1.22\n",
       "README.md": "# {{PROJECT_NAME}}\n\nGo standard library HTTP server.\n",
       "main.go": "package main\n\nimport (\n\t\"encoding/json\"\n\t\"log\"\n\t\"net/http\"\n)\n\nfunc main() {\n\tmux := http.NewServeMux()\n\n\tmux.HandleFunc(\"GET /\", func(w http.ResponseWriter, r *http.Request) {\n\t\tw.Header().Set(\"Content-Type\", \"application/json\")\n\t\tjson.NewEncoder(w).Encode(map[string]string{\n\t\t\t\"project\": \"{{PROJECT_NAME}}\",\n\t\t\t\"status\":  \"running\",\n\t\t})\n\t})\n\n\tlog.Println(\"Server listening on :8080...\")\n\tlog.Fatal(http.ListenAndServe(\":8080\", mux))\n}\n"
+    }
+  },
+  {
+    "id": "backend-hono-api",
+    "name": "Hono Fast Web Framework",
+    "category": "Backend & APIs",
+    "icon": "bolt.ring.closed",
+    "language": "TypeScript",
+    "badge": "Hono",
+    "description": "Ultrafast, lightweight standards-compliant web API framework for any JavaScript runtime.",
+    "defaultProjectName": "MyHonoService",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nHono framework service.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"type\": \"module\",\n  \"scripts\": { \"dev\": \"tsx watch src/index.ts\" },\n  \"dependencies\": { \"hono\": \"^4.0.0\" }\n}\n",
+      "src/index.ts": "import { Hono } from 'hono';\n\nconst app = new Hono();\napp.get('/', (c) => c.json({ service: '{{PROJECT_NAME}}', runtime: 'universal' }));\n\nexport default app;\n"
+    }
+  },
+  {
+    "id": "backend-java-springboot",
+    "name": "Java 21 Spring Boot REST API",
+    "category": "Backend & APIs",
+    "icon": "leaf",
+    "language": "Java",
+    "badge": "Spring",
+    "description": "Industry-standard Java 21 REST API server with Spring Boot and Spring Web.",
+    "defaultProjectName": "MySpringService",
+    "files": {
+      "pom.xml": "<project xmlns=\"http://maven.apache.org/POM/4.0.0\">\n  <modelVersion>4.0.0</modelVersion>\n  <groupId>com.example</groupId>\n  <artifactId>{{PROJECT_NAME}}</artifactId>\n  <version>1.0.0</version>\n  <properties>\n    <java.version>21</java.version>\n  </properties>\n</project>\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nJava Spring Boot application.\n",
+      "src/main/java/Application.java": "package com.example;\n\npublic class Application {\n    public static void main(String[] args) {\n        System.out.println(\"Starting {{PROJECT_NAME}} Spring Boot service...\");\n    }\n}\n"
+    }
+  },
+  {
+    "id": "backend-kotlin-ktor",
+    "name": "Kotlin Ktor Microservice",
+    "category": "Backend & APIs",
+    "icon": "k.square",
+    "language": "Kotlin",
+    "badge": "Ktor",
+    "description": "Asynchronous Kotlin microservice framework built with coroutines and Netty engine.",
+    "defaultProjectName": "MyKtorService",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nKotlin Ktor microservice.\n",
+      "build.gradle.kts": "plugins {\n    kotlin(\"jvm\") version \"1.9.22\"\n    application\n}\n\ndependencies {\n    implementation(\"io.ktor:ktor-server-core:2.3.8\")\n    implementation(\"io.ktor:ktor-server-netty:2.3.8\")\n}\n",
+      "src/main/kotlin/Application.kt": "package com.example\n\nimport io.ktor.server.application.*\nimport io.ktor.server.engine.*\nimport io.ktor.server.netty.*\nimport io.ktor.server.response.*\nimport io.ktor.server.routing.*\n\nfun main() {\n    embeddedServer(Netty, port = 8080) {\n        routing {\n            get(\"/\") {\n                call.respondText(\"Hello from {{PROJECT_NAME}} in Kotlin Ktor!\")\n            }\n        }\n    }.start(wait = true)\n}\n"
+    }
+  },
+  {
+    "id": "backend-nestjs-api",
+    "name": "NestJS Enterprise API",
+    "category": "Backend & APIs",
+    "icon": "building.columns",
+    "language": "TypeScript",
+    "badge": "NestJS",
+    "description": "Enterprise-grade scalable Node.js server architecture with dependency injection.",
+    "defaultProjectName": "MyNestApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nNestJS enterprise API.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"start:dev\": \"nest start --watch\" },\n  \"dependencies\": {\n    \"@nestjs/common\": \"^10.0.0\",\n    \"@nestjs/core\": \"^10.0.0\",\n    \"@nestjs/platform-express\": \"^10.0.0\",\n    \"rxjs\": \"^7.8.1\"\n  }\n}\n",
+      "src/main.ts": "import { NestFactory } from '@nestjs/core';\nimport { AppModule } from './app.module';\n\nasync function bootstrap() {\n  const app = await NestFactory.create(AppModule);\n  await app.listen(3000);\n  console.log('NestJS server running on port 3000');\n}\nbootstrap();\n",
+      "src/app.module.ts": "import { Module } from '@nestjs/common';\n\n@Module({})\nexport class AppModule {}\n"
     }
   },
   {
@@ -122,6 +257,21 @@
     }
   },
   {
+    "id": "backend-ruby-sinatra",
+    "name": "Ruby Sinatra Minimal API",
+    "category": "Backend & APIs",
+    "icon": "suit.heart",
+    "language": "Ruby",
+    "badge": "Sinatra",
+    "description": "Lightweight and clean Ruby microservice using Sinatra and Puma web server.",
+    "defaultProjectName": "MySinatraApp",
+    "files": {
+      "app.rb": "require 'sinatra'\nrequire 'json'\n\nget '/' do\n  content_type :json\n  { project: '{{PROJECT_NAME}}', status: 'online' }.to_json\nend\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nRuby Sinatra API.\n",
+      "Gemfile": "source 'https://rubygems.org'\ngem 'sinatra'\ngem 'puma'\n"
+    }
+  },
+  {
     "id": "backend-rust-actix",
     "name": "Rust Actix-web Service",
     "category": "Backend & APIs",
@@ -152,6 +302,21 @@
     }
   },
   {
+    "id": "backend-socketio-chat",
+    "name": "Socket.io Real-Time Server",
+    "category": "Backend & APIs",
+    "icon": "bubble.left.and.bubble.right",
+    "language": "TypeScript",
+    "badge": "Socket.io",
+    "description": "Low-latency bidirectional WebSocket communication server for chat and live data.",
+    "defaultProjectName": "MyChatServer",
+    "files": {
+      "server.js": "const express = require('express');\nconst http = require('http');\nconst { Server } = require('socket.io');\n\nconst app = express();\nconst server = http.createServer(app);\nconst io = new Server(server);\n\nio.on('connection', (socket) => {\n  console.log('Client connected:', socket.id);\n  socket.emit('welcome', 'Connected to {{PROJECT_NAME}}!');\n});\n\nserver.listen(4000, () => console.log('Socket.io listening on :4000'));\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nSocket.io real-time server.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"dependencies\": { \"socket.io\": \"^4.7.4\", \"express\": \"^4.18.2\" }\n}\n"
+    }
+  },
+  {
     "id": "c-cmake-project",
     "name": "C Project (CMake)",
     "category": "Systems & C/C++",
@@ -169,6 +334,20 @@
     }
   },
   {
+    "id": "c-embedded-freertos",
+    "name": "C Embedded Microcontroller",
+    "category": "Systems & C/C++",
+    "icon": "memorychip",
+    "language": "C",
+    "badge": "Embedded",
+    "description": "Bare-metal / RTOS microcontroller firmware structure with hardware abstraction.",
+    "defaultProjectName": "MyFirmware",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nEmbedded C firmware template.\n",
+      "main.c": "#include <stdint.h>\n\nvoid sys_init(void) {\n    // Hardware peripheral clock setup\n}\n\nint main(void) {\n    sys_init();\n    while (1) {\n        // Main loop\n    }\n    return 0;\n}\n"
+    }
+  },
+  {
     "id": "c-hello-world",
     "name": "C Standard (Makefile)",
     "category": "Systems & C/C++",
@@ -181,6 +360,21 @@
       "Makefile": "CC = clang\nCFLAGS = -Wall -Wextra -std=c17 -O2\nTARGET = {{PROJECT_NAME}}\n\nall: $(TARGET)\n\n$(TARGET): src/main.c\n\t$(CC) $(CFLAGS) -o $(TARGET) src/main.c\n\nclean:\n\trm -f $(TARGET)\n",
       "README.md": "# {{PROJECT_NAME}}\n\nStandard C project.\n\n```bash\nmake\n./{{PROJECT_NAME}}\n```\n",
       "src/main.c": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello from {{PROJECT_NAME}} in C!\\n\");\n    return 0;\n}\n"
+    }
+  },
+  {
+    "id": "c-sqlite-embedded",
+    "name": "C Embedded SQLite Database",
+    "category": "Systems & C/C++",
+    "icon": "cylinder",
+    "language": "C",
+    "badge": "SQLite",
+    "description": "Embedded SQLite3 C relational database query engine with transactions and prepared statements.",
+    "defaultProjectName": "MySQLiteApp",
+    "files": {
+      "Makefile": "CC = clang\nCFLAGS = -Wall -O2 -lsqlite3\nTARGET = {{PROJECT_NAME}}\n\nall: $(TARGET)\n$(TARGET): main.c\n\t$(CC) $(CFLAGS) -o $@ $^\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nEmbedded SQLite C project.\n",
+      "main.c": "#include <stdio.h>\n#include <sqlite3.h>\n\nint main(void) {\n    sqlite3 *db;\n    if (sqlite3_open(\":memory:\", &db) == SQLITE_OK) {\n        printf(\"{{PROJECT_NAME}}: In-memory SQLite database initialized.\\n\");\n        sqlite3_close(db);\n    }\n    return 0;\n}\n"
     }
   },
   {
@@ -201,6 +395,21 @@
     }
   },
   {
+    "id": "cpp-imgui-desktop",
+    "name": "Dear ImGui C++ Desktop App",
+    "category": "Systems & C/C++",
+    "icon": "window.shade.closed",
+    "language": "C++",
+    "badge": "ImGui",
+    "description": "Immediate-mode Graphical User Interface for tools, debuggers, and game engines.",
+    "defaultProjectName": "MyImGuiTool",
+    "files": {
+      "CMakeLists.txt": "cmake_minimum_required(VERSION 3.20)\nproject({{PROJECT_NAME}} CXX)\nset(CMAKE_CXX_STANDARD 20)\nadd_executable({{PROJECT_NAME}} src/main.cpp)\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nDear ImGui C++ application.\n",
+      "src/main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"Starting {{PROJECT_NAME}} ImGui workspace...\" << std::endl;\n    return 0;\n}\n"
+    }
+  },
+  {
     "id": "cpp-makefile-starter",
     "name": "C++ Project (Makefile)",
     "category": "Systems & C/C++",
@@ -218,6 +427,21 @@
     }
   },
   {
+    "id": "cpp-opengl-3d",
+    "name": "C++ OpenGL 3D Engine",
+    "category": "Systems & C/C++",
+    "icon": "cube.transparent",
+    "language": "C++",
+    "badge": "OpenGL",
+    "description": "Modern OpenGL 3.3 pipeline with GLFW window creation, GLAD loader, and shaders.",
+    "defaultProjectName": "MyOpenGLApp",
+    "files": {
+      "CMakeLists.txt": "cmake_minimum_required(VERSION 3.20)\nproject({{PROJECT_NAME}} CXX)\nset(CMAKE_CXX_STANDARD 17)\nadd_executable({{PROJECT_NAME}} src/main.cpp)\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nOpenGL C++ project.\n",
+      "src/main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"Starting {{PROJECT_NAME}} OpenGL 3D engine...\" << std::endl;\n    return 0;\n}\n"
+    }
+  },
+  {
     "id": "cpp-raylib-game",
     "name": "C++ Raylib 2D Game",
     "category": "Systems & C/C++",
@@ -230,6 +454,51 @@
       "CMakeLists.txt": "cmake_minimum_required(VERSION 3.20)\nproject({{PROJECT_NAME}} CXX)\n\nset(CMAKE_CXX_STANDARD 17)\n\nfind_package(raylib REQUIRED)\n\nadd_executable({{PROJECT_NAME}} src/main.cpp)\ntarget_link_libraries({{PROJECT_NAME}} PRIVATE raylib)\n",
       "README.md": "# {{PROJECT_NAME}}\n\nRaylib 2D game project.\n",
       "src/main.cpp": "#include <iostream>\n\nint main() {\n    std::cout << \"Starting {{PROJECT_NAME}} Raylib game engine...\" << std::endl;\n    // raylib InitWindow(800, 450, \"{{PROJECT_NAME}}\");\n    return 0;\n}\n"
+    }
+  },
+  {
+    "id": "cross-flutter-starter",
+    "name": "Flutter Multiplatform App",
+    "category": "Desktop & Tooling",
+    "icon": "f.cursive",
+    "language": "Dart",
+    "badge": "Flutter",
+    "description": "Cross-platform mobile and desktop application written in Dart with Google Flutter.",
+    "defaultProjectName": "MyFlutterApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nFlutter multiplatform application.\n",
+      "pubspec.yaml": "name: {{PROJECT_NAME}}\ndescription: {{APP_DESCRIPTION}}\nversion: 1.0.0+1\nenvironment:\n  sdk: '>=3.0.0 <4.0.0'\ndependencies:\n  flutter:\n    sdk: flutter\n",
+      "lib/main.dart": "import 'package:flutter/material.dart';\n\nvoid main() => runApp(const MyApp());\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: '{{PROJECT_NAME}}',\n      home: Scaffold(\n        appBar: AppBar(title: const Text('{{PROJECT_NAME}}')),\n        body: const Center(child: Text('Hello from Flutter!')),\n      ),\n    );\n  }\n}\n"
+    }
+  },
+  {
+    "id": "cross-kmp-mobile",
+    "name": "Kotlin Multiplatform (KMP)",
+    "category": "Desktop & Tooling",
+    "icon": "k.circle",
+    "language": "Kotlin",
+    "badge": "KMP",
+    "description": "Shared business logic, networking, and data storage for iOS and Android in Kotlin.",
+    "defaultProjectName": "MyKMPShared",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nKotlin Multiplatform shared library.\n",
+      "build.gradle.kts": "plugins {\n    kotlin(\"multiplatform\") version \"1.9.22\"\n}\n\nkotlin {\n    jvm()\n    iosArm64()\n    iosSimulatorArm64()\n}\n",
+      "src/commonMain/kotlin/Greeting.kt": "package com.example\n\nclass Greeting {\n    fun greet(): String = \"Hello from {{PROJECT_NAME}} KMP Common Code!\"\n}\n"
+    }
+  },
+  {
+    "id": "cross-react-native-expo",
+    "name": "React Native (Expo)",
+    "category": "Desktop & Tooling",
+    "icon": "iphone.and.arrow.forward",
+    "language": "TypeScript",
+    "badge": "Expo",
+    "description": "Universal mobile app running on iOS and Android built with React Native and Expo.",
+    "defaultProjectName": "MyExpoApp",
+    "files": {
+      "App.tsx": "import { StyleSheet, Text, View } from 'react-native';\n\nexport default function App() {\n  return (\n    <View style={styles.container}>\n      <Text style={styles.title}>{{PROJECT_NAME}}</Text>\n      <Text>React Native with Expo</Text>\n    </View>\n  );\n}\n\nconst styles = StyleSheet.create({\n  container: { flex: 1, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },\n  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 8 }\n});\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nReact Native Expo project.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"version\": \"1.0.0\",\n  \"scripts\": { \"start\": \"expo start\" },\n  \"dependencies\": { \"expo\": \"~50.0.0\", \"react-native\": \"0.73.2\", \"react\": \"18.2.0\" }\n}\n"
     }
   },
   {
@@ -278,6 +547,48 @@
     }
   },
   {
+    "id": "ios-coreml-vision",
+    "name": "iOS Vision CoreML App",
+    "category": "Apple Platforms",
+    "icon": "viewfinder",
+    "language": "Swift",
+    "badge": "CoreML",
+    "description": "Real-time camera classification and computer vision pipeline with Apple CoreML & Vision.",
+    "defaultProjectName": "MyVisionClassifier",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\niOS CoreML and Vision classification project.\n",
+      "App/ClassifierApp.swift": "import SwiftUI\n\n@main\nstruct ClassifierApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ClassifierView()\n        }\n    }\n}\n\nstruct ClassifierView: View {\n    @State private var classificationResult = \"Ready to classify image...\"\n\n    var body: some View {\n        VStack(spacing: 20) {\n            Image(systemName: \"viewfinder\")\n                .font(.system(size: 64))\n                .foregroundColor(.accentColor)\n            Text(\"{{PROJECT_NAME}} Vision ML\")\n                .font(.title2)\n                .bold()\n            Text(classificationResult)\n                .foregroundColor(.secondary)\n            Button(\"Run Inference\") {\n                classificationResult = \"Detected: Neural Network Object (98%)\"\n            }\n            .buttonStyle(.borderedProminent)\n        }\n        .padding()\n    }\n}\n"
+    }
+  },
+  {
+    "id": "ios-document-app",
+    "name": "iOS Document Browser App",
+    "category": "Apple Platforms",
+    "icon": "doc.on.doc",
+    "language": "Swift",
+    "badge": "iOS",
+    "description": "Document-based iOS application integrating UIDocumentBrowserViewController and Files app.",
+    "defaultProjectName": "MyDocumentApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\niOS Document-based application.\n",
+      "App/DocumentApp.swift": "import SwiftUI\n\n@main\nstruct DocumentApp: App {\n    var body: some Scene {\n        DocumentGroup(newDocument: TextDocument()) { file in\n            ContentView(document: file.$document)\n        }\n    }\n}\n\nstruct TextDocument: FileDocument {\n    static var readableContentTypes: [UTType] { [.plainText] }\n    var text: String = \"Hello from {{PROJECT_NAME}}!\"\n\n    init(text: String = \"Hello from {{PROJECT_NAME}}!\") {\n        self.text = text\n    }\n\n    init(configuration: ReadConfiguration) throws {\n        if let data = configuration.file.regularFileContents {\n            text = String(decoding: data, as: UTF8.self)\n        }\n    }\n\n    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {\n        let data = Data(text.utf8)\n        return .init(regularFileWithContents: data)\n    }\n}\n\nstruct ContentView: View {\n    @Binding var document: TextDocument\n\n    var body: some View {\n        TextEditor(text: $document.text)\n            .padding()\n    }\n}\n"
+    }
+  },
+  {
+    "id": "ios-keyboard-extension",
+    "name": "iOS Custom Keyboard",
+    "category": "Apple Platforms",
+    "icon": "keyboard",
+    "language": "Swift",
+    "badge": "Keyboard",
+    "description": "System-wide custom input keyboard extension with layout engine and key popups.",
+    "defaultProjectName": "MyCustomKeyboard",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nCustom keyboard extension for iOS.\n",
+      "Sources/KeyboardViewController.swift": "import UIKit\n\nclass KeyboardViewController: UIInputViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        let button = UIButton(type: .system)\n        button.setTitle(\"CodeEdit Key\", for: .normal)\n        button.addTarget(self, action: #selector(didTapKey), for: .touchUpInside)\n        view.addSubview(button)\n        button.frame = CGRect(x: 20, y: 20, width: 140, height: 44)\n    }\n\n    @objc func didTapKey() {\n        textDocumentProxy.insertText(\"{{PROJECT_NAME}} \")\n    }\n}\n"
+    }
+  },
+  {
     "id": "ios-swiftui-app",
     "name": "iOS App (SwiftUI)",
     "category": "Apple Platforms",
@@ -305,6 +616,20 @@
       "README.md": "# {{PROJECT_NAME}}\n\nProgrammatic UIKit iOS application.\n",
       "Sources/MainViewController.swift": "import UIKit\n\nfinal class MainViewController: UIViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        title = \"{{PROJECT_NAME}}\"\n        view.backgroundColor = .systemBackground\n\n        let label = UILabel()\n        label.text = \"Hello from UIKit!\"\n        label.font = .systemFont(ofSize: 24, weight: .bold)\n        label.translatesAutoresizingMaskIntoConstraints = false\n\n        view.addSubview(label)\n        NSLayoutConstraint.activate([\n            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),\n            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)\n        ])\n    }\n}\n",
       "Sources/AppDelegate.swift": "import UIKit\n\n@main\nclass AppDelegate: UIResponder, UIApplicationDelegate {\n    var window: UIWindow?\n\n    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {\n        window = UIWindow(frame: UIScreen.main.bounds)\n        let viewController = MainViewController()\n        let navigationController = UINavigationController(rootViewController: viewController)\n        window?.rootViewController = navigationController\n        window?.makeKeyAndVisible()\n        return true\n    }\n}\n"
+    }
+  },
+  {
+    "id": "ios-widgetkit-extension",
+    "name": "iOS WidgetKit Extension",
+    "category": "Apple Platforms",
+    "icon": "rectangle.split.2x1",
+    "language": "Swift",
+    "badge": "WidgetKit",
+    "description": "Lock Screen and Home Screen dynamic widgets built with WidgetKit and SwiftUI.",
+    "defaultProjectName": "MyWidgetApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nWidgetKit extension for iOS and macOS.\n",
+      "Widget/{{PROJECT_NAME}}Widget.swift": "import WidgetKit\nimport SwiftUI\n\nstruct SimpleEntry: TimelineEntry {\n    let date: Date\n    let value: String\n}\n\nstruct Provider: TimelineProvider {\n    func placeholder(in context: Context) -> SimpleEntry {\n        SimpleEntry(date: Date(), value: \"{{PROJECT_NAME}}\")\n    }\n\n    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {\n        completion(SimpleEntry(date: Date(), value: \"Active\"))\n    }\n\n    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {\n        let entry = SimpleEntry(date: Date(), value: \"Updated\")\n        let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(3600)))\n        completion(timeline)\n    }\n}\n\nstruct WidgetEntryView: View {\n    var entry: Provider.Entry\n\n    var body: some View {\n        VStack(alignment: .leading, spacing: 6) {\n            Text(\"{{PROJECT_NAME}}\")\n                .font(.caption)\n                .bold()\n            Text(entry.value)\n                .font(.title3)\n        }\n        .padding()\n    }\n}\n\n@main\nstruct {{PROJECT_NAME}}WidgetBundle: WidgetBundle {\n    var body: some Widget {\n        {{PROJECT_NAME}}Widget()\n    }\n}\n\nstruct {{PROJECT_NAME}}Widget: Widget {\n    let kind: String = \"{{PROJECT_NAME}}Widget\"\n\n    var body: some WidgetConfiguration {\n        StaticConfiguration(kind: kind, provider: Provider()) { entry in\n            WidgetEntryView(entry: entry)\n        }\n        .configurationDisplayName(\"{{PROJECT_NAME}} Widget\")\n        .description(\"{{APP_DESCRIPTION}}\")\n        .supportedFamilies([.systemSmall, .systemMedium])\n    }\n}\n"
     }
   },
   {
@@ -370,6 +695,37 @@
     }
   },
   {
+    "id": "macos-quicklook-preview",
+    "name": "Quick Look Preview Extension",
+    "category": "Apple Platforms",
+    "icon": "eye",
+    "language": "Swift",
+    "badge": "QuickLook",
+    "description": "QuickLook preview provider extension for rendering custom file formats on macOS.",
+    "defaultProjectName": "MyQuickLookPreview",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nQuick Look Preview Extension.\n",
+      "Sources/PreviewViewController.swift": "import Cocoa\nimport Quartz\n\nclass PreviewViewController: NSViewController, QLPreviewingController {\n    override func loadView() {\n        let label = NSTextField(labelWithString: \"QuickLook Preview for {{PROJECT_NAME}}\")\n        label.alignment = .center\n        self.view = label\n    }\n\n    func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {\n        handler(nil)\n    }\n}\n"
+    }
+  },
+  {
+    "id": "macos-safari-extension",
+    "name": "Safari Web Extension",
+    "category": "Apple Platforms",
+    "icon": "safari",
+    "language": "Swift",
+    "badge": "Safari",
+    "description": "macOS Safari Web Extension with native app container, content script, and popup.",
+    "defaultProjectName": "MySafariExtension",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nSafari Web Extension for macOS.\n",
+      "Package.swift": "// swift-tools-version: 5.9\nimport PackageDescription\n\nlet package = Package(\n    name: \"{{PROJECT_NAME}}\",\n    platforms: [.macOS(.v13)],\n    targets: [\n        .executableTarget(name: \"{{PROJECT_NAME}}\", path: \"Sources\")\n    ]\n)\n",
+      "Resources/popup.html": "<!DOCTYPE html>\n<html>\n<head><meta charset=\"utf-8\"><title>{{PROJECT_NAME}}</title></head>\n<body style=\"width:200px;font-family:system-ui;padding:12px;\">\n  <h3>{{PROJECT_NAME}}</h3>\n  <p>Extension is active.</p>\n</body>\n</html>\n",
+      "Resources/manifest.json": "{\n  \"manifest_version\": 3,\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"version\": \"{{APP_VERSION}}\",\n  \"description\": \"{{APP_DESCRIPTION}}\",\n  \"permissions\": [\"activeTab\"],\n  \"action\": {\n    \"default_popup\": \"popup.html\"\n  }\n}\n",
+      "Sources/App.swift": "import SwiftUI\n\n@main\nstruct SafariExtensionApp: App {\n    var body: some Scene {\n        WindowGroup {\n            VStack(spacing: 16) {\n                Image(systemName: \"safari\")\n                    .font(.system(size: 48))\n                    .foregroundColor(.blue)\n                Text(\"{{PROJECT_NAME}}\")\n                    .font(.headline)\n                Text(\"Manage your Safari Extension settings.\")\n                    .foregroundColor(.secondary)\n            }\n            .padding()\n            .frame(width: 320, height: 200)\n        }\n    }\n}\n"
+    }
+  },
+  {
     "id": "macos-swiftui-app",
     "name": "macOS App (SwiftUI)",
     "category": "Apple Platforms",
@@ -399,6 +755,49 @@
       "Package.swift": "// swift-tools-version: 5.9\nimport PackageDescription\n\nlet package = Package(\n    name: \"{{PROJECT_NAME}}\",\n    platforms: [\n        .macOS(.v13),\n        .iOS(.v16),\n        .watchOS(.v9),\n        .tvOS(.v16),\n        .visionOS(.v1)\n    ],\n    products: [\n        .library(name: \"{{PROJECT_NAME}}\", targets: [\"{{PROJECT_NAME}}\"])\n    ],\n    targets: [\n        .target(name: \"{{PROJECT_NAME}}\", dependencies: []),\n        .testTarget(name: \"{{PROJECT_NAME}}Tests\", dependencies: [\"{{PROJECT_NAME}}\"])\n    ]\n)\n",
       "Tests/{{PROJECT_NAME}}Tests/{{PROJECT_NAME}}Tests.swift": "import XCTest\n@testable import {{PROJECT_NAME}}\n\nfinal class {{PROJECT_NAME}}Tests: XCTestCase {\n    func testGreet() {\n        let pkg = {{PROJECT_NAME}}()\n        XCTAssertEqual(pkg.greet(\"Antigravity\"), \"Hello, Antigravity from {{PROJECT_NAME}}!\")\n    }\n}\n",
       "Sources/{{PROJECT_NAME}}/{{PROJECT_NAME}}.swift": "import Foundation\n\npublic struct {{PROJECT_NAME}} {\n    public private(set) var version = \"1.0.0\"\n\n    public init() {}\n\n    public func greet(_ recipient: String) -> String {\n        \"Hello, \\(recipient) from {{PROJECT_NAME}}!\"\n    }\n}\n"
+    }
+  },
+  {
+    "id": "multiplatform-swiftdata-app",
+    "name": "Multiplatform SwiftData App",
+    "category": "Apple Platforms",
+    "icon": "cylinder.split.1x2",
+    "language": "Swift",
+    "badge": "SwiftData",
+    "description": "Multiplatform app powered by modern SwiftData declarative model container and queries.",
+    "defaultProjectName": "MySwiftDataApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nSwiftData multiplatform application.\n",
+      "App/SwiftDataApp.swift": "import SwiftUI\nimport SwiftData\n\n@Model\nfinal class Item {\n    var timestamp: Date\n    var title: String\n\n    init(title: String, timestamp: Date = .now) {\n        self.title = title\n        self.timestamp = timestamp\n    }\n}\n\n@main\nstruct SwiftDataApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n        .modelContainer(for: Item.self)\n    }\n}\n\nstruct ContentView: View {\n    @Environment(\\.modelContext) private var modelContext\n    @Query private var items: [Item]\n\n    var body: some View {\n        NavigationStack {\n            List {\n                ForEach(items) { item in\n                    Text(item.title)\n                }\n            }\n            .navigationTitle(\"{{PROJECT_NAME}}\")\n            .toolbar {\n                Button(\"Add\") {\n                    modelContext.insert(Item(title: \"Task #\\(items.count + 1)\"))\n                }\n            }\n        }\n    }\n}\n"
+    }
+  },
+  {
+    "id": "nim-cli-app",
+    "name": "Nim Systems CLI Tool",
+    "category": "Systems & C/C++",
+    "icon": "chevron.left.forwardslash.chevron.right",
+    "language": "Nim",
+    "badge": "Nim",
+    "description": "Expressive, efficient systems programming language that compiles to C and C++.",
+    "defaultProjectName": "MyNimTool",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nNim systems CLI project.\n",
+      "src/main.nim": "import os, strformat\n\nproc main() =\n  echo &\"Welcome to {{PROJECT_NAME}} in Nim!\"\n  echo &\"Command line arguments: {paramCount()}\"\n\nwhen isMainModule:\n  main()\n"
+    }
+  },
+  {
+    "id": "python-celery-worker",
+    "name": "FastAPI + Celery Worker",
+    "category": "Python & Data Science",
+    "icon": "arrow.triangle.pull",
+    "language": "Python",
+    "badge": "Celery",
+    "description": "Asynchronous background task processing pipeline with Redis broker and Celery workers.",
+    "defaultProjectName": "MyTaskWorker",
+    "files": {
+      "worker.py": "from celery import Celery\n\napp = Celery('tasks', broker='redis://localhost:6379/0')\n\n@app.task\ndef process_data(item_id: int):\n    return f\"Processed item {item_id} in {{PROJECT_NAME}}\"\n",
+      "requirements.txt": "celery>=5.3.0\nredis>=5.0.0\nfastapi>=0.109.0\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nCelery distributed task worker.\n"
     }
   },
   {
@@ -432,6 +831,21 @@
     }
   },
   {
+    "id": "python-langchain-agent",
+    "name": "LangChain AI ReAct Agent",
+    "category": "Python & Data Science",
+    "icon": "brain.head.profile",
+    "language": "Python",
+    "badge": "LangChain",
+    "description": "Multi-step reasoning AI agent with tool usage, memory buffers, and LLM integrations.",
+    "defaultProjectName": "MyLangChainAgent",
+    "files": {
+      "requirements.txt": "langchain>=0.1.0\nlangchain-community>=0.0.10\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nLangChain AI agent starter.\n",
+      "agent.py": "print(\"Initializing {{PROJECT_NAME}} LangChain agent...\")\n# LangChain agent pipeline definition\n"
+    }
+  },
+  {
     "id": "python-package-poetry",
     "name": "Python Modern Package",
     "category": "Python & Data Science",
@@ -445,6 +859,21 @@
       "README.md": "# {{PROJECT_NAME}}\n\nPython modern package.\n",
       "tests/test_core.py": "from src import compute\n\ndef test_compute():\n    assert compute(2, 3) == 5\n",
       "src/__init__.py": "def compute(a: int, b: int) -> int:\n    return a + b\n"
+    }
+  },
+  {
+    "id": "python-polars-analytics",
+    "name": "Polars High-Speed Analytics",
+    "category": "Python & Data Science",
+    "icon": "chart.line.uptrend.xyaxis",
+    "language": "Python",
+    "badge": "Polars",
+    "description": "Blazingly fast multi-threaded DataFrame engine written in Rust for Big Data in Python.",
+    "defaultProjectName": "MyPolarsAnalytics",
+    "files": {
+      "requirements.txt": "polars>=0.20.0\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nPolars DataFrame analytics project.\n",
+      "analytics.py": "import polars as pl\n\nprint(\"Running {{PROJECT_NAME}} Polars analytics query...\")\ndf = pl.DataFrame({\n    \"category\": [\"A\", \"B\", \"A\", \"B\", \"C\"],\n    \"revenue\": [100, 200, 150, 250, 300]\n})\nsummary = df.group_by(\"category\").sum()\nprint(summary)\n"
     }
   },
   {
@@ -463,6 +892,21 @@
     }
   },
   {
+    "id": "python-pyside6-gui",
+    "name": "PySide6 / PyQt Desktop App",
+    "category": "Python & Data Science",
+    "icon": "macwindow.badge.plus",
+    "language": "Python",
+    "badge": "PySide6",
+    "description": "Native cross-platform Qt desktop GUI application using modern Python and PySide6.",
+    "defaultProjectName": "MyQtApp",
+    "files": {
+      "requirements.txt": "PySide6>=6.6.0\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nPySide6 Qt desktop application.\n",
+      "main.py": "import sys\nfrom PySide6.QtWidgets import QApplication, QLabel, QMainWindow\n\nclass MainWindow(QMainWindow):\n    def __init__(self):\n        super().__init__()\n        self.setWindowTitle(\"{{PROJECT_NAME}}\")\n        self.setCentralWidget(QLabel(\"Hello from {{PROJECT_NAME}} in PySide6!\"))\n\nif __name__ == \"__main__\":\n    app = QApplication(sys.argv)\n    window = MainWindow()\n    window.resize(400, 250)\n    window.show()\n    sys.exit(app.exec())\n"
+    }
+  },
+  {
     "id": "python-pytorch-starter",
     "name": "PyTorch Deep Learning Model",
     "category": "Python & Data Science",
@@ -476,6 +920,21 @@
       "model.py": "import torch\nimport torch.nn as nn\n\nclass SimpleClassifier(nn.Module):\n    def __init__(self, input_dim: int = 10, num_classes: int = 2):\n        super().__init__()\n        self.net = nn.Sequential(\n            nn.Linear(input_dim, 32),\n            nn.ReLU(),\n            nn.Linear(32, num_classes)\n        )\n\n    def forward(self, x: torch.Tensor) -> torch.Tensor:\n        return self.net(x)\n",
       "README.md": "# {{PROJECT_NAME}}\n\nPyTorch neural network model.\n",
       "train.py": "import torch\nfrom model import SimpleClassifier\n\ndef train():\n    print(\"Training {{PROJECT_NAME}} classifier...\")\n    model = SimpleClassifier()\n    x = torch.randn(16, 10)\n    out = model(x)\n    print(\"Output shape:\", out.shape)\n\nif __name__ == \"__main__\":\n    train()\n"
+    }
+  },
+  {
+    "id": "python-rag-llamaindex",
+    "name": "LlamaIndex Document RAG",
+    "category": "Python & Data Science",
+    "icon": "doc.text.magnifyingglass",
+    "language": "Python",
+    "badge": "LlamaIndex",
+    "description": "Retrieval Augmented Generation (RAG) vector index pipeline over PDFs and markdown documents.",
+    "defaultProjectName": "MyRAGPipeline",
+    "files": {
+      "requirements.txt": "llama-index>=0.10.0\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nLlamaIndex RAG query engine.\n",
+      "rag.py": "print(\"Starting {{PROJECT_NAME}} LlamaIndex RAG pipeline...\")\n"
     }
   },
   {
@@ -506,6 +965,21 @@
       "requirements.txt": "streamlit>=1.31.0\npandas>=2.2.0\n",
       "README.md": "# {{PROJECT_NAME}}\n\nStreamlit interactive analytics dashboard.\n\n```bash\nstreamlit run app.py\n```\n",
       "app.py": "import streamlit as st\nimport pandas as pd\nimport numpy as np\n\nst.set_page_config(page_title=\"{{PROJECT_NAME}}\", layout=\"wide\")\n\nst.title(\"\ud83d\udcca {{PROJECT_NAME}} Dashboard\")\nst.write(\"Interactive analytics powered by Streamlit.\")\n\ncol1, col2 = st.columns(2)\nwith col1:\n    st.metric(label=\"Active Users\", value=\"1,245\", delta=\"+12%\")\nwith col2:\n    st.metric(label=\"Server Latency\", value=\"42ms\", delta=\"-5ms\")\n\nchart_data = pd.DataFrame(\n    np.random.randn(20, 3),\n    columns=['Metric A', 'Metric B', 'Metric C']\n)\nst.line_chart(chart_data)\n"
+    }
+  },
+  {
+    "id": "python-transformers-pipeline",
+    "name": "HuggingFace Transformers",
+    "category": "Python & Data Science",
+    "icon": "waveform.path",
+    "language": "Python",
+    "badge": "Transformers",
+    "description": "Natural language processing pipeline with pretrained PyTorch/HuggingFace transformer models.",
+    "defaultProjectName": "MyTransformersNLP",
+    "files": {
+      "requirements.txt": "transformers>=4.37.0\ntorch>=2.2.0\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nHuggingFace Transformers NLP pipeline.\n",
+      "pipeline.py": "print(\"Loading {{PROJECT_NAME}} transformer model pipeline...\")\n"
     }
   },
   {
@@ -555,6 +1029,21 @@
     }
   },
   {
+    "id": "rust-wasm-pack",
+    "name": "Rust WebAssembly (wasm-pack)",
+    "category": "Systems & C/C++",
+    "icon": "puzzlepiece.extension",
+    "language": "Rust",
+    "badge": "Wasm",
+    "description": "Compile Rust libraries to NPM packages with wasm-pack and wasm-bindgen.",
+    "defaultProjectName": "MyWasmLib",
+    "files": {
+      "Cargo.toml": "[package]\nname = \"{{PROJECT_NAME}}\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[lib]\ncrate-type = [\"cdylib\", \"rlib\"]\n\n[dependencies]\nwasm-bindgen = \"0.2\"\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nRust WebAssembly library crate.\n",
+      "src/lib.rs": "use wasm_bindgen::prelude::*;\n\n#[wasm_bindgen]\npub fn greet_name(name: &str) -> String {\n    format!(\"Hello, {}! Powered by {{PROJECT_NAME}} WebAssembly.\", name)\n}\n"
+    }
+  },
+  {
     "id": "shell-bash-automation",
     "name": "Bash Automation Suite",
     "category": "Desktop & Tooling",
@@ -599,6 +1088,20 @@
     }
   },
   {
+    "id": "tvos-video-player",
+    "name": "tvOS Streaming Video Player",
+    "category": "Apple Platforms",
+    "icon": "play.tv",
+    "language": "Swift",
+    "badge": "tvOS",
+    "description": "Apple TV HLS streaming video player with AVPlayerViewController and playback controls.",
+    "defaultProjectName": "MyTVPlayer",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\ntvOS streaming video player.\n",
+      "App/PlayerApp.swift": "import SwiftUI\nimport AVKit\n\n@main\nstruct PlayerApp: App {\n    var body: some Scene {\n        WindowGroup {\n            VStack {\n                Text(\"{{PROJECT_NAME}} Player\")\n                    .font(.largeTitle)\n                VideoPlayer(player: AVPlayer(url: URL(string: \"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4\")!))\n                    .frame(height: 540)\n            }\n        }\n    }\n}\n"
+    }
+  },
+  {
     "id": "visionos-spatial-app",
     "name": "visionOS Spatial App",
     "category": "Apple Platforms",
@@ -614,6 +1117,20 @@
     }
   },
   {
+    "id": "watchos-complication-widget",
+    "name": "watchOS Complication Widget",
+    "category": "Apple Platforms",
+    "icon": "sparkle",
+    "language": "Swift",
+    "badge": "watchOS",
+    "description": "Modular watch face circular, corner, and rectangular complications with WidgetKit.",
+    "defaultProjectName": "MyWatchComplication",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nwatchOS Complication project.\n",
+      "Watch/Complication.swift": "import WidgetKit\nimport SwiftUI\n\nstruct ComplicationView: View {\n    @Environment(\\.widgetFamily) var family\n\n    var body: some View {\n        switch family {\n        case .accessoryCircular:\n            Gauge(value: 0.75) {\n                Image(systemName: \"bolt.fill\")\n            }\n            .gaugeStyle(.accessoryCircularCapacity)\n        default:\n            Text(\"{{PROJECT_NAME}}\")\n        }\n    }\n}\n"
+    }
+  },
+  {
     "id": "watchos-swiftui-app",
     "name": "watchOS App (SwiftUI)",
     "category": "Apple Platforms",
@@ -626,6 +1143,20 @@
       "README.md": "# {{PROJECT_NAME}}\n\nwatchOS standalone SwiftUI app.\n",
       "WatchApp/{{PROJECT_NAME}}App.swift": "import SwiftUI\n\n@main\nstruct {{PROJECT_NAME}}WatchApp: App {\n    var body: some Scene {\n        WindowGroup {\n            ContentView()\n        }\n    }\n}\n",
       "WatchApp/ContentView.swift": "import SwiftUI\n\nstruct ContentView: View {\n    @State private var counter = 0\n\n    var body: some View {\n        ScrollView {\n            VStack(spacing: 12) {\n                Image(systemName: \"applewatch\")\n                    .font(.title)\n                    .foregroundColor(.green)\n                Text(\"{{PROJECT_NAME}}\")\n                    .font(.headline)\n                Button(\"Count: \\(counter)\") {\n                    counter += 1\n                }\n                .buttonStyle(.borderedProminent)\n            }\n            .padding()\n        }\n    }\n}\n"
+    }
+  },
+  {
+    "id": "web-alpine-tailwind",
+    "name": "Alpine.js + Tailwind App",
+    "category": "Web Development",
+    "icon": "mountain.2",
+    "language": "JavaScript",
+    "badge": "Alpine",
+    "description": "Declarative reactive UI without build steps using Alpine.js and Tailwind CSS.",
+    "defaultProjectName": "MyAlpineApp",
+    "files": {
+      "index.html": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <title>{{PROJECT_NAME}}</title>\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n  <script defer src=\"https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js\"></script>\n</head>\n<body class=\"bg-slate-800 text-white flex items-center justify-center min-h-screen\">\n  <div x-data=\"{ count: 0 }\" class=\"text-center\">\n    <h1 class=\"text-3xl font-bold mb-4\">{{PROJECT_NAME}}</h1>\n    <button @click=\"count++\" class=\"bg-emerald-500 px-4 py-2 rounded font-bold\" x-text=\"'Clicks: ' + count\"></button>\n  </div>\n</body>\n</html>\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nAlpine.js and Tailwind project.\n"
     }
   },
   {
@@ -659,6 +1190,36 @@
     }
   },
   {
+    "id": "web-eleventy-blog",
+    "name": "Eleventy (11ty) Static Blog",
+    "category": "Web Development",
+    "icon": "newspaper",
+    "language": "Markdown",
+    "badge": "11ty",
+    "description": "Simple, lightweight static markdown blog engine with zero client-side JavaScript overhead.",
+    "defaultProjectName": "My11tyBlog",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nEleventy static site blog.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"start\": \"eleventy --serve\", \"build\": \"eleventy\" },\n  \"devDependencies\": { \"@11ty/eleventy\": \"^2.0.1\" }\n}\n",
+      "index.md": "---\ntitle: {{PROJECT_NAME}}\n---\n# Welcome to {{PROJECT_NAME}}\n\nThis is a clean markdown-based blog powered by Eleventy.\n"
+    }
+  },
+  {
+    "id": "web-lit-component",
+    "name": "Lit Web Components",
+    "category": "Web Development",
+    "icon": "puzzlepiece",
+    "language": "TypeScript",
+    "badge": "Lit",
+    "description": "Standard W3C Custom Elements and Web Components built with Lit and reactive state.",
+    "defaultProjectName": "MyLitLibrary",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nLit Web Components starter.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"dev\": \"vite\", \"build\": \"tsc\" },\n  \"dependencies\": { \"lit\": \"^3.1.1\" },\n  \"devDependencies\": { \"typescript\": \"^5.3.3\", \"vite\": \"^5.1.0\" }\n}\n",
+      "src/my-element.ts": "import { LitElement, html, css } from 'lit';\nimport { customElement, property } from 'lit/decorators.js';\n\n@customElement('my-element')\nexport class MyElement extends LitElement {\n  @property() name = '{{PROJECT_NAME}}';\n  static styles = css`p { color: #0284c7; font-family: sans-serif; }`;\n  render() { return html`<p>Hello from &lt;${this.name}&gt; custom element!</p>`; }\n}\n"
+    }
+  },
+  {
     "id": "web-nextjs-app",
     "name": "Next.js App Router (TypeScript)",
     "category": "Web Development",
@@ -672,6 +1233,66 @@
       "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\"\n  },\n  \"dependencies\": {\n    \"next\": \"14.1.0\",\n    \"react\": \"^18.2.0\",\n    \"react-dom\": \"^18.2.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20.11.16\",\n    \"@types/react\": \"^18.2.52\",\n    \"@types/react-dom\": \"^18.2.18\",\n    \"typescript\": \"^5.3.3\"\n  }\n}\n",
       "src/app/layout.tsx": "import type { Metadata } from 'next'\n\nexport const metadata: Metadata = {\n  title: '{{PROJECT_NAME}}',\n  description: 'Generated with CodeEdit',\n}\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body style={{ margin: 0, fontFamily: 'sans-serif' }}>{children}</body>\n    </html>\n  )\n}\n",
       "src/app/page.tsx": "export default function Home() {\n  return (\n    <main style={{ padding: '4rem', textAlign: 'center' }}>\n      <h1>Welcome to {{PROJECT_NAME}}</h1>\n      <p>Built with Next.js App Router</p>\n    </main>\n  )\n}\n"
+    }
+  },
+  {
+    "id": "web-nextjs-ecommerce",
+    "name": "Next.js E-Commerce Starter",
+    "category": "Web Development",
+    "icon": "cart",
+    "language": "TypeScript",
+    "badge": "Next.js",
+    "description": "Fullstack online store with product catalog, cart state, and checkout structure.",
+    "defaultProjectName": "MyStore",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nNext.js E-Commerce Starter.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": {\n    \"next\": \"14.1.0\",\n    \"react\": \"^18.2.0\",\n    \"react-dom\": \"^18.2.0\"\n  },\n  \"scripts\": { \"dev\": \"next dev\", \"build\": \"next build\" }\n}\n",
+      "src/app/page.tsx": "export default function StoreHome() {\n  const products = [\n    { id: 1, name: \"Mechanical Keyboard\", price: \"$120\" },\n    { id: 2, name: \"Ergonomic Mouse\", price: \"$85\" },\n    { id: 3, name: \"4K Monitor\", price: \"$350\" }\n  ];\n  return (\n    <main style={{ padding: \"2rem\", fontFamily: \"system-ui\" }}>\n      <h1>{{PROJECT_NAME}} Store</h1>\n      <ul>\n        {products.map(p => (\n          <li key={p.id}>{p.name} - {p.price}</li>\n        ))}\n      </ul>\n    </main>\n  );\n}\n"
+    }
+  },
+  {
+    "id": "web-nuxt3-vue",
+    "name": "Nuxt 3 Full-Stack Vue",
+    "category": "Web Development",
+    "icon": "triangle",
+    "language": "TypeScript",
+    "badge": "Nuxt",
+    "description": "Intuitive Vue 3 framework with file-based routing, auto-imports, and Nitro engine.",
+    "defaultProjectName": "MyNuxtApp",
+    "files": {
+      "app.vue": "<template>\n  <div style=\"font-family: system-ui; text-align: center; padding: 3rem;\">\n    <h1>{{PROJECT_NAME}}</h1>\n    <p>Nuxt 3 Full-Stack App</p>\n  </div>\n</template>\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nNuxt 3 Vue framework project.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"dev\": \"nuxt dev\", \"build\": \"nuxt build\" },\n  \"devDependencies\": { \"nuxt\": \"^3.10.0\" }\n}\n"
+    }
+  },
+  {
+    "id": "web-preact-vite",
+    "name": "Preact + Vite (3KB React)",
+    "category": "Web Development",
+    "icon": "speedometer",
+    "language": "TypeScript",
+    "badge": "Preact",
+    "description": "Ultra-lightweight 3KB alternative to React with identical modern component model.",
+    "defaultProjectName": "MyPreactApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nPreact lightweight application.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"dev\": \"vite\", \"build\": \"vite build\" },\n  \"dependencies\": { \"preact\": \"^10.19.3\" },\n  \"devDependencies\": { \"@preact/preset-vite\": \"^2.8.1\", \"vite\": \"^5.1.0\" }\n}\n",
+      "src/index.tsx": "import { render } from 'preact';\nimport { useState } from 'preact/hooks';\n\nexport function App() {\n  const [val, setVal] = useState(0);\n  return (\n    <div style={{ textAlign: \"center\", padding: \"2rem\", fontFamily: \"sans-serif\" }}>\n      <h1>{{PROJECT_NAME}}</h1>\n      <button onClick={() => setVal(v => v + 1)}>Preact Clicks: {val}</button>\n    </div>\n  );\n}\n\nrender(<App />, document.getElementById('app')!);\n"
+    }
+  },
+  {
+    "id": "web-qwik-city",
+    "name": "Qwik City Resumable App",
+    "category": "Web Development",
+    "icon": "bolt.badge.clock",
+    "language": "TypeScript",
+    "badge": "Qwik",
+    "description": "Zero-hydration resumable web framework for instant loading web applications.",
+    "defaultProjectName": "MyQwikApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nQwik City app.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"scripts\": { \"dev\": \"vite\", \"build\": \"qwik build\" },\n  \"dependencies\": {\n    \"@builder.io/qwik\": \"^1.4.3\",\n    \"@builder.io/qwik-city\": \"^1.4.3\"\n  }\n}\n",
+      "src/routes/index.tsx": "import { component$, useSignal } from '@builder.io/qwik';\n\nexport default component$(() => {\n  const count = useSignal(0);\n  return (\n    <main style={{ padding: \"2rem\", fontFamily: \"sans-serif\" }}>\n      <h1>{{PROJECT_NAME}}</h1>\n      <p>Resumable Qwik App</p>\n      <button onClick$={() => count.value++}>Count: {count.value}</button>\n    </main>\n  );\n});\n"
     }
   },
   {
@@ -713,6 +1334,21 @@
     }
   },
   {
+    "id": "web-remix-run-app",
+    "name": "Remix Fullstack App",
+    "category": "Web Development",
+    "icon": "arrow.triangle.2.circlepath",
+    "language": "TypeScript",
+    "badge": "Remix",
+    "description": "Modern full-stack web application with Remix loaders, actions, and nested routing.",
+    "defaultProjectName": "MyRemixApp",
+    "files": {
+      "README.md": "# {{PROJECT_NAME}}\n\nRemix fullstack application.\n",
+      "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"private\": true,\n  \"sideEffects\": false,\n  \"scripts\": {\n    \"dev\": \"remix dev\",\n    \"build\": \"remix build\"\n  },\n  \"dependencies\": {\n    \"@remix-run/node\": \"^2.6.0\",\n    \"@remix-run/react\": \"^2.6.0\",\n    \"react\": \"^18.2.0\",\n    \"react-dom\": \"^18.2.0\"\n  }\n}\n",
+      "app/root.tsx": "import { Links, Meta, Outlet, Scripts } from \"@remix-run/react\";\n\nexport default function Root() {\n  return (\n    <html lang=\"en\">\n      <head><Meta /><Links /></head>\n      <body style={{ fontFamily: \"system-ui\", padding: \"2rem\" }}>\n        <h1>Welcome to {{PROJECT_NAME}}</h1>\n        <Outlet />\n        <Scripts />\n      </body>\n    </html>\n  );\n}\n"
+    }
+  },
+  {
     "id": "web-solidjs-vite",
     "name": "SolidJS + Vite + TypeScript",
     "category": "Web Development",
@@ -740,6 +1376,20 @@
       "README.md": "# {{PROJECT_NAME}}\n\nSvelte + Vite template.\n",
       "package.json": "{\n  \"name\": \"{{PROJECT_NAME}}\",\n  \"private\": true,\n  \"version\": \"0.1.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"vite build\"\n  },\n  \"devDependencies\": {\n    \"@sveltejs/vite-plugin-svelte\": \"^3.0.1\",\n    \"svelte\": \"^4.2.9\",\n    \"typescript\": \"^5.2.2\",\n    \"vite\": \"^5.1.0\"\n  }\n}\n",
       "src/App.svelte": "<script lang=\"ts\">\n  let count: number = 0;\n  function increment() { count += 1; }\n</script>\n\n<main>\n  <h1>{{PROJECT_NAME}}</h1>\n  <button on:click={increment}>Count: {count}</button>\n</main>\n\n<style>\n  main { text-align: center; padding: 3rem; font-family: sans-serif; }\n  button { padding: 8px 16px; border-radius: 6px; cursor: pointer; }\n</style>\n"
+    }
+  },
+  {
+    "id": "web-tailwind-landing",
+    "name": "Tailwind CSS Landing Page",
+    "category": "Web Development",
+    "icon": "wind",
+    "language": "HTML/CSS",
+    "badge": "Tailwind",
+    "description": "Responsive landing page with Tailwind CSS utility styling and dark mode.",
+    "defaultProjectName": "MyLandingPage",
+    "files": {
+      "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>{{PROJECT_NAME}}</title>\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n</head>\n<body class=\"bg-gray-900 text-white min-h-screen flex items-center justify-center\">\n  <div class=\"text-center p-8 max-w-xl\">\n    <h1 class=\"text-5xl font-extrabold mb-4\">{{PROJECT_NAME}}</h1>\n    <p class=\"text-gray-400 mb-8\">{{APP_DESCRIPTION}}</p>\n    <button class=\"bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-lg font-semibold\">\n      Get Started\n    </button>\n  </div>\n</body>\n</html>\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nTailwind CSS landing page.\n"
     }
   },
   {
@@ -774,6 +1424,21 @@
       "vite.config.ts": "import { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()],\n})\n",
       "src/App.vue": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nconst count = ref(0)\n</script>\n\n<template>\n  <main class=\"container\">\n    <h1>{{PROJECT_NAME}}</h1>\n    <p>Vue 3 + Vite + TypeScript Starter</p>\n    <button @click=\"count++\">Count is {{ count }}</button>\n  </main>\n</template>\n\n<style scoped>\n.container {\n  text-align: center;\n  font-family: sans-serif;\n  margin-top: 4rem;\n}\nbutton {\n  padding: 0.5rem 1rem;\n  border-radius: 6px;\n  cursor: pointer;\n}\n</style>\n",
       "src/main.ts": "import { createApp } from 'vue'\nimport App from './App.vue'\n\ncreateApp(App).mount('#app')\n"
+    }
+  },
+  {
+    "id": "web-wasm-rust-canvas",
+    "name": "WebAssembly Rust Canvas",
+    "category": "Web Development",
+    "icon": "wand.and.stars",
+    "language": "Rust",
+    "badge": "Wasm",
+    "description": "High performance Rust compiled to WebAssembly driving an HTML5 60FPS canvas.",
+    "defaultProjectName": "MyWasmCanvas",
+    "files": {
+      "Cargo.toml": "[package]\nname = \"{{PROJECT_NAME}}\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[lib]\ncrate-type = [\"cdylib\"]\n\n[dependencies]\nwasm-bindgen = \"0.2\"\nweb-sys = { version = \"0.3\", features = [\"CanvasRenderingContext2d\"] }\n",
+      "README.md": "# {{PROJECT_NAME}}\n\nRust WebAssembly canvas project.\n",
+      "src/lib.rs": "use wasm_bindgen::prelude::*;\n\n#[wasm_bindgen]\npub fn render_frame(time: f64) -> f64 {\n    time.sin()\n}\n"
     }
   },
   {

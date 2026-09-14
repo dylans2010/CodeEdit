@@ -1,0 +1,15 @@
+{
+  "id": "cpp-opengl-3d",
+  "name": "C++ OpenGL 3D Engine",
+  "category": "Systems & C/C++",
+  "icon": "cube.transparent",
+  "language": "C++",
+  "badge": "OpenGL",
+  "description": "Modern OpenGL 3.3 pipeline with GLFW window creation, GLAD loader, and shaders.",
+  "defaultProjectName": "MyOpenGLApp",
+  "files": [
+    "CMakeLists.txt",
+    "src/main.cpp",
+    "README.md"
+  ]
+}

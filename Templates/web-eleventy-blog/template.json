@@ -1,0 +1,15 @@
+{
+  "id": "web-eleventy-blog",
+  "name": "Eleventy (11ty) Static Blog",
+  "category": "Web Development",
+  "icon": "newspaper",
+  "language": "Markdown",
+  "badge": "11ty",
+  "description": "Simple, lightweight static markdown blog engine with zero client-side JavaScript overhead.",
+  "defaultProjectName": "My11tyBlog",
+  "files": [
+    "package.json",
+    "index.md",
+    "README.md"
+  ]
+}

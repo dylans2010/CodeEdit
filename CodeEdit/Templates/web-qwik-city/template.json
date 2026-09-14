@@ -1,0 +1,15 @@
+{
+  "id": "web-qwik-city",
+  "name": "Qwik City Resumable App",
+  "category": "Web Development",
+  "icon": "bolt.badge.clock",
+  "language": "TypeScript",
+  "badge": "Qwik",
+  "description": "Zero-hydration resumable web framework for instant loading web applications.",
+  "defaultProjectName": "MyQwikApp",
+  "files": [
+    "package.json",
+    "src/routes/index.tsx",
+    "README.md"
+  ]
+}

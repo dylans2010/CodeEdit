@@ -1,0 +1,14 @@
+{
+  "id": "ios-keyboard-extension",
+  "name": "iOS Custom Keyboard",
+  "category": "Apple Platforms",
+  "icon": "keyboard",
+  "language": "Swift",
+  "badge": "Keyboard",
+  "description": "System-wide custom input keyboard extension with layout engine and key popups.",
+  "defaultProjectName": "MyCustomKeyboard",
+  "files": [
+    "Sources/KeyboardViewController.swift",
+    "README.md"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "cpp-imgui-desktop",
+  "name": "Dear ImGui C++ Desktop App",
+  "category": "Systems & C/C++",
+  "icon": "window.shade.closed",
+  "language": "C++",
+  "badge": "ImGui",
+  "description": "Immediate-mode Graphical User Interface for tools, debuggers, and game engines.",
+  "defaultProjectName": "MyImGuiTool",
+  "files": [
+    "CMakeLists.txt",
+    "src/main.cpp",
+    "README.md"
+  ]
+}

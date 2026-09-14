@@ -1,0 +1,15 @@
+{
+  "id": "web-nuxt3-vue",
+  "name": "Nuxt 3 Full-Stack Vue",
+  "category": "Web Development",
+  "icon": "triangle",
+  "language": "TypeScript",
+  "badge": "Nuxt",
+  "description": "Intuitive Vue 3 framework with file-based routing, auto-imports, and Nitro engine.",
+  "defaultProjectName": "MyNuxtApp",
+  "files": [
+    "package.json",
+    "app.vue",
+    "README.md"
+  ]
+}

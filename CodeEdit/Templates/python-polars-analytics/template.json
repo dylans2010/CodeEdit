@@ -1,0 +1,15 @@
+{
+  "id": "python-polars-analytics",
+  "name": "Polars High-Speed Analytics",
+  "category": "Python & Data Science",
+  "icon": "chart.line.uptrend.xyaxis",
+  "language": "Python",
+  "badge": "Polars",
+  "description": "Blazingly fast multi-threaded DataFrame engine written in Rust for Big Data in Python.",
+  "defaultProjectName": "MyPolarsAnalytics",
+  "files": [
+    "requirements.txt",
+    "analytics.py",
+    "README.md"
+  ]
+}
