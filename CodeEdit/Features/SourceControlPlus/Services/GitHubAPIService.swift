@@ -40,6 +40,23 @@ public struct GitHubIssueItem: Identifiable, Codable, Sendable {
     }
 }
 
+/// GitHub User Profile representation.
+public struct GitHubUserProfile: Codable, Sendable {
+    public let login: String
+    public let name: String?
+    public let avatarURL: String?
+    public let publicRepos: Int?
+    public let totalPrivateRepos: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case login
+        case name
+        case avatarURL = "avatar_url"
+        case publicRepos = "public_repos"
+        case totalPrivateRepos = "total_private_repos"
+    }
+}
+
 /// GitHub Repository representation.
 public struct GitHubRepoItem: Identifiable, Codable, Sendable, Hashable {
     public let id: Int
@@ -204,6 +221,24 @@ public actor GitHubAPIService {
             throw NSError(domain: "GitHubAPI", code: http.statusCode, userInfo: [NSLocalizedDescriptionKey: msg])
         }
         return (try? JSONDecoder().decode([GitHubRepoItem].self, from: data)) ?? []
+    }
+
+    /// Validates a GitHub personal access token and returns user profile.
+    public func validateTokenAndGetUser(token: String) async throws -> GitHubUserProfile {
+        guard let url = URL(string: "\(baseURL)/user") else {
+            throw NSError(domain: "GitHubAPI", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+        }
+        var req = URLRequest(url: url)
+        req.httpMethod = "GET"
+        req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        req.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
+
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            let msg = String(data: data, encoding: .utf8) ?? "Authentication failed with status \(http.statusCode)"
+            throw NSError(domain: "GitHubAPI", code: http.statusCode, userInfo: [NSLocalizedDescriptionKey: msg])
+        }
+        return try JSONDecoder().decode(GitHubUserProfile.self, from: data)
     }
 }
 

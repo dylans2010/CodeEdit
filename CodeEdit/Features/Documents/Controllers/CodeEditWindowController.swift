@@ -124,7 +124,6 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             .toggleFirstSidebarItem,
             .sidebarTrackingSeparator,
             .branchPicker,
-            .buildProjectItem,
             .flexibleSpace,
             .flexibleSpace,
             .toggleLastSidebarItem
@@ -138,8 +137,7 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             .flexibleSpace,
             .itemListTrackingSeparator,
             .toggleLastSidebarItem,
-            .branchPicker,
-            .buildProjectItem
+            .branchPicker
         ]
     }
 

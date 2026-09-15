@@ -56,5 +56,11 @@ struct NavigatorSidebarView: View {
             .padding(.top, toolbarPadding)
         }
         .environmentObject(workspace)
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("FocusSourceControlNavigator"))) { _ in
+            selection = 1
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("FocusIssuesNavigator"))) { _ in
+            selection = 5
+        }
     }
 }
