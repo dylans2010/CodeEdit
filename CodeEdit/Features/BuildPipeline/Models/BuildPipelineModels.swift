@@ -15,25 +15,57 @@ public enum DiagnosticSeverity: String, Codable, Sendable {
 
 /// A parsed compiler diagnostic item (Clang or Swiftc).
 public struct CompilerDiagnostic: Identifiable, Codable, Sendable {
-    public var id: String { "\(filePath):\(lineNumber):\(columnOffset)" }
+    public var id: String { "\(filePath):\(lineNumber):\(columnOffset):\(message.hashValue)" }
     public let filePath: String
     public let lineNumber: Int
     public let columnOffset: Int
     public let severity: DiagnosticSeverity
     public let message: String
+    public let rawLogSnippet: String?
 
     public init(
         filePath: String,
         lineNumber: Int,
         columnOffset: Int,
         severity: DiagnosticSeverity,
-        message: String
+        message: String,
+        rawLogSnippet: String? = nil
     ) {
         self.filePath = filePath
         self.lineNumber = lineNumber
         self.columnOffset = columnOffset
         self.severity = severity
         self.message = message
+        self.rawLogSnippet = rawLogSnippet
+    }
+}
+
+/// An AI-generated fix suggestion for a compiler diagnostic.
+public struct AIFixSuggestion: Identifiable, Codable, Sendable {
+    public let id: UUID
+    public let diagnosticId: String
+    public let title: String
+    public let explanation: String
+    public let suggestedFixOptions: [String]
+    public let codeReplacementSnippet: String?
+    public let targetLineNumber: Int
+
+    public init(
+        id: UUID = UUID(),
+        diagnosticId: String,
+        title: String,
+        explanation: String,
+        suggestedFixOptions: [String] = [],
+        codeReplacementSnippet: String? = nil,
+        targetLineNumber: Int = 1
+    ) {
+        self.id = id
+        self.diagnosticId = diagnosticId
+        self.title = title
+        self.explanation = explanation
+        self.suggestedFixOptions = suggestedFixOptions
+        self.codeReplacementSnippet = codeReplacementSnippet
+        self.targetLineNumber = targetLineNumber
     }
 }
 

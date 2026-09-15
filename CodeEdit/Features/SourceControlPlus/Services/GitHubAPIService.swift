@@ -240,5 +240,51 @@ public actor GitHubAPIService {
         }
         return try JSONDecoder().decode(GitHubUserProfile.self, from: data)
     }
+
+    /// Creates a new repository on GitHub for the authenticated user.
+    public func createRepository(
+        name: String,
+        description: String? = nil,
+        isPrivate: Bool = true,
+        token: String? = nil
+    ) async throws -> GitHubRepoItem {
+        let activeToken = token ?? EditorKeychainManager.shared.get(forKey: "github_personal_access_token")
+        guard let validToken = activeToken, !validToken.isEmpty else {
+            throw NSError(
+                domain: "GitHubAPI",
+                code: 401,
+                userInfo: [NSLocalizedDescriptionKey: "Missing GitHub Personal Access Token. Please configure token first."]
+            )
+        }
+
+        guard let url = URL(string: "\(baseURL)/user/repos") else {
+            throw NSError(domain: "GitHubAPI", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+        }
+
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.setValue("Bearer \(validToken)", forHTTPHeaderField: "Authorization")
+        req.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        var payload: [String: Any] = [
+            "name": name,
+            "private": isPrivate,
+            "auto_init": false
+        ]
+        if let desc = description, !desc.isEmpty {
+            payload["description"] = desc
+        }
+
+        req.httpBody = try JSONSerialization.data(withJSONObject: payload)
+
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            let msg = String(data: data, encoding: .utf8) ?? "HTTP \(http.statusCode)"
+            throw NSError(domain: "GitHubAPI", code: http.statusCode, userInfo: [NSLocalizedDescriptionKey: msg])
+        }
+
+        return try JSONDecoder().decode(GitHubRepoItem.self, from: data)
+    }
 }
 

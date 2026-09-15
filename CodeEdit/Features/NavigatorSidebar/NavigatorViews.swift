@@ -306,8 +306,12 @@ struct TestsNavigatorView: View {
 struct IssuesNavigatorView: View {
     @EnvironmentObject var workspace: WorkspaceDocument
     @ObservedObject var buildManager = WorkspaceBuildManager.shared
+    @State private var viewMode = 0 // 0: Issues, 1: xcodebuild Log
     @State private var selectedFilter = 0
     @State private var showBuildLogSheet = false
+    @State private var expandedDiagnosticId: String?
+    @State private var logSearchText = ""
+    @State private var logOnlyErrors = false
 
     var filteredDiagnostics: [CompilerDiagnostic] {
         switch selectedFilter {
@@ -325,8 +329,45 @@ struct IssuesNavigatorView: View {
             headerBar
             Divider()
 
+            // View Mode Switcher: Issues vs Raw xcodebuild Log
+            Picker("", selection: $viewMode) {
+                Text("Issues (\(buildManager.errorCount + buildManager.warningCount))").tag(0)
+                Text("xcodebuild Log").tag(1)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
+
+            Divider()
+
+            if viewMode == 0 {
+                issuesContentView
+            } else {
+                inlineXcodebuildLogView
+            }
+        }
+        .sheet(isPresented: $showBuildLogSheet) {
+            buildLogView
+        }
+        .task {
+            if let url = workspace.fileURL {
+                await buildManager.loadSchemes(workspaceURL: url)
+            }
+        }
+    }
+
+    // MARK: - Issues Tab Content
+
+    @ViewBuilder
+    private var issuesContentView: some View {
+        VStack(spacing: 0) {
             statusBar
             Divider()
+
+            if buildManager.errorCount > 0 {
+                errorQuickActionBanner
+                Divider()
+            }
 
             Picker("", selection: $selectedFilter) {
                 Text("All (\(buildManager.diagnostics.count + buildManager.linkerErrors.count))").tag(0)
@@ -388,49 +429,307 @@ struct IssuesNavigatorView: View {
                     // Compiler diagnostics section
                     Section("Diagnostics (\(filteredDiagnostics.count))") {
                         ForEach(filteredDiagnostics) { diag in
-                            Button {
-                                openDiagnosticFile(diag)
-                            } label: {
-                                HStack(alignment: .top, spacing: 8) {
-                                    Image(systemName: diag.severity == .error ? "xmark.circle.fill" :
-                                            diag.severity == .warning ? "exclamationmark.triangle.fill" : "info.circle.fill")
-                                        .foregroundColor(diag.severity == .error ? .red :
-                                                            diag.severity == .warning ? .yellow : .blue)
-                                        .font(.system(size: 13))
-                                        .padding(.top, 2)
+                            VStack(alignment: .leading, spacing: 0) {
+                                Button {
+                                    onSelectDiagnostic(diag)
+                                } label: {
+                                    HStack(alignment: .top, spacing: 8) {
+                                        Image(systemName: diag.severity == .error ? "xmark.circle.fill" :
+                                                diag.severity == .warning ? "exclamationmark.triangle.fill" : "info.circle.fill")
+                                            .foregroundColor(diag.severity == .error ? .red :
+                                                                diag.severity == .warning ? .yellow : .blue)
+                                            .font(.system(size: 13))
+                                            .padding(.top, 2)
 
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        HStack {
-                                            Text(fileDisplayName(for: diag.filePath))
-                                                .font(.system(size: 11, weight: .semibold))
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            HStack {
+                                                Text(fileDisplayName(for: diag.filePath))
+                                                    .font(.system(size: 11, weight: .semibold))
+                                                    .foregroundColor(.primary)
+                                                Text(":\(diag.lineNumber):\(diag.columnOffset)")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(.secondary)
+                                                Spacer()
+                                                if expandedDiagnosticId == diag.id {
+                                                    Image(systemName: "sparkles")
+                                                        .font(.system(size: 10))
+                                                        .foregroundColor(.accentColor)
+                                                }
+                                            }
+
+                                            Text(diag.message)
+                                                .font(.system(size: 11))
                                                 .foregroundColor(.primary)
-                                            Text(":\(diag.lineNumber):\(diag.columnOffset)")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.secondary)
+                                                .lineLimit(expandedDiagnosticId == diag.id ? nil : 3)
+                                                .multilineTextAlignment(.leading)
                                         }
-
-                                        Text(diag.message)
-                                            .font(.system(size: 11))
-                                            .foregroundColor(.primary)
-                                            .lineLimit(3)
-                                            .multilineTextAlignment(.leading)
                                     }
+                                    .padding(.vertical, 4)
+                                    .contentShape(Rectangle())
                                 }
-                                .padding(.vertical, 2)
+                                .buttonStyle(.plain)
+
+                                // AI Fix Inspector (shows when diagnostic is tapped)
+                                if expandedDiagnosticId == diag.id {
+                                    aiFixInspectorView(for: diag)
+                                        .padding(.leading, 20)
+                                        .padding(.vertical, 6)
+                                }
                             }
-                            .buttonStyle(.plain)
                         }
                     }
                 }
                 .listStyle(.sidebar)
             }
         }
-        .sheet(isPresented: $showBuildLogSheet) {
-            buildLogView
+    }
+
+    // MARK: - AI Fix Inspector View
+
+    private func aiFixInspectorView(for diag: CompilerDiagnostic) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            // xcodebuild Raw Error Log snippet
+            VStack(alignment: .leading, spacing: 3) {
+                HStack {
+                    Image(systemName: "terminal.fill")
+                        .font(.system(size: 10))
+                        .foregroundColor(.secondary)
+                    Text("xcodebuild Error Log:")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(.secondary)
+                }
+
+                Text(diag.rawLogSnippet ?? "\(diag.filePath):\(diag.lineNumber):\(diag.columnOffset): \(diag.severity.rawValue): \(diag.message)")
+                    .font(.system(size: 10, design: .monospaced))
+                    .foregroundColor(diag.severity == .error ? .red : .primary)
+                    .padding(6)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Color(NSColor.controlBackgroundColor))
+                    .cornerRadius(4)
+                    .textSelection(.enabled)
+            }
+
+            // AI Diagnosis & Suggestions
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Image(systemName: "sparkles")
+                        .foregroundColor(.accentColor)
+                        .font(.system(size: 11))
+                    Text("Ways to Fix with AI:")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundColor(.accentColor)
+                    Spacer()
+                    if buildManager.isAnalyzingAIFix {
+                        ProgressView().controlSize(.small)
+                    }
+                }
+
+                if let fix = buildManager.currentAIFix, fix.diagnosticId == diag.id {
+                    Text(fix.explanation)
+                        .font(.system(size: 10))
+                        .foregroundColor(.primary)
+
+                    ForEach(Array(fix.suggestedFixOptions.enumerated()), id: \.offset) { idx, option in
+                        HStack(alignment: .top, spacing: 4) {
+                            Text("\(idx + 1).")
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundColor(.secondary)
+                            Text(option)
+                                .font(.system(size: 10))
+                                .foregroundColor(.primary)
+                        }
+                    }
+
+                    if let replacement = fix.codeReplacementSnippet {
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("Suggested Code Patch:")
+                                .font(.system(size: 9, weight: .semibold))
+                                .foregroundColor(.secondary)
+                            Text(replacement)
+                                .font(.system(size: 10, design: .monospaced))
+                                .padding(6)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.green.opacity(0.12))
+                                .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.green.opacity(0.3), lineWidth: 0.8))
+                                .cornerRadius(4)
+                        }
+
+                        HStack(spacing: 8) {
+                            Button {
+                                Task {
+                                    try? await buildManager.applyAIFix(fix, workspaceURL: workspace.fileURL)
+                                }
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                    Text("Apply AI Fix")
+                                }
+                                .font(.system(size: 10, weight: .medium))
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .controlSize(.small)
+
+                            Button {
+                                NotificationCenter.default.post(
+                                    name: NSNotification.Name("OpenAIAssistantWithPrompt"),
+                                    object: "Help me fix this compiler error in \(diag.filePath):\(diag.lineNumber): \(diag.message)"
+                                )
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "bubble.left.and.bubble.right")
+                                    Text("Ask AI Assistant")
+                                }
+                                .font(.system(size: 10))
+                            }
+                            .buttonStyle(.bordered)
+                            .controlSize(.small)
+                        }
+                        .padding(.top, 2)
+                    }
+
+                    if let successMsg = buildManager.aiFixSuccessMessage {
+                        HStack(spacing: 4) {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                            Text(successMsg)
+                                .font(.system(size: 9))
+                                .foregroundColor(.green)
+                        }
+                    }
+                } else if !buildManager.isAnalyzingAIFix {
+                    Button {
+                        Task {
+                            await buildManager.requestAIFix(for: diag, workspaceURL: workspace.fileURL)
+                        }
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "sparkles")
+                            Text("Analyze & Generate Fix Options")
+                        }
+                        .font(.system(size: 10))
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
+            }
+            .padding(8)
+            .background(Color.accentColor.opacity(0.08))
+            .cornerRadius(6)
         }
-        .task {
-            if let url = workspace.fileURL {
-                await buildManager.loadSchemes(workspaceURL: url)
+        .padding(8)
+        .background(Color(NSColor.windowBackgroundColor).opacity(0.6))
+        .cornerRadius(6)
+        .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.secondary.opacity(0.2), lineWidth: 0.8))
+    }
+
+    // MARK: - Inline xcodebuild Log View
+
+    private var inlineXcodebuildLogView: some View {
+        VStack(spacing: 0) {
+            // Log controls toolbar
+            HStack(spacing: 8) {
+                HStack(spacing: 4) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 10))
+                    TextField("Filter build log...", text: $logSearchText)
+                        .textFieldStyle(.plain)
+                        .font(.system(size: 11))
+                }
+                .padding(.horizontal, 6)
+                .padding(.vertical, 3)
+                .background(Color(NSColor.controlBackgroundColor))
+                .cornerRadius(4)
+
+                Toggle("Errors", isOn: $logOnlyErrors)
+                    .font(.system(size: 10))
+                    .toggleStyle(.button)
+                    .controlSize(.small)
+
+                Button {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(buildManager.lastResult?.rawOutput ?? "", forType: .string)
+                } label: {
+                    Image(systemName: "doc.on.doc")
+                        .font(.system(size: 10))
+                }
+                .buttonStyle(.borderless)
+                .help("Copy Raw Log to Clipboard")
+            }
+            .padding(.horizontal, 8)
+            .padding(.vertical, 6)
+
+            Divider()
+
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 2) {
+                    if filteredLogLines.isEmpty {
+                        Text(buildManager.lastResult == nil ? "No xcodebuild log captured yet. Run a build above." : "No matching log lines.")
+                            .font(.system(size: 11))
+                            .foregroundColor(.secondary)
+                            .padding(12)
+                    } else {
+                        ForEach(Array(filteredLogLines.enumerated()), id: \.offset) { _, line in
+                            Text(line)
+                                .font(.system(size: 10, design: .monospaced))
+                                .foregroundColor(
+                                    line.contains("error:") || line.contains("BUILD FAILED") ? .red :
+                                    line.contains("warning:") ? .yellow :
+                                    line.hasPrefix("CompileSwift") || line.hasPrefix("Ld") ? .blue : .primary
+                                )
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .textSelection(.enabled)
+                        }
+                    }
+                }
+                .padding(8)
+            }
+            .background(Color(NSColor.textBackgroundColor))
+        }
+    }
+
+    private var filteredLogLines: [String] {
+        guard let output = buildManager.lastResult?.rawOutput else { return [] }
+        var lines = output.components(separatedBy: .newlines)
+        if logOnlyErrors {
+            lines = lines.filter { $0.contains("error:") || $0.contains("fatal error:") || $0.contains("BUILD FAILED") }
+        }
+        if !logSearchText.isEmpty {
+            lines = lines.filter { $0.localizedCaseInsensitiveContains(logSearchText) }
+        }
+        return lines
+    }
+
+    private var errorQuickActionBanner: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "xmark.circle.fill")
+                .foregroundColor(.red)
+                .font(.system(size: 12))
+            Text("\(buildManager.errorCount) error(s) in xcodebuild")
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundColor(.red)
+            Spacer()
+            Button("View Error Log") {
+                viewMode = 1
+                logOnlyErrors = true
+            }
+            .font(.system(size: 10, weight: .medium))
+            .buttonStyle(.bordered)
+            .controlSize(.mini)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 5)
+        .background(Color.red.opacity(0.12))
+    }
+
+    private func onSelectDiagnostic(_ diag: CompilerDiagnostic) {
+        openDiagnosticFile(diag)
+        if expandedDiagnosticId == diag.id {
+            expandedDiagnosticId = nil
+        } else {
+            expandedDiagnosticId = diag.id
+            Task {
+                await buildManager.requestAIFix(for: diag, workspaceURL: workspace.fileURL)
             }
         }
     }
@@ -473,7 +772,7 @@ struct IssuesNavigatorView: View {
                 Button("Clean Build Folder") {
                     cleanBuild()
                 }
-                Button("View Raw Build Log") {
+                Button("View Raw Build Log in Sheet") {
                     showBuildLogSheet = true
                 }
             } label: {

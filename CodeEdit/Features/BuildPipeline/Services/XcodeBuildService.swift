@@ -70,7 +70,8 @@ public actor XcodeBuildService {
     /// Invokes `xcodebuild` for a scheme and captures execution result.
     public func build(
         projectURL: URL,
-        config: BuildConfiguration
+        config: BuildConfiguration,
+        onProgressUpdate: (@Sendable (String) -> Void)? = nil
     ) async throws -> BuildExecutionResult {
         let startTime = Date()
         var targetScheme = config.scheme
@@ -81,14 +82,18 @@ public actor XcodeBuildService {
 
         var arguments = ["-scheme", targetScheme, "-configuration", config.configuration]
 
-        // Workspace or project detection
-        let workspaceURL = projectURL.appendingPathComponent("\(targetScheme).xcworkspace")
-        if FileManager.default.fileExists(atPath: workspaceURL.path) {
-            arguments.append(contentsOf: ["-workspace", workspaceURL.lastPathComponent])
+        // Robust workspace or project detection
+        if projectURL.pathExtension == "xcworkspace" {
+            arguments.append(contentsOf: ["-workspace", projectURL.lastPathComponent])
+        } else if projectURL.pathExtension == "xcodeproj" {
+            arguments.append(contentsOf: ["-project", projectURL.lastPathComponent])
         } else {
-            let xcodeProjURL = projectURL.appendingPathComponent("\(targetScheme).xcodeproj")
-            if FileManager.default.fileExists(atPath: xcodeProjURL.path) {
-                arguments.append(contentsOf: ["-project", xcodeProjURL.lastPathComponent])
+            let fileManager = FileManager.default
+            let contents = (try? fileManager.contentsOfDirectory(at: projectURL, includingPropertiesForKeys: nil)) ?? []
+            if let ws = contents.first(where: { $0.pathExtension == "xcworkspace" }) {
+                arguments.append(contentsOf: ["-workspace", ws.lastPathComponent])
+            } else if let proj = contents.first(where: { $0.pathExtension == "xcodeproj" }) {
+                arguments.append(contentsOf: ["-project", proj.lastPathComponent])
             }
         }
 
@@ -107,15 +112,35 @@ public actor XcodeBuildService {
         process.arguments = arguments
         process.currentDirectoryURL = projectURL
 
-        let pipe = Pipe()
-        process.standardOutput = pipe
-        process.standardError = pipe
+        let outputPipe = Pipe()
+        let errorPipe = Pipe()
+        process.standardOutput = outputPipe
+        process.standardError = errorPipe
 
-        try process.run()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        process.waitUntilExit()
+        let (outputData, errorData): (Data, Data) = await withTaskGroup(of: (Bool, Data).self) { group in
+            group.addTask {
+                let data = outputPipe.fileHandleForReading.readDataToEndOfFile()
+                return (true, data)
+            }
+            group.addTask {
+                let data = errorPipe.fileHandleForReading.readDataToEndOfFile()
+                return (false, data)
+            }
 
-        let rawOutput = String(data: data, encoding: .utf8) ?? ""
+            try? process.run()
+            process.waitUntilExit()
+
+            var out = Data()
+            var err = Data()
+            for await (isOut, data) in group {
+                if isOut { out = data } else { err = data }
+            }
+            return (out, err)
+        }
+
+        let outString = String(data: outputData, encoding: .utf8) ?? ""
+        let errString = String(data: errorData, encoding: .utf8) ?? ""
+        let rawOutput = [outString, errString].filter { !$0.isEmpty }.joined(separator: "\n")
         let duration = Date().timeIntervalSince(startTime)
         let diagnostics = Self.parseCompilerDiagnostics(from: rawOutput)
         let linkerErrors = Self.parseLinkerDiagnostics(from: rawOutput)
@@ -133,6 +158,20 @@ public actor XcodeBuildService {
     public func clean(projectURL: URL, scheme: String) async throws -> BuildExecutionResult {
         let startTime = Date()
         var arguments = ["-scheme", scheme, "clean"]
+        if projectURL.pathExtension == "xcworkspace" {
+            arguments.append(contentsOf: ["-workspace", projectURL.lastPathComponent])
+        } else if projectURL.pathExtension == "xcodeproj" {
+            arguments.append(contentsOf: ["-project", projectURL.lastPathComponent])
+        } else {
+            let fileManager = FileManager.default
+            let contents = (try? fileManager.contentsOfDirectory(at: projectURL, includingPropertiesForKeys: nil)) ?? []
+            if let ws = contents.first(where: { $0.pathExtension == "xcworkspace" }) {
+                arguments.append(contentsOf: ["-workspace", ws.lastPathComponent])
+            } else if let proj = contents.first(where: { $0.pathExtension == "xcodeproj" }) {
+                arguments.append(contentsOf: ["-project", proj.lastPathComponent])
+            }
+        }
+
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/xcodebuild")
         process.arguments = arguments
@@ -159,10 +198,11 @@ public actor XcodeBuildService {
     }
 
     /// Regex parser for Clang and Swiftc compiler diagnostics:
-    /// `^(/[^:]+):(\d+)(?::(\d+))?:\s*(error|warning|note):\s*(.+)$`
+    /// Matches both absolute and workspace-relative paths:
+    /// `^(file_path):(\d+)(?::(\d+))?:\s*(error|warning|note):\s*(.+)$`
     public static func parseCompilerDiagnostics(from log: String) -> [CompilerDiagnostic] {
         var diagnostics: [CompilerDiagnostic] = []
-        let pattern = #"^(/[^:]+):(\d+)(?::(\d+))?:\s*(error|warning|note):\s*(.+)$"#
+        let pattern = #"^([^\s:][^:\r\n]+):(\d+)(?::(\d+))?:\s*(error|warning|note):\s*(.+)$"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: [.anchorsMatchLines]) else {
             return []
         }
@@ -181,6 +221,7 @@ public actor XcodeBuildService {
 
             let severityStr = nsString.substring(with: match.range(at: 4))
             let message = nsString.substring(with: match.range(at: 5))
+            let fullLine = nsString.substring(with: match.range)
 
             let severity: DiagnosticSeverity
             switch severityStr.lowercased() {
@@ -194,23 +235,26 @@ public actor XcodeBuildService {
                 lineNumber: Int(lineStr) ?? 1,
                 columnOffset: Int(colStr) ?? 1,
                 severity: severity,
-                message: message
+                message: message,
+                rawLogSnippet: fullLine
             ))
         }
 
         // Also capture non-file specific errors, e.g. "error: The scheme 'Foo' is not configured"
-        let generalErrorPattern = #"^(?:error|fatal error):\s*(.+)$"#
+        let generalErrorPattern = #"^(?:error|fatal error|xcodebuild:\s*error):\s*(.+)$"#
         if let generalRegex = try? NSRegularExpression(pattern: generalErrorPattern, options: [.anchorsMatchLines, .caseInsensitive]) {
             let generalMatches = generalRegex.matches(in: log, options: [], range: NSRange(location: 0, length: nsString.length))
             for match in generalMatches where match.numberOfRanges >= 2 {
                 let msg = nsString.substring(with: match.range(at: 1)).trimmingCharacters(in: .whitespacesAndNewlines)
+                let snippet = nsString.substring(with: match.range)
                 if !diagnostics.contains(where: { $0.message.contains(msg) }) {
                     diagnostics.append(CompilerDiagnostic(
                         filePath: "xcodebuild",
                         lineNumber: 1,
                         columnOffset: 1,
                         severity: .error,
-                        message: msg
+                        message: msg,
+                        rawLogSnippet: snippet
                     ))
                 }
             }
