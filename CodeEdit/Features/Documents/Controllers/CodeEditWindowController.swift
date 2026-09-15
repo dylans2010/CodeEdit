@@ -124,6 +124,7 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             .toggleFirstSidebarItem,
             .sidebarTrackingSeparator,
             .branchPicker,
+            .buildProjectItem,
             .flexibleSpace,
             .flexibleSpace,
             .toggleLastSidebarItem
@@ -137,7 +138,8 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             .flexibleSpace,
             .itemListTrackingSeparator,
             .toggleLastSidebarItem,
-            .branchPicker
+            .branchPicker,
+            .buildProjectItem
         ]
     }
 
@@ -185,6 +187,20 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             )?.withSymbolConfiguration(.init(scale: .large))
 
             return toolbarItem
+        case .buildProjectItem:
+            let toolbarItem = NSToolbarItem(itemIdentifier: .buildProjectItem)
+            toolbarItem.label = "Build"
+            toolbarItem.paletteLabel = "Build Project"
+            toolbarItem.toolTip = "Build Project with xcodebuild (Cmd+B)"
+            toolbarItem.isBordered = true
+            toolbarItem.target = self
+            toolbarItem.action = #selector(self.buildProjectAction)
+            toolbarItem.image = NSImage(
+                systemSymbolName: "hammer.fill",
+                accessibilityDescription: "Build"
+            )?.withSymbolConfiguration(.init(scale: .medium))
+
+            return toolbarItem
         case .branchPicker:
             let toolbarItem = NSToolbarItem(itemIdentifier: .branchPicker)
             let view = NSHostingView(
@@ -198,6 +214,13 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             return toolbarItem
         default:
             return NSToolbarItem(itemIdentifier: itemIdentifier)
+        }
+    }
+
+    @objc func buildProjectAction() {
+        guard let workspaceURL = workspace?.fileURL else { return }
+        Task { @MainActor in
+            await WorkspaceBuildManager.shared.build(workspaceURL: workspaceURL)
         }
     }
 
@@ -288,4 +311,5 @@ extension NSToolbarItem.Identifier {
     static let toggleLastSidebarItem: NSToolbarItem.Identifier = NSToolbarItem.Identifier("ToggleLastSidebarItem")
     static let itemListTrackingSeparator = NSToolbarItem.Identifier("ItemListTrackingSeparator")
     static let branchPicker: NSToolbarItem.Identifier = NSToolbarItem.Identifier("BranchPicker")
+    static let buildProjectItem: NSToolbarItem.Identifier = NSToolbarItem.Identifier("BuildProjectItem")
 }

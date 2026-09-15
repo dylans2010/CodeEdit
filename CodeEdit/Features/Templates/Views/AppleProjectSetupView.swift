@@ -1,3 +1,5 @@
+// swiftlint:disable type_body_length
+
 import SwiftUI
 import AppKit
 
@@ -14,6 +16,11 @@ struct AppleProjectSetupView: View {
     @State private var buildNumber = "1"
     @State private var appDescription = "A modern native app for Apple devices."
     @State private var selectedPlatforms: Set<String>
+    @State private var generateXcodeProj = true
+    @State private var showComponentInstallSheet = false
+    @State private var isInstallingComponent = false
+    @State private var installProgressMessage = ""
+    @State private var pendingTargetURL: URL?
     @State private var errorMessage: String?
     @State private var showErrorAlert = false
 
@@ -49,6 +56,7 @@ struct AppleProjectSetupView: View {
                 VStack(spacing: 20) {
                     projectDetailsSection
                     platformsSection
+                    xcodeSection
                     descriptionSection
                 }
                 .padding(24)
@@ -57,7 +65,7 @@ struct AppleProjectSetupView: View {
             Divider()
             footerBar
         }
-        .frame(width: 680, height: 540)
+        .frame(width: 680, height: 570)
         .background(Color(NSColor.windowBackgroundColor))
         .alert(isPresented: $showErrorAlert) {
             Alert(
@@ -65,6 +73,9 @@ struct AppleProjectSetupView: View {
                 message: Text(errorMessage ?? "Unable to create project."),
                 dismissButton: .default(Text("OK"))
             )
+        }
+        .sheet(isPresented: $showComponentInstallSheet) {
+            componentInstallSheet
         }
     }
 
@@ -197,6 +208,74 @@ struct AppleProjectSetupView: View {
         .buttonStyle(.plain)
     }
 
+    private var xcodeSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("XCODE INTEGRATION")
+                .font(.system(size: 10, weight: .bold))
+                .foregroundColor(.secondary)
+
+            Toggle(isOn: $generateXcodeProj) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Generate Xcode Project (.xcodeproj)")
+                        .font(.system(size: 12, weight: .medium))
+                    Text("Produces a native .xcodeproj via XcodeGen for full Xcode compatibility.")
+                        .font(.system(size: 10))
+                        .foregroundColor(.secondary)
+                }
+            }
+            .toggleStyle(.checkbox)
+        }
+        .padding(16)
+        .background(Color(NSColor.controlBackgroundColor).opacity(0.4))
+        .cornerRadius(8)
+    }
+
+    private var componentInstallSheet: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "shippingbox.and.arrow.backward")
+                .font(.system(size: 38))
+                .foregroundColor(.blue)
+
+            Text("A system component is required to finalize this project, install it?")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+
+            Text("XcodeGen is required to generate the .xcodeproj file for Apple Platforms. CodeEdit will use Homebrew to install it onto your Mac.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 16)
+
+            if isInstallingComponent {
+                VStack(spacing: 8) {
+                    ProgressView()
+                        .scaleEffect(0.9)
+                    Text(installProgressMessage)
+                        .font(.system(size: 11))
+                        .foregroundColor(.secondary)
+                }
+                .padding(.vertical, 4)
+            }
+
+            HStack(spacing: 12) {
+                Button("Cancel") {
+                    showComponentInstallSheet = false
+                    isInstallingComponent = false
+                }
+                .disabled(isInstallingComponent)
+
+                Button("Install via Homebrew") {
+                    installComponentAndFinalize()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(isInstallingComponent)
+            }
+            .padding(.top, 6)
+        }
+        .padding(24)
+        .frame(width: 440, height: 260)
+    }
+
     private var descriptionSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("APP DESCRIPTION")
@@ -236,9 +315,11 @@ struct AppleProjectSetupView: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 14)
     }
+}
 
-    // MARK: - Creation
+// MARK: - Creation & Installation Extension
 
+extension AppleProjectSetupView {
     private func createProject() {
         let panel = NSSavePanel()
         panel.title = "Create Apple Project"
@@ -251,6 +332,56 @@ struct AppleProjectSetupView: View {
             return
         }
 
+        if generateXcodeProj {
+            Task {
+                let installed = await XcodeGenService.shared.isXcodeGenInstalled()
+                if !installed {
+                    await MainActor.run {
+                        self.pendingTargetURL = targetURL
+                        self.showComponentInstallSheet = true
+                    }
+                } else {
+                    await finalizeProjectCreation(at: targetURL)
+                }
+            }
+        } else {
+            Task {
+                await finalizeProjectCreation(at: targetURL)
+            }
+        }
+    }
+
+    private func installComponentAndFinalize() {
+        isInstallingComponent = true
+        installProgressMessage = "Installing xcodegen via Homebrew..."
+
+        Task {
+            do {
+                try await XcodeGenService.shared.installXcodeGenViaHomebrew { status in
+                    Task { @MainActor in
+                        self.installProgressMessage = status
+                    }
+                }
+                await MainActor.run {
+                    self.isInstallingComponent = false
+                    self.showComponentInstallSheet = false
+                    if let targetURL = self.pendingTargetURL {
+                        Task {
+                            await self.finalizeProjectCreation(at: targetURL)
+                        }
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.isInstallingComponent = false
+                    self.errorMessage = error.localizedDescription
+                    self.showErrorAlert = true
+                }
+            }
+        }
+    }
+
+    private func finalizeProjectCreation(at targetURL: URL) async {
         do {
             try TemplateManager.shared.instantiate(
                 template: template,
@@ -261,11 +392,28 @@ struct AppleProjectSetupView: View {
                 buildNumber: buildNumber,
                 appDescription: appDescription
             )
-            isPresented = false
-            openDocument(targetURL, dismissWindow)
+
+            if generateXcodeProj {
+                let primaryPlatform = selectedPlatforms.first ?? "macOS"
+                try await XcodeGenService.shared.generateXcodeProject(
+                    destinationURL: targetURL,
+                    projectName: appName,
+                    bundleID: bundleIdentifier,
+                    appVersion: appVersion,
+                    buildNumber: buildNumber,
+                    platform: primaryPlatform
+                )
+            }
+
+            await MainActor.run {
+                self.isPresented = false
+                self.openDocument(targetURL, self.dismissWindow)
+            }
         } catch {
-            errorMessage = error.localizedDescription
-            showErrorAlert = true
+            await MainActor.run {
+                self.errorMessage = error.localizedDescription
+                self.showErrorAlert = true
+            }
         }
     }
 

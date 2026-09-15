@@ -699,6 +699,13 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Source Control" id="5tT-qd-YMo">
                         <items>
+                            <menuItem title="Connect..." id="sc-connect-menu-item">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="connectSourceControl:" target="-1" id="sc-connect-action"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="sc-connect-sep"/>
                             <menuItem title="Commit..." keyEquivalent="c" id="mzL-i5-VfC">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                             </menuItem>
@@ -745,6 +752,9 @@ CA
                             <menuItem isSeparatorItem="YES" id="Fam-95-l7U"/>
                             <menuItem title="Clone..." id="7SS-UD-AVv">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="connectSourceControl:" target="-1" id="sc-clone-action"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>

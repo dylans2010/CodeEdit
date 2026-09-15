@@ -457,6 +457,11 @@
 		CE9100020000000000000003 /* DevToolsSystemCheats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000003 /* DevToolsSystemCheats.swift */; };
 		CE9100020000000000000004 /* UtilitiesNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000004 /* UtilitiesNavigatorView.swift */; };
 		CE9100020000000000000005 /* DevToolsWebDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000005 /* DevToolsWebDesign.swift */; };
+		CE9200020000000000000001 /* WorkspaceDependencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9200010000000000000001 /* WorkspaceDependencyService.swift */; };
+		CE9200020000000000000002 /* AddPackageDependencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9200010000000000000002 /* AddPackageDependencyView.swift */; };
+		CE9200020000000000000003 /* WorkspaceBuildManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9200010000000000000003 /* WorkspaceBuildManager.swift */; };
+		CE9200020000000000000004 /* XcodeGenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9200010000000000000004 /* XcodeGenService.swift */; };
+		CE9200020000000000000005 /* SourceControlConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9200010000000000000005 /* SourceControlConnectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -963,6 +968,11 @@
 		CE9100010000000000000003 /* DevToolsSystemCheats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsSystemCheats.swift; sourceTree = "<group>"; };
 		CE9100010000000000000004 /* UtilitiesNavigatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitiesNavigatorView.swift; sourceTree = "<group>"; };
 		CE9100010000000000000005 /* DevToolsWebDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsWebDesign.swift; sourceTree = "<group>"; };
+		CE9200010000000000000001 /* WorkspaceDependencyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceDependencyService.swift; sourceTree = "<group>"; };
+		CE9200010000000000000002 /* AddPackageDependencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPackageDependencyView.swift; sourceTree = "<group>"; };
+		CE9200010000000000000003 /* WorkspaceBuildManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceBuildManager.swift; sourceTree = "<group>"; };
+		CE9200010000000000000004 /* XcodeGenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeGenService.swift; sourceTree = "<group>"; };
+		CE9200010000000000000005 /* SourceControlConnectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceControlConnectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1083,9 +1093,18 @@
 			children = (
 				CE7E00030000000000000002 /* Models */,
 				CE7E00030000000000000003 /* Views */,
+				CE9200000000000000000003 /* Services */,
 				CE7E00030000000000000004 /* Resources */,
 			);
 			path = Templates;
+			sourceTree = "<group>";
+		};
+		CE9200000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE9200010000000000000004 /* XcodeGenService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CE7E00030000000000000002 /* Models */ = {
@@ -1317,8 +1336,17 @@
 				28FFE1BE27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift */,
 				CE8A00010000000000000001 /* NavigatorViews.swift */,
 				CE9100010000000000000004 /* UtilitiesNavigatorView.swift */,
+				CE9200000000000000000002 /* Dependencies */,
 			);
 			path = NavigatorSidebar;
+			sourceTree = "<group>";
+		};
+		CE9200000000000000000002 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				CE9200010000000000000002 /* AddPackageDependencyView.swift */,
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		287776EB27E350BA00D46668 /* TabBar */ = {
@@ -1581,6 +1609,8 @@
 				CE8E00010000000000000002 /* SwiftPackageBuildService.swift */,
 				CE8E00010000000000000003 /* XcodeBuildService.swift */,
 				CE8E00010000000000000004 /* IPABuildService.swift */,
+				CE9200010000000000000001 /* WorkspaceDependencyService.swift */,
+				CE9200010000000000000003 /* WorkspaceBuildManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2440,8 +2470,17 @@
 				587B9E0529301D8F00AC7927 /* Clone */,
 				587B9E0929301D8F00AC7927 /* Accounts */,
 				587B9E5129301D8F00AC7927 /* Client */,
+				CE9200000000000000000001 /* Connect */,
 			);
 			path = Git;
+			sourceTree = "<group>";
+		};
+		CE9200000000000000000001 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				CE9200010000000000000005 /* SourceControlConnectView.swift */,
+			);
+			path = Connect;
 			sourceTree = "<group>";
 		};
 		587B9E0529301D8F00AC7927 /* Clone */ = {
@@ -3603,6 +3642,11 @@
 				CE9100020000000000000002 /* DevToolsCryptoNetwork.swift in Sources */,
 				CE9100020000000000000003 /* DevToolsSystemCheats.swift in Sources */,
 				CE9100020000000000000005 /* DevToolsWebDesign.swift in Sources */,
+				CE9200020000000000000001 /* WorkspaceDependencyService.swift in Sources */,
+				CE9200020000000000000002 /* AddPackageDependencyView.swift in Sources */,
+				CE9200020000000000000003 /* WorkspaceBuildManager.swift in Sources */,
+				CE9200020000000000000004 /* XcodeGenService.swift in Sources */,
+				CE9200020000000000000005 /* SourceControlConnectView.swift in Sources */,
 				58F2EAF7292FB2B0004A9BDE /* SourceControlProvider.swift in Sources */,
 				587B9E8A29301D8F00AC7927 /* GitHubIssue.swift in Sources */,
 				DE513F54281DE5D0002260B9 /* TabBarXcode.swift in Sources */,

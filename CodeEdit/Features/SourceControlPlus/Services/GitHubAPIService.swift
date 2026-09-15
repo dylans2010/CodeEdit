@@ -40,6 +40,49 @@ public struct GitHubIssueItem: Identifiable, Codable, Sendable {
     }
 }
 
+/// GitHub Repository representation.
+public struct GitHubRepoItem: Identifiable, Codable, Sendable, Hashable {
+    public let id: Int
+    public let name: String
+    public let fullName: String
+    public let description: String?
+    public let htmlURL: String
+    public let cloneURL: String
+    public let isPrivate: Bool
+    public let stargazersCount: Int?
+
+    public init(
+        id: Int,
+        name: String,
+        fullName: String,
+        description: String? = nil,
+        htmlURL: String,
+        cloneURL: String,
+        isPrivate: Bool = false,
+        stargazersCount: Int? = 0
+    ) {
+        self.id = id
+        self.name = name
+        self.fullName = fullName
+        self.description = description
+        self.htmlURL = htmlURL
+        self.cloneURL = cloneURL
+        self.isPrivate = isPrivate
+        self.stargazersCount = stargazersCount
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case fullName = "full_name"
+        case description
+        case htmlURL = "html_url"
+        case cloneURL = "clone_url"
+        case isPrivate = "private"
+        case stargazersCount = "stargazers_count"
+    }
+}
+
 /// Service integrating GitHub REST API for PRs, Issues, and Gists.
 public actor GitHubAPIService {
     public static let shared = GitHubAPIService()
@@ -133,4 +176,34 @@ public actor GitHubAPIService {
         }
         return "https://gist.github.com"
     }
+
+    /// Lists repositories for the authenticated user or specific username.
+    public func listUserRepositories(token: String? = nil, username: String? = nil) async throws -> [GitHubRepoItem] {
+        let activeToken = token ?? EditorKeychainManager.shared.get(forKey: "github_personal_access_token")
+        let endpoint: String
+        if let user = username, !user.isEmpty {
+            endpoint = "/users/\(user)/repos?sort=updated&per_page=100"
+        } else {
+            endpoint = "/user/repos?sort=updated&per_page=100"
+        }
+
+        guard let url = URL(string: "\(baseURL)\(endpoint)") else {
+            throw NSError(domain: "GitHubAPI", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+        }
+
+        var req = URLRequest(url: url)
+        req.httpMethod = "GET"
+        if let token = activeToken, !token.isEmpty {
+            req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        req.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
+
+        let (data, response) = try await URLSession.shared.data(for: req)
+        if let http = response as? HTTPURLResponse, http.statusCode >= 400 {
+            let msg = String(data: data, encoding: .utf8) ?? "HTTP \(http.statusCode)"
+            throw NSError(domain: "GitHubAPI", code: http.statusCode, userInfo: [NSLocalizedDescriptionKey: msg])
+        }
+        return (try? JSONDecoder().decode([GitHubRepoItem].self, from: data)) ?? []
+    }
 }
+
