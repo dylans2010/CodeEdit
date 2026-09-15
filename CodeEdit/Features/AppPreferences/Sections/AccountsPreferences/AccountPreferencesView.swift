@@ -129,7 +129,7 @@ struct AccountPreferencesView: View {
             } label: {
                 Image(systemName: "minus")
             }
-            .disabled(true)
+            .disabled(accountSelection == nil)
             .help("Delete selected Git Account")
             .buttonStyle(.plain)
             Spacer()
@@ -158,14 +158,8 @@ struct AccountPreferencesView: View {
     }
 
     private func removeSourceControlAccount(selectedAccountId: String) {
-        var gitAccounts = prefs.preferences.accounts.sourceControlAccounts.gitAccount
-
-        for account in gitAccounts {
-            if account.id == selectedAccountId {
-                let index = gitAccounts.firstIndex(of: account)
-                gitAccounts.remove(at: index ?? 0)
-            }
-        }
+        prefs.preferences.accounts.sourceControlAccounts.gitAccount.removeAll { $0.id == selectedAccountId }
+        accountSelection = nil
     }
 
 }

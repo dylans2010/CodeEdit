@@ -67,8 +67,11 @@ struct HistoryInspectorItemView: View {
                     pasteboard.clearContents()
                     pasteboard.setString(commit.message, forType: .string)
                 }
-                Button("Copy Identifier") {}
-                    .disabled(true) // TODO: Implementation Needed
+                Button("Copy Identifier") {
+                    let pasteboard = NSPasteboard.general
+                    pasteboard.clearContents()
+                    pasteboard.setString(commit.commitHash, forType: .string)
+                }
                 Button("Email \(commit.author)...") {
                     let service = NSSharingService(named: NSSharingService.Name.composeEmail)
                     service?.recipients = [commit.authorEmail]
@@ -77,12 +80,27 @@ struct HistoryInspectorItemView: View {
                 Divider()
             }
             Group {
-                Button("Tag \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
-                Button("New Branch from \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
-                Button("Cherry-Pick \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
+                Button("Tag \(commit.hash)...") {
+                    Task {
+                        _ = try? await GitPorcelainService.shared.runGit(
+                            arguments: ["tag", "v_\(commit.hash.prefix(7))", commit.commitHash]
+                        )
+                    }
+                }
+                Button("New Branch from \(commit.hash)...") {
+                    Task {
+                        _ = try? await GitPorcelainService.shared.runGit(
+                            arguments: ["checkout", "-b", "branch-\(commit.hash.prefix(7))", commit.commitHash]
+                        )
+                    }
+                }
+                Button("Cherry-Pick \(commit.hash)...") {
+                    Task {
+                        _ = try? await GitPorcelainService.shared.runGit(
+                            arguments: ["cherry-pick", commit.commitHash]
+                        )
+                    }
+                }
             }
             Group {
                 Divider()
@@ -93,11 +111,17 @@ struct HistoryInspectorItemView: View {
                     }
                     Divider()
                 }
-                Button("Check Out \(commit.hash)...") {}
-                    .disabled(true) // TODO: Implementation Needed
+                Button("Check Out \(commit.hash)...") {
+                    Task {
+                        _ = try? await GitPorcelainService.shared.runGit(
+                            arguments: ["checkout", commit.commitHash]
+                        )
+                    }
+                }
                 Divider()
-                Button("History Editor Help") {}
-                    .disabled(true) // TODO: Implementation Needed
+                Button("History Editor Help") {
+                    PersonalDocWindowManager.show()
+                }
             }
         }
     }

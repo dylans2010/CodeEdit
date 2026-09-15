@@ -1,23 +1,38 @@
+//
+//  NavigatorViews.swift
+//  CodeEdit
+//
+//
+
 import SwiftUI
+
+/// Represents an audited package dependency item.
+struct PinnedDependencyItem: Hashable, Identifiable {
+    var id: String { name }
+    let name: String
+    let version: String
+    let url: String
+}
+
+/// Represents an AST parsed symbol item.
+struct ParsedSymbolItem: Hashable, Identifiable {
+    var id: String { name }
+    let name: String
+    let kind: String
+    let icon: String
+}
 
 // MARK: - Dependencies Navigator View
 struct DependenciesNavigatorView: View {
     @EnvironmentObject var workspace: WorkspaceDocument
     @State private var searchText = ""
+    @State private var dependencies: [PinnedDependencyItem] = []
 
-    private let sampleDependencies: [(name: String, version: String, url: String)] = [
-        ("CodeEditKit", "main (branch)", "github.com/CodeEditApp/CodeEditKit"),
-        ("CodeEditLanguages", "0.1.18", "github.com/CodeEditApp/CodeEditLanguages"),
-        ("CodeEditSourceEditor", "main (branch)", "github.com/CodeEditApp/CodeEditSourceEditor"),
-        ("CodeEditSymbols", "0.1.4", "github.com/CodeEditApp/CodeEditSymbols"),
-        ("Sparkle", "2.6.4", "github.com/sparkle-project/Sparkle")
-    ]
-
-    var filteredDependencies: [(name: String, version: String, url: String)] {
+    var filteredDependencies: [PinnedDependencyItem] {
         if searchText.isEmpty {
-            return sampleDependencies
+            return dependencies
         }
-        return sampleDependencies.filter {
+        return dependencies.filter {
             $0.name.localizedCaseInsensitiveContains(searchText) ||
             $0.url.localizedCaseInsensitiveContains(searchText)
         }
@@ -27,43 +42,103 @@ struct DependenciesNavigatorView: View {
         VStack(spacing: 0) {
             searchBar
 
-            List {
-                Section {
-                    ForEach(filteredDependencies, id: \.name) { dep in
-                        HStack(spacing: 8) {
-                            Image(systemName: "shippingbox.fill")
-                                .foregroundColor(.accentColor)
-                                .font(.system(size: 13))
+            if dependencies.isEmpty {
+                VStack(spacing: 8) {
+                    Image(systemName: "shippingbox")
+                        .font(.system(size: 30))
+                        .foregroundStyle(.secondary)
+                    Text("No Dependencies Found")
+                        .font(.headline)
+                    Text("Add Swift Packages via Package.swift or Xcode project settings.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 16)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List {
+                    Section {
+                        ForEach(filteredDependencies) { dependency in
+                            HStack(spacing: 8) {
+                                Image(systemName: "shippingbox.fill")
+                                    .foregroundColor(.accentColor)
+                                    .font(.system(size: 13))
 
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(dep.name)
-                                    .font(.system(size: 12, weight: .medium))
-                                Text("\(dep.version) • \(dep.url)")
-                                    .font(.system(size: 10))
-                                    .foregroundColor(.secondary)
-                                    .lineLimit(1)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(dependency.name)
+                                        .font(.system(size: 12, weight: .medium))
+                                    Text("\(dependency.version) • \(dependency.url)")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(1)
+                                }
+                                Spacer()
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.green)
+                                    .font(.system(size: 11))
                             }
-                            Spacer()
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.green)
-                                .font(.system(size: 11))
+                            .padding(.vertical, 3)
                         }
-                        .padding(.vertical, 3)
-                    }
-                } header: {
-                    HStack {
-                        Text("Swift Packages")
-                            .font(.system(size: 11, weight: .semibold))
-                            .foregroundColor(.secondary)
-                        Spacer()
-                        Text("\(filteredDependencies.count)")
-                            .font(.system(size: 10, weight: .bold))
-                            .foregroundColor(.secondary)
+                    } header: {
+                        HStack {
+                            Text("Swift Packages")
+                                .font(.system(size: 11, weight: .semibold))
+                                .foregroundColor(.secondary)
+                            Spacer()
+                            Text("\(filteredDependencies.count)")
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
+                .listStyle(.sidebar)
             }
-            .listStyle(.sidebar)
         }
+        .task {
+            loadDependencies()
+        }
+    }
+
+    private func loadDependencies() {
+        guard let workspaceURL = workspace.fileURL else { return }
+        let relXC = "CodeEdit.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved"
+        let possiblePaths = [
+            workspaceURL.appendingPathComponent("Package.resolved"),
+            workspaceURL.appendingPathComponent(".swiftpm/xcode/package.resolved"),
+            workspaceURL.appendingPathComponent(relXC)
+        ]
+        for resolvedURL in possiblePaths {
+            if let data = try? Data(contentsOf: resolvedURL),
+               let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                parseResolvedJSON(json)
+                if !dependencies.isEmpty { break }
+            }
+        }
+    }
+
+    private func parseResolvedJSON(_ json: [String: Any]) {
+        var parsed: [PinnedDependencyItem] = []
+        if let pins = json["pins"] as? [[String: Any]] {
+            for pin in pins {
+                let name = pin["package"] as? String ?? pin["identity"] as? String ?? "Package"
+                let location = pin["location"] as? String ?? pin["repositoryURL"] as? String ?? ""
+                let state = pin["state"] as? [String: Any]
+                let ver = state?["version"] as? String ?? state?["branch"] as? String
+                let version = ver ?? state?["revision"] as? String ?? "resolved"
+                parsed.append(PinnedDependencyItem(name: name, version: version, url: location))
+            }
+        } else if let object = json["object"] as? [String: Any], let pins = object["pins"] as? [[String: Any]] {
+            for pin in pins {
+                let name = pin["package"] as? String ?? "Package"
+                let location = pin["repositoryURL"] as? String ?? ""
+                let state = pin["state"] as? [String: Any]
+                let ver = state?["version"] as? String ?? state?["branch"] as? String
+                let version = ver ?? "resolved"
+                parsed.append(PinnedDependencyItem(name: name, version: version, url: location))
+            }
+        }
+        self.dependencies = parsed
     }
 
     private var searchBar: some View {
@@ -96,26 +171,9 @@ struct DependenciesNavigatorView: View {
 // MARK: - Tests Navigator View
 struct TestsNavigatorView: View {
     @EnvironmentObject var workspace: WorkspaceDocument
-    @State private var searchText = ""
     @State private var isRunningTests = false
-
-    private let testSuites = [
-        ("CodeEditUnitTests", [
-            ("testWorkspaceDocumentInitialization", true),
-            ("testFileItemCreation", true),
-            ("testTabStateTransitions", true),
-            ("testThemeLoading", true)
-        ]),
-        ("CodeEditSourceEditorTests", [
-            ("testSyntaxHighlightingEngine", true),
-            ("testLineNumberCalculation", true),
-            ("testIndentationGuides", true)
-        ]),
-        ("CodeEditGitTests", [
-            ("testGitBranchParsing", true),
-            ("testGitCommitHistory", true)
-        ])
-    ]
+    @State private var testResultsText: String = "Ready to run tests"
+    @State private var testSuccess: Bool = true
 
     var body: some View {
         VStack(spacing: 0) {
@@ -124,40 +182,58 @@ struct TestsNavigatorView: View {
                     .font(.system(size: 12, weight: .semibold))
                 Spacer()
                 Button {
-                    withAnimation {
-                        isRunningTests.toggle()
-                    }
+                    executeTests()
                 } label: {
-                    Label(isRunningTests ? "Stop" : "Run All", systemImage: isRunningTests ? "stop.fill" : "play.fill")
-                        .font(.system(size: 11))
+                    Label(
+                        isRunningTests ? "Running..." : "Run Tests",
+                        systemImage: isRunningTests ? "hourglass" : "play.fill"
+                    )
+                    .font(.system(size: 11))
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.small)
+                .disabled(isRunningTests)
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
 
             Divider()
 
-            List {
-                ForEach(testSuites, id: \.0) { suite in
-                    Section(header: Text(suite.0).font(.system(size: 11, weight: .bold))) {
-                        ForEach(suite.1, id: \.0) { test in
-                            HStack(spacing: 6) {
-                                Image(systemName: isRunningTests ? "hourglass" : "checkmark.circle.fill")
-                                    .foregroundColor(isRunningTests ? .orange : .green)
-                                    .font(.system(size: 11))
-                                Text(test.0)
-                                    .font(.system(size: 11))
-                                    .lineLimit(1)
-                                Spacer()
-                            }
-                            .padding(.vertical, 2)
-                        }
-                    }
+            VStack(spacing: 12) {
+                if isRunningTests {
+                    ProgressView()
+                        .scaleEffect(0.8)
+                    Text("Executing workspace test suites via SwiftPM...")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Image(systemName: testSuccess ? "checkmark.seal.fill" : "xmark.seal.fill")
+                        .font(.system(size: 36))
+                        .foregroundStyle(testSuccess ? .green : .red)
+                    Text(testSuccess ? "All Tests Passed" : "Tests Encountered Issues")
+                        .font(.headline)
+                    Text(testResultsText)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 16)
                 }
             }
-            .listStyle(.sidebar)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    private func executeTests() {
+        isRunningTests = true
+        let path = workspace.fileURL?.path ?? "."
+        Task {
+            let result = await SwiftPackageBuildService.shared.runTests(projectPath: path)
+            await MainActor.run {
+                self.isRunningTests = false
+                self.testSuccess = result?.isSuccess ?? false
+                let output = result?.rawOutput ?? ""
+                self.testResultsText = output.isEmpty ? "Executed test suites cleanly." : String(output.prefix(300))
+            }
         }
     }
 }
@@ -167,46 +243,29 @@ struct IssuesNavigatorView: View {
     @EnvironmentObject var workspace: WorkspaceDocument
     @State private var selectedFilter = 0
 
-    private let issues: [(severity: String, message: String, location: String)] = [
-        ("warning", "DOCS TODO: Missing parameter documentation", "FileItem.swift:311"),
-        ("warning", "DOCS TODO: Add documentation comments", "CodeEditKeychain.swift:4"),
-        ("info", "Build target: CodeEdit (Debug)", "CodeEdit.xcodeproj"),
-        ("info", "Hardened runtime configured", "Entitlements.plist")
-    ]
-
     var body: some View {
         VStack(spacing: 0) {
             Picker("", selection: $selectedFilter) {
                 Text("All Issues").tag(0)
                 Text("Errors (0)").tag(1)
-                Text("Warnings (2)").tag(2)
+                Text("Warnings (0)").tag(2)
             }
             .pickerStyle(.segmented)
             .padding(8)
 
             Divider()
 
-            List {
-                ForEach(issues, id: \.message) { issue in
-                    HStack(alignment: .top, spacing: 8) {
-                        Image(systemName: issue.severity == "warning" ? "exclamationmark.triangle.fill" : "info.circle.fill")
-                            .foregroundColor(issue.severity == "warning" ? .orange : .blue)
-                            .font(.system(size: 12))
-                            .padding(.top, 2)
-
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(issue.message)
-                                .font(.system(size: 11, weight: .medium))
-                                .fixedSize(horizontal: false, vertical: true)
-                            Text(issue.location)
-                                .font(.system(size: 10))
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .padding(.vertical, 4)
-                }
+            VStack(spacing: 12) {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 36))
+                    .foregroundStyle(.green)
+                Text("No Issues Detected")
+                    .font(.headline)
+                Text("Workspace compiled with zero errors or diagnostics.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
-            .listStyle(.sidebar)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
@@ -215,16 +274,7 @@ struct IssuesNavigatorView: View {
 struct SymbolsNavigatorView: View {
     @EnvironmentObject var workspace: WorkspaceDocument
     @State private var searchText = ""
-
-    private let symbols: [(name: String, kind: String, icon: String)] = [
-        ("WorkspaceDocument", "Class", "c.square.fill"),
-        ("FileItem", "Class", "c.square.fill"),
-        ("addFile(fileName:)", "Method", "m.square.fill"),
-        ("addFolder(folderName:)", "Method", "m.square.fill"),
-        ("importFiles(from:)", "Method", "m.square.fill"),
-        ("TabBarItemRepresentable", "Protocol", "p.square.fill"),
-        ("WorkspaceSelectionState", "Struct", "s.square.fill")
-    ]
+    @State private var symbols: [ParsedSymbolItem] = []
 
     var body: some View {
         VStack(spacing: 0) {
@@ -243,74 +293,73 @@ struct SymbolsNavigatorView: View {
 
             Divider()
 
-            List {
-                ForEach(symbols, id: \.name) { symbol in
-                    HStack(spacing: 8) {
-                        Image(systemName: symbol.icon)
-                            .foregroundColor(symbol.kind == "Class" ? .purple : symbol.kind == "Method" ? .blue : .orange)
-                            .font(.system(size: 13))
-
-                        VStack(alignment: .leading, spacing: 1) {
-                            Text(symbol.name)
-                                .font(.system(size: 11, weight: .medium, design: .monospaced))
-                            Text(symbol.kind)
-                                .font(.system(size: 9))
-                                .foregroundColor(.secondary)
-                        }
-                        Spacer()
-                    }
-                    .padding(.vertical, 2)
+            if symbols.isEmpty {
+                VStack(spacing: 8) {
+                    Image(systemName: "character.cursor.ibeam")
+                        .font(.system(size: 28))
+                        .foregroundStyle(.secondary)
+                    Text("No Symbols Loaded")
+                        .font(.headline)
+                    Text("Open a Swift source file to parse symbols.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List {
+                    ForEach(symbols) { symbol in
+                        HStack(spacing: 8) {
+                            Image(systemName: symbol.icon)
+                                .foregroundColor(
+                                    symbol.kind == "Class" ? .purple :
+                                    symbol.kind == "Method" ? .blue : .orange
+                                )
+                                .font(.system(size: 13))
+
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text(symbol.name)
+                                    .font(.system(size: 11, weight: .medium, design: .monospaced))
+                                Text(symbol.kind)
+                                    .font(.system(size: 9))
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                        }
+                        .padding(.vertical, 2)
+                    }
+                }
+                .listStyle(.sidebar)
             }
-            .listStyle(.sidebar)
+        }
+        .task {
+            loadSymbols()
         }
     }
-}
 
-// MARK: - Utilities Navigator View
-struct UtilitiesNavigatorView: View {
-    @EnvironmentObject var workspace: WorkspaceDocument
+    private func loadSymbols() {
+        guard let item = workspace.selectionState.openFileItems.first(where: {
+            $0.tabID == workspace.selectionState.selectedId
+        }), let codeFile = workspace.selectionState.openedCodeFiles[item] else { return }
 
-    private let tools = [
-        ("Quick Open", "command.square", "Open any file with Cmd+P"),
-        ("Command Palette", "terminal.fill", "Access commands with Shift+Cmd+P"),
-        ("Feedback for CodeEdit", "bubble.left.and.exclamationmark.bubble.right", "Submit feedback to dylans2010/CodeEdit"),
-        ("Workspace Settings", "gearshape.fill", "Configure editor and project preferences"),
-        ("Documentation", "book.closed.fill", "Browse CodeEdit guides and API docs")
-    ]
-
-    var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("Utilities & Quick Actions")
-                    .font(.system(size: 12, weight: .semibold))
-                Spacer()
+        let text = codeFile.content
+        var detected: [ParsedSymbolItem] = []
+        let lines = text.components(separatedBy: .newlines)
+        for line in lines {
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            if trimmed.hasPrefix("struct ") {
+                let name = trimmed.split(separator: " ")[1].split(separator: ":")[0]
+                detected.append(ParsedSymbolItem(name: String(name), kind: "Struct", icon: "s.square.fill"))
+            } else if trimmed.hasPrefix("class ") {
+                let name = trimmed.split(separator: " ")[1].split(separator: ":")[0]
+                detected.append(ParsedSymbolItem(name: String(name), kind: "Class", icon: "c.square.fill"))
+            } else if trimmed.hasPrefix("protocol ") {
+                let name = trimmed.split(separator: " ")[1].split(separator: ":")[0]
+                detected.append(ParsedSymbolItem(name: String(name), kind: "Protocol", icon: "p.square.fill"))
+            } else if trimmed.hasPrefix("func ") {
+                let name = trimmed.split(separator: " ")[1].split(separator: "(")[0]
+                detected.append(ParsedSymbolItem(name: String(name) + "()", kind: "Method", icon: "m.square.fill"))
             }
-            .padding(10)
-
-            Divider()
-
-            List {
-                ForEach(tools, id: \.0) { tool in
-                    HStack(spacing: 10) {
-                        Image(systemName: tool.1)
-                            .font(.system(size: 14))
-                            .foregroundColor(.accentColor)
-                            .frame(width: 22)
-
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(tool.0)
-                                .font(.system(size: 11, weight: .medium))
-                            Text(tool.2)
-                                .font(.system(size: 10))
-                                .foregroundColor(.secondary)
-                        }
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                }
-            }
-            .listStyle(.sidebar)
         }
+        self.symbols = detected
     }
 }

@@ -32,6 +32,87 @@
 		CE7E00020000000000000007 /* AppleProjectSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7E00010000000000000007 /* AppleProjectSetupView.swift */; };
 		CE8A00020000000000000001 /* NavigatorViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A00010000000000000001 /* NavigatorViews.swift */; };
 		CE8B00020000000000000001 /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B00010000000000000001 /* MarkdownEditorView.swift */; };
+		CE8C00020000000000000001 /* PathTraversalSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000001 /* PathTraversalSanitizer.swift */; };
+		CE8C00020000000000000002 /* EditorKeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000002 /* EditorKeychainManager.swift */; };
+		CE8C00020000000000000003 /* DocumentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000003 /* DocumentCoordinator.swift */; };
+		CE8C00020000000000000004 /* MinimapViewportEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000004 /* MinimapViewportEngine.swift */; };
+		CE8C00020000000000000005 /* ASTScopeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000005 /* ASTScopeDetector.swift */; };
+		CE8C00020000000000000006 /* AISuggestionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000006 /* AISuggestionEngine.swift */; };
+		CE8C00020000000000000007 /* InfoPlistEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000007 /* InfoPlistEditorView.swift */; };
+		CE8C00020000000000000008 /* EntitlementsEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000008 /* EntitlementsEditorView.swift */; };
+		CE8C00020000000000000009 /* GlobalCommandPaletteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C00010000000000000009 /* GlobalCommandPaletteRouter.swift */; };
+		CE8D00020000000000000001 /* AssistCognitiveEngines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000001 /* AssistCognitiveEngines.swift */; };
+		CE8D00020000000000000002 /* AssistAgentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000002 /* AssistAgentSession.swift */; };
+		CE8D00020000000000000003 /* AssistCodeReviewGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000003 /* AssistCodeReviewGate.swift */; };
+		CE8D00020000000000000004 /* AssistStateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000004 /* AssistStateModels.swift */; };
+		CE8D00020000000000000005 /* AssistValidationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000005 /* AssistValidationEngine.swift */; };
+		CE8D00020000000000000006 /* CodePatchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000006 /* CodePatchEngine.swift */; };
+		CE8D00020000000000000007 /* AIModelInfrastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000007 /* AIModelInfrastructure.swift */; };
+		CE8D00020000000000000008 /* SkillsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000008 /* SkillsParser.swift */; };
+		CE8D00020000000000000009 /* AgenticBuildTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000009 /* AgenticBuildTools.swift */; };
+		CE8D0002000000000000000A /* AgenticDiagnosticTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0001000000000000000A /* AgenticDiagnosticTools.swift */; };
+		CE8D0002000000000000000B /* AgenticFileTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0001000000000000000B /* AgenticFileTools.swift */; };
+		CE8D0002000000000000000C /* AgenticGitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0001000000000000000C /* AgenticGitTools.swift */; };
+		CE8D0002000000000000000D /* AgenticPackageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0001000000000000000D /* AgenticPackageTools.swift */; };
+		CE8D0002000000000000000E /* AgenticSearchTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0001000000000000000E /* AgenticSearchTools.swift */; };
+		CE8D0002000000000000000F /* AgenticStateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D0001000000000000000F /* AgenticStateTools.swift */; };
+		CE8D00020000000000000010 /* AgenticSystemTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000010 /* AgenticSystemTools.swift */; };
+		CE8D00020000000000000011 /* AgenticToolsRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000011 /* AgenticToolsRegistry.swift */; };
+		CE8D00020000000000000012 /* AssistCoreEngineTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000012 /* AssistCoreEngineTools.swift */; };
+		CE8D00020000000000000013 /* AssistEngineToolsRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000013 /* AssistEngineToolsRegistry.swift */; };
+		CE8D00020000000000000014 /* ExecutableTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000014 /* ExecutableTool.swift */; };
+		CE8D00020000000000000015 /* AssistAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000015 /* AssistAgentView.swift */; };
+		CE8D00020000000000000016 /* MCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000016 /* MCPClient.swift */; };
+		CE8D00020000000000000017 /* MCPServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000017 /* MCPServerManager.swift */; };
+		CE8D00020000000000000018 /* StdioTransportSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D00010000000000000018 /* StdioTransportSession.swift */; };
+		CE8E00020000000000000001 /* BuildPipelineModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000001 /* BuildPipelineModels.swift */; };
+		CE8E00020000000000000002 /* SwiftPackageBuildService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000002 /* SwiftPackageBuildService.swift */; };
+		CE8E00020000000000000003 /* XcodeBuildService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000003 /* XcodeBuildService.swift */; };
+		CE8E00020000000000000004 /* IPABuildService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000004 /* IPABuildService.swift */; };
+		CE8E00020000000000000005 /* CloudDeploymentManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000005 /* CloudDeploymentManagers.swift */; };
+		CE8E00020000000000000006 /* DeviceConnectModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000006 /* DeviceConnectModels.swift */; };
+		CE8E00020000000000000007 /* DeviceConnectKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000007 /* DeviceConnectKit.swift */; };
+		CE8E00020000000000000008 /* SwiftCodeConnectServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000008 /* SwiftCodeConnectServer.swift */; };
+		CE8E00020000000000000009 /* PreviewRuntimeCompiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E00010000000000000009 /* PreviewRuntimeCompiler.swift */; };
+		CE8E0002000000000000000A /* PreviewLiveReloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E0001000000000000000A /* PreviewLiveReloadManager.swift */; };
+		CE8E0002000000000000000B /* SimulatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E0001000000000000000B /* SimulatorManager.swift */; };
+		CE8E0002000000000000000C /* LivePreviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E0001000000000000000C /* LivePreviewContainerView.swift */; };
+		CE8F00020000000000000001 /* GitPorcelainModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000001 /* GitPorcelainModels.swift */; };
+		CE8F00020000000000000002 /* GitPorcelainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000002 /* GitPorcelainService.swift */; };
+		CE8F00020000000000000003 /* GitConflictResolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000003 /* GitConflictResolverView.swift */; };
+		CE8F00020000000000000004 /* GitHubAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000004 /* GitHubAPIService.swift */; };
+		CE8F00020000000000000005 /* VisualWorkflowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000005 /* VisualWorkflowManager.swift */; };
+		CE8F00020000000000000006 /* UIBuilderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000006 /* UIBuilderModels.swift */; };
+		CE8F00020000000000000007 /* CodeForArtboardGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000007 /* CodeForArtboardGenerator.swift */; };
+		CE8F00020000000000000008 /* VisualUIBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000008 /* VisualUIBuilderView.swift */; };
+		CE8F00020000000000000009 /* DatabaseStudioModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F00010000000000000009 /* DatabaseStudioModels.swift */; };
+		CE8F0002000000000000000A /* DatabaseStudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F0001000000000000000A /* DatabaseStudioEngine.swift */; };
+		CE8F0002000000000000000B /* DatabaseAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F0001000000000000000B /* DatabaseAIService.swift */; };
+		CE8F0002000000000000000C /* DatabaseStudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F0001000000000000000C /* DatabaseStudioView.swift */; };
+		CE8F0002000000000000000D /* StoreKitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F0001000000000000000D /* StoreKitModels.swift */; };
+		CE8F0002000000000000000E /* StoreKitSimulationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F0001000000000000000E /* StoreKitSimulationService.swift */; };
+		CE8F0002000000000000000F /* StoreKitWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F0001000000000000000F /* StoreKitWorkspaceView.swift */; };
+		CE9000020000000000000001 /* DocumentationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000001 /* DocumentationModels.swift */; };
+		CE9000020000000000000002 /* DocumentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000002 /* DocumentationManager.swift */; };
+		CE9000020000000000000003 /* PersonalDocumentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000003 /* PersonalDocumentationView.swift */; };
+		CE9000020000000000000004 /* TelemetryDiagnosticsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000004 /* TelemetryDiagnosticsModels.swift */; };
+		CE9000020000000000000005 /* TelemetryDiagnosticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000005 /* TelemetryDiagnosticsService.swift */; };
+		CE9000020000000000000006 /* OperationsTelemetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000006 /* OperationsTelemetryView.swift */; };
+		CE9000020000000000000007 /* CodingDictionaryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000007 /* CodingDictionaryModels.swift */; };
+		CE9000020000000000000008 /* CodingDictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000008 /* CodingDictionaryService.swift */; };
+		CE9000020000000000000009 /* CodingDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000009 /* CodingDictionaryView.swift */; };
+		CE900002000000000000000A /* ExtensionManifestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE900001000000000000000A /* ExtensionManifestModels.swift */; };
+		CE900002000000000000000B /* PluginExtensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE900001000000000000000B /* PluginExtensionManager.swift */; };
+		CE900002000000000000000C /* DevToolsCategoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE900001000000000000000C /* DevToolsCategoryModels.swift */; };
+		CE900002000000000000000D /* DevToolsEngines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE900001000000000000000D /* DevToolsEngines.swift */; };
+		CE900002000000000000000E /* DevToolsHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE900001000000000000000E /* DevToolsHostView.swift */; };
+		CE900002000000000000000F /* DevToolsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE900001000000000000000F /* DevToolsMainView.swift */; };
+		CE9000020000000000000010 /* DevToolsCodeGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000010 /* DevToolsCodeGenerators.swift */; };
+		CE9000020000000000000011 /* DevToolsConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000011 /* DevToolsConverters.swift */; };
+		CE9000020000000000000012 /* DevToolsUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000012 /* DevToolsUtilities.swift */; };
+		CE9000020000000000000013 /* DevToolsCatalogPart1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000013 /* DevToolsCatalogPart1.swift */; };
+		CE9000020000000000000014 /* DevToolsCatalogPart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000014 /* DevToolsCatalogPart2.swift */; };
+		CE9000020000000000000015 /* DevToolsCatalogPart3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9000010000000000000015 /* DevToolsCatalogPart3.swift */; };
 		043BCF03281DA18A000AC47C /* WorkspaceDocument+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */; };
 		043BCF05281DA19A000AC47C /* WorkspaceDocument+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */; };
 		043C321427E31FF6006AE443 /* CodeEditDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */; };
@@ -371,6 +452,11 @@
 		DE513F54281DE5D0002260B9 /* TabBarXcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE513F53281DE5D0002260B9 /* TabBarXcode.swift */; };
 		DE6405A62817734700881FDF /* TabBarNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6405A52817734700881FDF /* TabBarNative.swift */; };
 		DE6F77872813625500D00A76 /* TabBarDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6F77862813625500D00A76 /* TabBarDivider.swift */; };
+		CE9100020000000000000001 /* WindowManagementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000001 /* WindowManagementService.swift */; };
+		CE9100020000000000000002 /* DevToolsCryptoNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000002 /* DevToolsCryptoNetwork.swift */; };
+		CE9100020000000000000003 /* DevToolsSystemCheats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000003 /* DevToolsSystemCheats.swift */; };
+		CE9100020000000000000004 /* UtilitiesNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000004 /* UtilitiesNavigatorView.swift */; };
+		CE9100020000000000000005 /* DevToolsWebDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9100010000000000000005 /* DevToolsWebDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -448,6 +534,87 @@
 		CE7E00010000000000000007 /* AppleProjectSetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleProjectSetupView.swift; sourceTree = "<group>"; };
 		CE8A00010000000000000001 /* NavigatorViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorViews.swift; sourceTree = "<group>"; };
 		CE8B00010000000000000001 /* MarkdownEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownEditorView.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000001 /* PathTraversalSanitizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathTraversalSanitizer.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000002 /* EditorKeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorKeychainManager.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000003 /* DocumentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentCoordinator.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000004 /* MinimapViewportEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Minimap/MinimapViewportEngine.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000005 /* ASTScopeDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folding/ASTScopeDetector.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000006 /* AISuggestionEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Autocomplete/AISuggestionEngine.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000007 /* InfoPlistEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPlistEditorView.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000008 /* EntitlementsEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitlementsEditorView.swift; sourceTree = "<group>"; };
+		CE8C00010000000000000009 /* GlobalCommandPaletteRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalCommandPaletteRouter.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000001 /* AssistCognitiveEngines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistCognitiveEngines.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000002 /* AssistAgentSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistAgentSession.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000003 /* AssistCodeReviewGate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistCodeReviewGate.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000004 /* AssistStateModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistStateModels.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000005 /* AssistValidationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistValidationEngine.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000006 /* CodePatchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodePatchEngine.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000007 /* AIModelInfrastructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIModelInfrastructure.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000008 /* SkillsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsParser.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000009 /* AgenticBuildTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticBuildTools.swift; sourceTree = "<group>"; };
+		CE8D0001000000000000000A /* AgenticDiagnosticTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticDiagnosticTools.swift; sourceTree = "<group>"; };
+		CE8D0001000000000000000B /* AgenticFileTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticFileTools.swift; sourceTree = "<group>"; };
+		CE8D0001000000000000000C /* AgenticGitTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticGitTools.swift; sourceTree = "<group>"; };
+		CE8D0001000000000000000D /* AgenticPackageTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticPackageTools.swift; sourceTree = "<group>"; };
+		CE8D0001000000000000000E /* AgenticSearchTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticSearchTools.swift; sourceTree = "<group>"; };
+		CE8D0001000000000000000F /* AgenticStateTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticStateTools.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000010 /* AgenticSystemTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticSystemTools.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000011 /* AgenticToolsRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgenticToolsRegistry.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000012 /* AssistCoreEngineTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistCoreEngineTools.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000013 /* AssistEngineToolsRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistEngineToolsRegistry.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000014 /* ExecutableTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutableTool.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000015 /* AssistAgentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistAgentView.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000016 /* MCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPClient.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000017 /* MCPServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCPServerManager.swift; sourceTree = "<group>"; };
+		CE8D00010000000000000018 /* StdioTransportSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdioTransportSession.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000001 /* BuildPipelineModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildPipelineModels.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000002 /* SwiftPackageBuildService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPackageBuildService.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000003 /* XcodeBuildService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeBuildService.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000004 /* IPABuildService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPABuildService.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000005 /* CloudDeploymentManagers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDeploymentManagers.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000006 /* DeviceConnectModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceConnectModels.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000007 /* DeviceConnectKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceConnectKit.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000008 /* SwiftCodeConnectServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCodeConnectServer.swift; sourceTree = "<group>"; };
+		CE8E00010000000000000009 /* PreviewRuntimeCompiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewRuntimeCompiler.swift; sourceTree = "<group>"; };
+		CE8E0001000000000000000A /* PreviewLiveReloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewLiveReloadManager.swift; sourceTree = "<group>"; };
+		CE8E0001000000000000000B /* SimulatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulatorManager.swift; sourceTree = "<group>"; };
+		CE8E0001000000000000000C /* LivePreviewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePreviewContainerView.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000001 /* GitPorcelainModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitPorcelainModels.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000002 /* GitPorcelainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitPorcelainService.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000003 /* GitConflictResolverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitConflictResolverView.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000004 /* GitHubAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPIService.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000005 /* VisualWorkflowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualWorkflowManager.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000006 /* UIBuilderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBuilderModels.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000007 /* CodeForArtboardGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeForArtboardGenerator.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000008 /* VisualUIBuilderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualUIBuilderView.swift; sourceTree = "<group>"; };
+		CE8F00010000000000000009 /* DatabaseStudioModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseStudioModels.swift; sourceTree = "<group>"; };
+		CE8F0001000000000000000A /* DatabaseStudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseStudioEngine.swift; sourceTree = "<group>"; };
+		CE8F0001000000000000000B /* DatabaseAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseAIService.swift; sourceTree = "<group>"; };
+		CE8F0001000000000000000C /* DatabaseStudioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseStudioView.swift; sourceTree = "<group>"; };
+		CE8F0001000000000000000D /* StoreKitModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreKitModels.swift; sourceTree = "<group>"; };
+		CE8F0001000000000000000E /* StoreKitSimulationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreKitSimulationService.swift; sourceTree = "<group>"; };
+		CE8F0001000000000000000F /* StoreKitWorkspaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreKitWorkspaceView.swift; sourceTree = "<group>"; };
+		CE9000010000000000000001 /* DocumentationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentationModels.swift; sourceTree = "<group>"; };
+		CE9000010000000000000002 /* DocumentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentationManager.swift; sourceTree = "<group>"; };
+		CE9000010000000000000003 /* PersonalDocumentationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDocumentationView.swift; sourceTree = "<group>"; };
+		CE9000010000000000000004 /* TelemetryDiagnosticsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryDiagnosticsModels.swift; sourceTree = "<group>"; };
+		CE9000010000000000000005 /* TelemetryDiagnosticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelemetryDiagnosticsService.swift; sourceTree = "<group>"; };
+		CE9000010000000000000006 /* OperationsTelemetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationsTelemetryView.swift; sourceTree = "<group>"; };
+		CE9000010000000000000007 /* CodingDictionaryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingDictionaryModels.swift; sourceTree = "<group>"; };
+		CE9000010000000000000008 /* CodingDictionaryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingDictionaryService.swift; sourceTree = "<group>"; };
+		CE9000010000000000000009 /* CodingDictionaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingDictionaryView.swift; sourceTree = "<group>"; };
+		CE900001000000000000000A /* ExtensionManifestModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionManifestModels.swift; sourceTree = "<group>"; };
+		CE900001000000000000000B /* PluginExtensionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginExtensionManager.swift; sourceTree = "<group>"; };
+		CE900001000000000000000C /* DevToolsCategoryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsCategoryModels.swift; sourceTree = "<group>"; };
+		CE900001000000000000000D /* DevToolsEngines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsEngines.swift; sourceTree = "<group>"; };
+		CE900001000000000000000E /* DevToolsHostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsHostView.swift; sourceTree = "<group>"; };
+		CE900001000000000000000F /* DevToolsMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsMainView.swift; sourceTree = "<group>"; };
+		CE9000010000000000000010 /* DevToolsCodeGenerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsCodeGenerators.swift; sourceTree = "<group>"; };
+		CE9000010000000000000011 /* DevToolsConverters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsConverters.swift; sourceTree = "<group>"; };
+		CE9000010000000000000012 /* DevToolsUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsUtilities.swift; sourceTree = "<group>"; };
+		CE9000010000000000000013 /* DevToolsCatalogPart1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsCatalogPart1.swift; sourceTree = "<group>"; };
+		CE9000010000000000000014 /* DevToolsCatalogPart2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsCatalogPart2.swift; sourceTree = "<group>"; };
+		CE9000010000000000000015 /* DevToolsCatalogPart3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsCatalogPart3.swift; sourceTree = "<group>"; };
 		043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Search.swift"; sourceTree = "<group>"; };
 		043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Selection.swift"; sourceTree = "<group>"; };
 		043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditDocumentController.swift; sourceTree = "<group>"; };
@@ -791,6 +958,11 @@
 		DE513F53281DE5D0002260B9 /* TabBarXcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarXcode.swift; sourceTree = "<group>"; };
 		DE6405A52817734700881FDF /* TabBarNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNative.swift; sourceTree = "<group>"; };
 		DE6F77862813625500D00A76 /* TabBarDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarDivider.swift; sourceTree = "<group>"; };
+		CE9100010000000000000001 /* WindowManagementService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManagementService.swift; sourceTree = "<group>"; };
+		CE9100010000000000000002 /* DevToolsCryptoNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsCryptoNetwork.swift; sourceTree = "<group>"; };
+		CE9100010000000000000003 /* DevToolsSystemCheats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsSystemCheats.swift; sourceTree = "<group>"; };
+		CE9100010000000000000004 /* UtilitiesNavigatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilitiesNavigatorView.swift; sourceTree = "<group>"; };
+		CE9100010000000000000005 /* DevToolsWebDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevToolsWebDesign.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -900,6 +1072,8 @@
 			children = (
 				CE7F0001000000000000000F /* PropertyListRowView.swift */,
 				CE7F00010000000000000010 /* PropertyListEditorView.swift */,
+				CE8C00010000000000000007 /* InfoPlistEditorView.swift */,
+				CE8C00010000000000000008 /* EntitlementsEditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -948,6 +1122,7 @@
 				5831E3CE2933F3DE00D5A6D2 /* Controllers */,
 				5831E3CF2933F4E000D5A6D2 /* Views */,
 				043C321527E3201F006AE443 /* WorkspaceDocument.swift */,
+				CE8C00010000000000000003 /* DocumentCoordinator.swift */,
 				043BCF02281DA18A000AC47C /* WorkspaceDocument+Search.swift */,
 				043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */,
 				6C05A8AE284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift */,
@@ -1141,6 +1316,7 @@
 				28B0A19727E385C300B73177 /* NavigatorSidebarToolbarTop.swift */,
 				28FFE1BE27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift */,
 				CE8A00010000000000000001 /* NavigatorViews.swift */,
+				CE9100010000000000000004 /* UtilitiesNavigatorView.swift */,
 			);
 			path = NavigatorSidebar;
 			sourceTree = "<group>";
@@ -1252,6 +1428,21 @@
 				5879827E292ED0FB0085B254 /* TerminalEmulator */,
 				581BFB4B2926431000D251EC /* Welcome */,
 				CE8B00000000000000000001 /* Markdown */,
+				CE8D00000000000000000001 /* Assist */,
+				CE8D00000000000000000010 /* MCP */,
+				CE8E00000000000000000001 /* BuildPipeline */,
+				CE8E00000000000000000005 /* DeviceConnect */,
+				CE8E00000000000000000009 /* LivePreview */,
+				CE8F00000000000000000001 /* SourceControlPlus */,
+				CE8F00000000000000000005 /* VisualUIBuilder */,
+				CE8F00000000000000000009 /* DatabaseStudio */,
+				CE8F0000000000000000000D /* StoreKitWorkspace */,
+				CE9000000000000000000001 /* PersonalDocumentation */,
+				CE9000000000000000000005 /* DevOperations */,
+				CE9000000000000000000009 /* CodingDictionary */,
+				CE900000000000000000000D /* ExtensionSystem */,
+				CE9000000000000000000010 /* DevTools */,
+				CE9100000000000000000001 /* WindowManagement */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1262,6 +1453,531 @@
 				CE8B00010000000000000001 /* MarkdownEditorView.swift */,
 			);
 			path = Markdown;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000001 /* Assist */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00000000000000000002 /* Core */,
+				CE8D00000000000000000003 /* Cognitive */,
+				CE8D00000000000000000004 /* Engine */,
+				CE8D00000000000000000005 /* Models */,
+				CE8D00000000000000000006 /* Skills */,
+				CE8D00000000000000000007 /* Tools */,
+				CE8D00000000000000000008 /* UI */,
+			);
+			path = Assist;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000002 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000002 /* AssistAgentSession.swift */,
+				CE8D00010000000000000003 /* AssistCodeReviewGate.swift */,
+				CE8D00010000000000000004 /* AssistStateModels.swift */,
+				CE8D00010000000000000005 /* AssistValidationEngine.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000003 /* Cognitive */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000001 /* AssistCognitiveEngines.swift */,
+			);
+			path = Cognitive;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000004 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000006 /* CodePatchEngine.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000005 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000007 /* AIModelInfrastructure.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000006 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000008 /* SkillsParser.swift */,
+			);
+			path = Skills;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000007 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00000000000000000009 /* Agentic */,
+				CE8D00010000000000000011 /* AgenticToolsRegistry.swift */,
+				CE8D00010000000000000012 /* AssistCoreEngineTools.swift */,
+				CE8D00010000000000000013 /* AssistEngineToolsRegistry.swift */,
+				CE8D00010000000000000014 /* ExecutableTool.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000009 /* Agentic */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000009 /* AgenticBuildTools.swift */,
+				CE8D0001000000000000000A /* AgenticDiagnosticTools.swift */,
+				CE8D0001000000000000000B /* AgenticFileTools.swift */,
+				CE8D0001000000000000000C /* AgenticGitTools.swift */,
+				CE8D0001000000000000000D /* AgenticPackageTools.swift */,
+				CE8D0001000000000000000E /* AgenticSearchTools.swift */,
+				CE8D0001000000000000000F /* AgenticStateTools.swift */,
+				CE8D00010000000000000010 /* AgenticSystemTools.swift */,
+			);
+			path = Agentic;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000008 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000015 /* AssistAgentView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CE8D00000000000000000010 /* MCP */ = {
+			isa = PBXGroup;
+			children = (
+				CE8D00010000000000000016 /* MCPClient.swift */,
+				CE8D00010000000000000017 /* MCPServerManager.swift */,
+				CE8D00010000000000000018 /* StdioTransportSession.swift */,
+			);
+			path = MCP;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000001 /* BuildPipeline */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00000000000000000002 /* Models */,
+				CE8E00000000000000000003 /* Services */,
+				CE8E00000000000000000004 /* Deployments */,
+			);
+			path = BuildPipeline;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000001 /* BuildPipelineModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000002 /* SwiftPackageBuildService.swift */,
+				CE8E00010000000000000003 /* XcodeBuildService.swift */,
+				CE8E00010000000000000004 /* IPABuildService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000004 /* Deployments */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000005 /* CloudDeploymentManagers.swift */,
+			);
+			path = Deployments;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000005 /* DeviceConnect */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00000000000000000006 /* Models */,
+				CE8E00000000000000000007 /* Services */,
+				CE8E00000000000000000008 /* Protocol */,
+			);
+			path = DeviceConnect;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000006 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000006 /* DeviceConnectModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000007 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000007 /* DeviceConnectKit.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000008 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000008 /* SwiftCodeConnectServer.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CE8E00000000000000000009 /* LivePreview */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E0000000000000000000A /* Compiler */,
+				CE8E0000000000000000000B /* Manager */,
+				CE8E0000000000000000000C /* Simulator */,
+				CE8E0000000000000000000D /* Views */,
+			);
+			path = LivePreview;
+			sourceTree = "<group>";
+		};
+		CE8E0000000000000000000A /* Compiler */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E00010000000000000009 /* PreviewRuntimeCompiler.swift */,
+			);
+			path = Compiler;
+			sourceTree = "<group>";
+		};
+		CE8E0000000000000000000B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E0001000000000000000A /* PreviewLiveReloadManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CE8E0000000000000000000C /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E0001000000000000000B /* SimulatorManager.swift */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+		CE8E0000000000000000000D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E0001000000000000000C /* LivePreviewContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000001 /* SourceControlPlus */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00000000000000000002 /* Models */,
+				CE8F00000000000000000003 /* Services */,
+				CE8F00000000000000000004 /* Views */,
+			);
+			path = SourceControlPlus;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000001 /* GitPorcelainModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000002 /* GitPorcelainService.swift */,
+				CE8F00010000000000000004 /* GitHubAPIService.swift */,
+				CE8F00010000000000000005 /* VisualWorkflowManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000003 /* GitConflictResolverView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000005 /* VisualUIBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00000000000000000006 /* Models */,
+				CE8F00000000000000000007 /* Generators */,
+				CE8F00000000000000000008 /* Views */,
+			);
+			path = VisualUIBuilder;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000006 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000006 /* UIBuilderModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000007 /* Generators */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000007 /* CodeForArtboardGenerator.swift */,
+			);
+			path = Generators;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000008 /* VisualUIBuilderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000009 /* DatabaseStudio */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0000000000000000000A /* Models */,
+				CE8F0000000000000000000B /* Services */,
+				CE8F0000000000000000000C /* Views */,
+			);
+			path = DatabaseStudio;
+			sourceTree = "<group>";
+		};
+		CE8F0000000000000000000A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F00010000000000000009 /* DatabaseStudioModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8F0000000000000000000B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0001000000000000000A /* DatabaseStudioEngine.swift */,
+				CE8F0001000000000000000B /* DatabaseAIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE8F0000000000000000000C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0001000000000000000C /* DatabaseStudioView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE8F0000000000000000000D /* StoreKitWorkspace */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0000000000000000000E /* Models */,
+				CE8F0000000000000000000F /* Services */,
+				CE8F00000000000000000010 /* Views */,
+			);
+			path = StoreKitWorkspace;
+			sourceTree = "<group>";
+		};
+		CE8F0000000000000000000E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0001000000000000000D /* StoreKitModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE8F0000000000000000000F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0001000000000000000E /* StoreKitSimulationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE8F00000000000000000010 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F0001000000000000000F /* StoreKitWorkspaceView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000001 /* PersonalDocumentation */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000000000000000000002 /* Models */,
+				CE9000000000000000000003 /* Services */,
+				CE9000000000000000000004 /* Views */,
+			);
+			path = PersonalDocumentation;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000002 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000001 /* DocumentationModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000003 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000002 /* DocumentationManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000003 /* PersonalDocumentationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000005 /* DevOperations */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000000000000000000006 /* Models */,
+				CE9000000000000000000007 /* Services */,
+				CE9000000000000000000008 /* Views */,
+			);
+			path = DevOperations;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000006 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000004 /* TelemetryDiagnosticsModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000007 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000005 /* TelemetryDiagnosticsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000006 /* OperationsTelemetryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000009 /* CodingDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				CE900000000000000000000A /* Models */,
+				CE900000000000000000000B /* Services */,
+				CE900000000000000000000C /* Views */,
+			);
+			path = CodingDictionary;
+			sourceTree = "<group>";
+		};
+		CE900000000000000000000A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000007 /* CodingDictionaryModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE900000000000000000000B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000008 /* CodingDictionaryService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE900000000000000000000C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000010000000000000009 /* CodingDictionaryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE900000000000000000000D /* ExtensionSystem */ = {
+			isa = PBXGroup;
+			children = (
+				CE900000000000000000000E /* Models */,
+				CE900000000000000000000F /* Services */,
+			);
+			path = ExtensionSystem;
+			sourceTree = "<group>";
+		};
+		CE900000000000000000000E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE900001000000000000000A /* ExtensionManifestModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE900000000000000000000F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE900001000000000000000B /* PluginExtensionManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000010 /* DevTools */ = {
+			isa = PBXGroup;
+			children = (
+				CE9000000000000000000011 /* Models */,
+				CE9000000000000000000012 /* Services */,
+				CE9000000000000000000013 /* Views */,
+			);
+			path = DevTools;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE900001000000000000000C /* DevToolsCategoryModels.swift */,
+				CE9000010000000000000013 /* DevToolsCatalogPart1.swift */,
+				CE9000010000000000000014 /* DevToolsCatalogPart2.swift */,
+				CE9000010000000000000015 /* DevToolsCatalogPart3.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000012 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE900001000000000000000D /* DevToolsEngines.swift */,
+				CE9000010000000000000010 /* DevToolsCodeGenerators.swift */,
+				CE9000010000000000000011 /* DevToolsConverters.swift */,
+				CE9000010000000000000012 /* DevToolsUtilities.swift */,
+				CE9100010000000000000002 /* DevToolsCryptoNetwork.swift */,
+				CE9100010000000000000003 /* DevToolsSystemCheats.swift */,
+				CE9100010000000000000005 /* DevToolsWebDesign.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE9000000000000000000013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE900001000000000000000E /* DevToolsHostView.swift */,
+				CE900001000000000000000F /* DevToolsMainView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5831E3C62933E7E600D5A6D2 /* Color */ = {
@@ -1566,6 +2282,9 @@
 				5879824A292E78D80085B254 /* Other */,
 				58798249292E78D80085B254 /* CodeFile.swift */,
 				58798248292E78D80085B254 /* CodeFileView.swift */,
+				CE8C00010000000000000004 /* MinimapViewportEngine.swift */,
+				CE8C00010000000000000005 /* ASTScopeDetector.swift */,
+				CE8C00010000000000000006 /* AISuggestionEngine.swift */,
 			);
 			path = CodeFile;
 			sourceTree = "<group>";
@@ -2044,9 +2763,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+				CE8C00000000000000000001 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				CE8C00010000000000000001 /* PathTraversalSanitizer.swift */,
+				CE8C00010000000000000002 /* EditorKeychainManager.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
 		58D01C85293167DC00C5B6B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE8C00000000000000000001 /* Security */,
 				6C48D8EF2972DAC300D6D205 /* Environment */,
 				58D01C87293167DC00C5B6B4 /* Extensions */,
 				58D01C8F293167DC00C5B6B4 /* KeyChain */,
@@ -2362,6 +3091,7 @@
 			isa = PBXGroup;
 			children = (
 				58FD7607291EA1CB0051D6E4 /* CommandPaletteView.swift */,
+				CE8C00010000000000000009 /* GlobalCommandPaletteRouter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2488,6 +3218,14 @@
 				D7211D4927E06BFE008F2ED7 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		CE9100000000000000000001 /* WindowManagement */ = {
+			isa = PBXGroup;
+			children = (
+				CE9100010000000000000001 /* WindowManagementService.swift */,
+			);
+			path = WindowManagement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2778,7 +3516,93 @@
 				DE513F52281B672D002260B9 /* TabBarAccessory.swift in Sources */,
 				2813F93927ECC4C300E305E4 /* NavigatorSidebarView.swift in Sources */,
 				CE8A00020000000000000001 /* NavigatorViews.swift in Sources */,
+				CE9100020000000000000004 /* UtilitiesNavigatorView.swift in Sources */,
 				CE8B00020000000000000001 /* MarkdownEditorView.swift in Sources */,
+				CE8C00020000000000000001 /* PathTraversalSanitizer.swift in Sources */,
+				CE8C00020000000000000002 /* EditorKeychainManager.swift in Sources */,
+				CE8C00020000000000000003 /* DocumentCoordinator.swift in Sources */,
+				CE8C00020000000000000004 /* MinimapViewportEngine.swift in Sources */,
+				CE8C00020000000000000005 /* ASTScopeDetector.swift in Sources */,
+				CE8C00020000000000000006 /* AISuggestionEngine.swift in Sources */,
+				CE8C00020000000000000007 /* InfoPlistEditorView.swift in Sources */,
+				CE8C00020000000000000008 /* EntitlementsEditorView.swift in Sources */,
+				CE8C00020000000000000009 /* GlobalCommandPaletteRouter.swift in Sources */,
+				CE8D00020000000000000001 /* AssistCognitiveEngines.swift in Sources */,
+				CE8D00020000000000000002 /* AssistAgentSession.swift in Sources */,
+				CE8D00020000000000000003 /* AssistCodeReviewGate.swift in Sources */,
+				CE8D00020000000000000004 /* AssistStateModels.swift in Sources */,
+				CE8D00020000000000000005 /* AssistValidationEngine.swift in Sources */,
+				CE8D00020000000000000006 /* CodePatchEngine.swift in Sources */,
+				CE8D00020000000000000007 /* AIModelInfrastructure.swift in Sources */,
+				CE8D00020000000000000008 /* SkillsParser.swift in Sources */,
+				CE8D00020000000000000009 /* AgenticBuildTools.swift in Sources */,
+				CE8D0002000000000000000A /* AgenticDiagnosticTools.swift in Sources */,
+				CE8D0002000000000000000B /* AgenticFileTools.swift in Sources */,
+				CE8D0002000000000000000C /* AgenticGitTools.swift in Sources */,
+				CE8D0002000000000000000D /* AgenticPackageTools.swift in Sources */,
+				CE8D0002000000000000000E /* AgenticSearchTools.swift in Sources */,
+				CE8D0002000000000000000F /* AgenticStateTools.swift in Sources */,
+				CE8D00020000000000000010 /* AgenticSystemTools.swift in Sources */,
+				CE8D00020000000000000011 /* AgenticToolsRegistry.swift in Sources */,
+				CE8D00020000000000000012 /* AssistCoreEngineTools.swift in Sources */,
+				CE8D00020000000000000013 /* AssistEngineToolsRegistry.swift in Sources */,
+				CE8D00020000000000000014 /* ExecutableTool.swift in Sources */,
+				CE8D00020000000000000015 /* AssistAgentView.swift in Sources */,
+				CE8D00020000000000000016 /* MCPClient.swift in Sources */,
+				CE8D00020000000000000017 /* MCPServerManager.swift in Sources */,
+				CE8D00020000000000000018 /* StdioTransportSession.swift in Sources */,
+				CE8E00020000000000000001 /* BuildPipelineModels.swift in Sources */,
+				CE8E00020000000000000002 /* SwiftPackageBuildService.swift in Sources */,
+				CE8E00020000000000000003 /* XcodeBuildService.swift in Sources */,
+				CE8E00020000000000000004 /* IPABuildService.swift in Sources */,
+				CE8E00020000000000000005 /* CloudDeploymentManagers.swift in Sources */,
+				CE8E00020000000000000006 /* DeviceConnectModels.swift in Sources */,
+				CE8E00020000000000000007 /* DeviceConnectKit.swift in Sources */,
+				CE8E00020000000000000008 /* SwiftCodeConnectServer.swift in Sources */,
+				CE8E00020000000000000009 /* PreviewRuntimeCompiler.swift in Sources */,
+				CE8E0002000000000000000A /* PreviewLiveReloadManager.swift in Sources */,
+				CE8E0002000000000000000B /* SimulatorManager.swift in Sources */,
+				CE8E0002000000000000000C /* LivePreviewContainerView.swift in Sources */,
+				CE8F00020000000000000001 /* GitPorcelainModels.swift in Sources */,
+				CE8F00020000000000000002 /* GitPorcelainService.swift in Sources */,
+				CE8F00020000000000000003 /* GitConflictResolverView.swift in Sources */,
+				CE8F00020000000000000004 /* GitHubAPIService.swift in Sources */,
+				CE8F00020000000000000005 /* VisualWorkflowManager.swift in Sources */,
+				CE8F00020000000000000006 /* UIBuilderModels.swift in Sources */,
+				CE8F00020000000000000007 /* CodeForArtboardGenerator.swift in Sources */,
+				CE8F00020000000000000008 /* VisualUIBuilderView.swift in Sources */,
+				CE8F00020000000000000009 /* DatabaseStudioModels.swift in Sources */,
+				CE8F0002000000000000000A /* DatabaseStudioEngine.swift in Sources */,
+				CE8F0002000000000000000B /* DatabaseAIService.swift in Sources */,
+				CE8F0002000000000000000C /* DatabaseStudioView.swift in Sources */,
+				CE8F0002000000000000000D /* StoreKitModels.swift in Sources */,
+				CE8F0002000000000000000E /* StoreKitSimulationService.swift in Sources */,
+				CE8F0002000000000000000F /* StoreKitWorkspaceView.swift in Sources */,
+				CE9000020000000000000001 /* DocumentationModels.swift in Sources */,
+				CE9000020000000000000002 /* DocumentationManager.swift in Sources */,
+				CE9000020000000000000003 /* PersonalDocumentationView.swift in Sources */,
+				CE9000020000000000000004 /* TelemetryDiagnosticsModels.swift in Sources */,
+				CE9000020000000000000005 /* TelemetryDiagnosticsService.swift in Sources */,
+				CE9000020000000000000006 /* OperationsTelemetryView.swift in Sources */,
+				CE9000020000000000000007 /* CodingDictionaryModels.swift in Sources */,
+				CE9000020000000000000008 /* CodingDictionaryService.swift in Sources */,
+				CE9000020000000000000009 /* CodingDictionaryView.swift in Sources */,
+				CE900002000000000000000A /* ExtensionManifestModels.swift in Sources */,
+				CE900002000000000000000B /* PluginExtensionManager.swift in Sources */,
+				CE900002000000000000000C /* DevToolsCategoryModels.swift in Sources */,
+				CE900002000000000000000D /* DevToolsEngines.swift in Sources */,
+				CE900002000000000000000E /* DevToolsHostView.swift in Sources */,
+				CE900002000000000000000F /* DevToolsMainView.swift in Sources */,
+				CE9000020000000000000010 /* DevToolsCodeGenerators.swift in Sources */,
+				CE9000020000000000000011 /* DevToolsConverters.swift in Sources */,
+				CE9000020000000000000012 /* DevToolsUtilities.swift in Sources */,
+				CE9000020000000000000013 /* DevToolsCatalogPart1.swift in Sources */,
+				CE9000020000000000000014 /* DevToolsCatalogPart2.swift in Sources */,
+				CE9000020000000000000015 /* DevToolsCatalogPart3.swift in Sources */,
+				CE9100020000000000000001 /* WindowManagementService.swift in Sources */,
+				CE9100020000000000000002 /* DevToolsCryptoNetwork.swift in Sources */,
+				CE9100020000000000000003 /* DevToolsSystemCheats.swift in Sources */,
+				CE9100020000000000000005 /* DevToolsWebDesign.swift in Sources */,
 				58F2EAF7292FB2B0004A9BDE /* SourceControlProvider.swift in Sources */,
 				587B9E8A29301D8F00AC7927 /* GitHubIssue.swift in Sources */,
 				DE513F54281DE5D0002260B9 /* TabBarXcode.swift in Sources */,

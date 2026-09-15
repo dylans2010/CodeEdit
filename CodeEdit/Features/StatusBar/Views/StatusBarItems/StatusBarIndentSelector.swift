@@ -7,16 +7,6 @@ struct StatusBarIndentSelector: View {
 
     var body: some View {
         Menu {
-            Button {} label: {
-                Text("Use Tabs")
-            }.disabled(true)
-
-            Button {} label: {
-                Text("Use Spaces")
-            }.disabled(true)
-
-            Divider()
-
             Picker("Tab Width", selection: $prefs.preferences.textEditing.defaultTabWidth) {
                 ForEach(2..<9) { index in
                     Text("\(index) Spaces")

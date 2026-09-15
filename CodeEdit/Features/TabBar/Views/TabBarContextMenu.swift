@@ -84,9 +84,8 @@ struct TabBarContextMenu: ViewModifier {
                     }
 
                     Button("Open in New Window") {
-
+                        CodeEditDocumentController.shared.openDocument(withContentsOf: item.url, display: true) { _, _, _ in }
                     }
-                    .disabled(true)
                 }
             }
         })

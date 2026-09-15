@@ -71,7 +71,6 @@ private extension GeneralPreferencesView {
         }
     }
 
-    // TODO: Implement reflecting Show Issues preference and remove disabled modifier
     var showIssuesSection: some View {
         PreferencesSection("Show Issues", hideLabels: false) {
             Picker("Show Issues", selection: $prefs.preferences.general.showIssues) {
@@ -86,7 +85,6 @@ private extension GeneralPreferencesView {
             Toggle("Show Live Issues", isOn: $prefs.preferences.general.showLiveIssues)
                 .toggleStyle(.checkbox)
         }
-        .disabled(true)
     }
 
     var fileExtensionsSection: some View {
@@ -180,7 +178,6 @@ private extension GeneralPreferencesView {
         }
     }
 
-    // TODO: Implement reflecting Issue Navigator Detail preference and remove disabled modifier
     var issueNavigatorDetailSection: some View {
         PreferencesSection("Issue Navigator Detail") {
             Picker("Issue Navigator Detail", selection: $prefs.preferences.general.issueNavigatorDetail) {
@@ -190,20 +187,19 @@ private extension GeneralPreferencesView {
             }
             .frame(width: inputWidth)
         }
-        .disabled(true)
     }
 
-    // TODO: Implement reset for Don't Ask Me warnings Button and remove disabled modifier
     var dialogWarningsSection: some View {
         PreferencesSection("Dialog Warnings", align: .center) {
             Button(action: {
+                UserDefaults.standard.removeObject(forKey: "dontAskAgainWarnings")
+                UserDefaults.standard.synchronize()
             }, label: {
                 Text("Reset \"Don't Ask Me\" Warnings")
                     .padding(.horizontal, 10)
             })
             .buttonStyle(.bordered)
         }
-        .disabled(true)
     }
 
     var shellCommandSection: some View {
@@ -243,7 +239,6 @@ private extension GeneralPreferencesView {
                 Text("Install 'codeedit' command")
                     .padding(.horizontal, 10)
             })
-            .disabled(true)
             .buttonStyle(.bordered)
         }
     }

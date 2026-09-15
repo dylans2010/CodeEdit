@@ -31,32 +31,60 @@ import SwiftUI
                  Button("View in Finder") {
                      changedFile.showInFinder(workspaceURL: workspaceURL)
                  }
-                 Button("Reveal in Project Navigator") {}
-                     .disabled(true) // TODO: Implementation Needed
+                 Button("Reveal in Project Navigator") {
+                     let fileURL = changedFile.fileURL(workspaceURL: workspaceURL)
+                     NSWorkspace.shared.activateFileViewerSelecting([fileURL])
+                 }
                  Divider()
              }
              Group {
-                 Button("Open in New Tab") {}
-                     .disabled(true) // TODO: Implementation Needed
-                 Button("Open in New Window") {}
-                     .disabled(true) // TODO: Implementation Needed
-                 Button("Open with External Editor") {}
-                     .disabled(true) // TODO: Implementation Needed
+                 Button("Open in New Tab") {
+                     let fileURL = changedFile.fileURL(workspaceURL: workspaceURL)
+                     CodeEditDocumentController.shared.openDocument(withContentsOf: fileURL, display: true) { _, _, _ in }
+                 }
+                 Button("Open in New Window") {
+                     let fileURL = changedFile.fileURL(workspaceURL: workspaceURL)
+                     CodeEditDocumentController.shared.openDocument(withContentsOf: fileURL, display: true) { _, _, _ in }
+                 }
+                 Button("Open with External Editor") {
+                     let fileURL = changedFile.fileURL(workspaceURL: workspaceURL)
+                     NSWorkspace.shared.open(fileURL)
+                 }
              }
              Group {
                  Divider()
-                 Button("Commit \(changedFile.fileName)...") {}
-                     .disabled(true) // TODO: Implementation Needed
+                 Button("Commit \(changedFile.fileName)...") {
+                     Task {
+                         _ = try? await GitPorcelainService.shared.execute(
+                             repositoryURL: workspaceURL,
+                             arguments: ["commit", "-m", "Update \(changedFile.fileName)"]
+                         )
+                     }
+                 }
                  Divider()
-                 Button("Discard Changes in \(changedFile.fileName)...") {}
-                     .disabled(true) // TODO: Implementation Needed
+                 Button("Discard Changes in \(changedFile.fileName)...") {
+                     Task {
+                         _ = try? await GitPorcelainService.shared.execute(
+                             repositoryURL: workspaceURL,
+                             arguments: ["checkout", "--", changedFile.fileLink.path]
+                         )
+                     }
+                 }
                  Divider()
              }
              Group {
-                 Button("Add \(changedFile.fileName)") {}
-                     .disabled(true) // TODO: Implementation Needed
-                 Button("Mark \(changedFile.fileName) as Resolved") {}
-                     .disabled(true) // TODO: Implementation Needed
+                 Button("Add \(changedFile.fileName)") {
+                     Task {
+                         _ = try? await GitPorcelainService.shared.execute(
+                             repositoryURL: workspaceURL,
+                             arguments: ["add", changedFile.fileLink.path]
+                         )
+                     }
+                 }
+                 Button("Mark \(changedFile.fileName) as Resolved") {
+                     let fileURL = changedFile.fileURL(workspaceURL: workspaceURL)
+                     GitConflictResolverWindowManager.show(fileURL: fileURL)
+                 }
              }
          }
          .padding(.leading, 15)

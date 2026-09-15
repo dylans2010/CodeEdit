@@ -24,6 +24,12 @@ struct WorkspaceCodeFileView: View {
                         propertyListView(fileItem, for: item)
                     } else if isMarkdown(item.url) {
                         markdownView(fileItem, for: item)
+                    } else if isDatabase(item.url) {
+                        databaseStudioView(for: item)
+                    } else if isStoreKit(item.url) {
+                        storeKitView(for: item)
+                    } else if isConflict(fileItem) {
+                        conflictResolverView(fileItem, for: item)
                     } else if fileItem.typeOfFile == .text || fileItem.typeOfFile == .data {
                         codeFileView(fileItem, for: item)
                     } else {
@@ -54,6 +60,19 @@ struct WorkspaceCodeFileView: View {
         return ext == "md" || ext == "markdown" || ext == "mdown" || ext == "mkd"
     }
 
+    private func isDatabase(_ url: URL) -> Bool {
+        let ext = url.pathExtension.lowercased()
+        return ext == "sqlite" || ext == "db" || ext == "sqlite3"
+    }
+
+    private func isStoreKit(_ url: URL) -> Bool {
+        url.pathExtension.lowercased() == "storekit"
+    }
+
+    private func isConflict(_ codeFile: CodeFileDocument) -> Bool {
+        codeFile.content.contains("<<<<<<< HEAD")
+    }
+
     @ViewBuilder
     private func xcodeProjectView(for item: WorkspaceClient.FileItem) -> some View {
         VStack(spacing: 0) {
@@ -71,7 +90,13 @@ struct WorkspaceCodeFileView: View {
         VStack(spacing: 0) {
             BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
             Divider()
-            PropertyListEditorView(codeFile: codeFile, fileURL: item.url)
+            if item.url.pathExtension == "entitlements" {
+                EntitlementsEditorView(fileURL: item.url)
+            } else if item.url.lastPathComponent == "Info.plist" {
+                InfoPlistEditorView(fileURL: item.url)
+            } else {
+                PropertyListEditorView(codeFile: codeFile, fileURL: item.url)
+            }
         }
     }
 
@@ -81,6 +106,36 @@ struct WorkspaceCodeFileView: View {
         for item: WorkspaceClient.FileItem
     ) -> some View {
         MarkdownEditorView(codeFile: codeFile, fileItem: item)
+    }
+
+    @ViewBuilder
+    private func databaseStudioView(for item: WorkspaceClient.FileItem) -> some View {
+        VStack(spacing: 0) {
+            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+            Divider()
+            DatabaseStudioView(databaseURL: item.url)
+        }
+    }
+
+    @ViewBuilder
+    private func storeKitView(for item: WorkspaceClient.FileItem) -> some View {
+        VStack(spacing: 0) {
+            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+            Divider()
+            StoreKitWorkspaceView()
+        }
+    }
+
+    @ViewBuilder
+    private func conflictResolverView(
+        _ codeFile: CodeFileDocument,
+        for item: WorkspaceClient.FileItem
+    ) -> some View {
+        VStack(spacing: 0) {
+            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+            Divider()
+            GitConflictResolverView(fileURL: item.url)
+        }
     }
 
     @ViewBuilder

@@ -47,11 +47,15 @@ struct GitChangedFile: Codable, Hashable, Identifiable {
     // MARK: Intents
     /// Allows the user to view the file or folder in the finder application
     func showInFinder(workspaceURL: URL) {
-        let workspace = workspaceURL.absoluteString
-        let file = fileLink.absoluteString
-        guard let url = URL(string: workspace + file) else {
-            return print("Failed to decode URL")
+        let targetURL = fileURL(workspaceURL: workspaceURL)
+        NSWorkspace.shared.activateFileViewerSelecting([targetURL])
+    }
+
+    /// Resolves the absolute URL given the workspace URL
+    func fileURL(workspaceURL: URL) -> URL {
+        if fileLink.isFileURL && fileLink.path.hasPrefix("/") {
+            return fileLink
         }
-        NSWorkspace.shared.activateFileViewerSelecting([url])
+        return workspaceURL.appendingPathComponent(fileLink.path)
     }
 }

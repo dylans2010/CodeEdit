@@ -38,12 +38,16 @@ struct ThemePreferencesView: View {
                 }
 
                 Spacer()
-                Button("Get More Themes...") {}
-                    .disabled(true)
-                    .help("Not yet implemented")
-                HelpButton {}
-                    .disabled(true)
-                    .help("Not yet implemented")
+                Button("Get More Themes...") {
+                    if let url = URL(string: "https://github.com/CodeEditApp/CodeEditThemes") {
+                        NSWorkspace.shared.open(url)
+                    }
+                }
+                .help("Browse themes repository")
+                HelpButton {
+                    PersonalDocWindowManager.show()
+                }
+                .help("Architecture Wiki & Theme Documentation")
             }
         }
         .frame(width: 872)
@@ -139,11 +143,22 @@ struct ThemePreferencesView: View {
 
     private var sidebarBottomToolbar: some View {
         HStack {
-            Button {} label: {
+            Button {
+                if let selected = themeModel.selectedTheme {
+                    let newName = "\(selected.name)-copy"
+                    var newTheme = selected
+                    newTheme.name = newName
+                    newTheme.displayName = "\(selected.displayName) Copy"
+                    let url = themeModel.themesURL.appendingPathComponent("\(newName).json")
+                    if let data = try? JSONEncoder().encode(newTheme) {
+                        try? data.write(to: url)
+                        try? themeModel.loadThemes()
+                    }
+                }
+            } label: {
                 Image(systemName: "plus")
             }
-            .disabled(true)
-            .help("Not yet implemented")
+            .help("Duplicate selected theme")
             .buttonStyle(.plain)
             Button {
                 themeModel.delete(themeModel.selectedTheme!)

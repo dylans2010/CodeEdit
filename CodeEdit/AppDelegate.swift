@@ -249,7 +249,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject { // 
                 title: "Behaviors",
                 toolbarIcon: NSImage(systemSymbolName: "flowchart", accessibilityDescription: nil)!
             ) {
-                PreferencesPlaceholderView()
+                BehaviorsPreferencesView()
             },
             Preferences.Pane(
                 identifier: Preferences.PaneIdentifier("Navigation"),
@@ -259,7 +259,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject { // 
                     accessibilityDescription: nil
                 )!
             ) {
-                PreferencesPlaceholderView()
+                NavigationPreferencesView()
             },
             Preferences.Pane(
                 identifier: Preferences.PaneIdentifier("Themes"),
@@ -301,7 +301,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject { // 
                 title: "Components",
                 toolbarIcon: NSImage(systemSymbolName: "puzzlepiece", accessibilityDescription: nil)!
             ) {
-                PreferencesPlaceholderView()
+                ComponentsPreferencesView()
             },
             Preferences.Pane(
                 identifier: Preferences.PaneIdentifier("Locations"),
@@ -315,7 +315,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject { // 
                 title: "Advanced",
                 toolbarIcon: NSImage(systemSymbolName: "gearshape.2", accessibilityDescription: nil)!
             ) {
-                PreferencesPlaceholderView()
+                AdvancedPreferencesView()
             }
         ],
         animated: false

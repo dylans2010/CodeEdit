@@ -67,15 +67,24 @@ struct SourceControlGitView: View {
 
     private var bottomToolbar: some View {
         HStack(spacing: 12) {
-            Button {} label: {
+            Button {
+                prefs.preferences.sourceControl.git.ignoredFiles.append(
+                    IgnoredFiles(id: UUID().uuidString, name: ".DS_Store")
+                )
+            } label: {
                 Image(systemName: "plus")
                     .foregroundColor(Color.secondary)
             }
             .buttonStyle(.plain)
-            Button {} label: {
+            Button {
+                if let selection = ignoredFileSelection {
+                    prefs.preferences.sourceControl.git.ignoredFiles.removeAll { $0.id == selection }
+                    ignoredFileSelection = nil
+                }
+            } label: {
                 Image(systemName: "minus")
             }
-            .disabled(true)
+            .disabled(ignoredFileSelection == nil)
             .buttonStyle(.plain)
             Spacer()
         }
